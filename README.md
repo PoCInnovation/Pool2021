@@ -1,4 +1,4 @@
-# Pool 2020
+# Pool 2021
 
 Les sujets et corrections des piscines 2021 de l'association PoC
 
