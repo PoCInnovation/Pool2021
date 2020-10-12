@@ -1,1 +1,1 @@
-# Welcome to PoC Security Pool 2021 :wave:
+# :wave: Welcome to PoC Security Pool 2021
