@@ -6,7 +6,7 @@
 ## Translate me
 ## Break Point
 ## Change value
-## 
+## Gladiator
 # Cutter
 ## Translate me
 ## Binary Changes
