@@ -387,10 +387,18 @@ Vous pouvez passer au bonus si vous souhaitez apprendre la programmation orient�
 
 ## Bonus
 
-// TODO: Refaire tout les exos mais en orienté objet (road map à écrire)
+// TODO: Refaire tous les exercices mais en orienté objet (road map à écrire)
 
 ##### Ressources
 - [L'orienté object](https://codaholic.sillo.org/2016/04/05/typescript-poo-et-espaces-de-noms/)
 - [Classe](https://www.typescriptlang.org/docs/handbook/classes.html)
+
+## Ressources complémentaires :
+- [Théorie des types appliqué au Typescript](https://medium.com/better-programming/understanding-typescripts-type-system-a3cdec8e95ae)
+- [Les décorateurs](https://www.typescriptlang.org/docs/handbook/decorators.html)
+- [Les décorateurs - Partie 2](https://medium.com/@simonb90/comprendre-et-utiliser-les-d%C3%A9corateurs-avec-typescript-3c6cf8d38065)
+- [Le Templating](https://refactoring.guru/design-patterns/template-method/typescript/example)
+- [Contribuer au Typescript](https://github.com/microsoft/TypeScript)
+- [Contribuer au typage du Javascript](https://github.com/DefinitelyTyped/DefinitelyTyped)
 
 > Poc - 2021
