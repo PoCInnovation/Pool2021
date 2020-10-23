@@ -423,11 +423,11 @@ Créer un middleware capable de gérer des requêtes sur des routes inexistantes
 {
   "message": "${routeURL} Not found",
   "status": 404,
-  "availableRoutes": {
+  "availableRoutes": [
     "/hello",
     "/repeat-my-query",
     "<Écrire les autres routes disponibles>"
-  }
+  ]
 }
 ```
 
