@@ -189,8 +189,8 @@ Vous pouvez renvoyer des informations sous diverses formes. La plus commune éta
     ```json
     [
         {
-            "key": "", // Name of the query
-            "value": "" // Value of the query
+            "key": "<key of the query>",
+            "value": "<value of the query>"
         }
     ]
     ```
@@ -425,8 +425,8 @@ Créer un middleware capable de gérer des requêtes sur des routes inexistantes
   "status": 404,
   "availableRoutes": {
     "/hello",
-    "/repeat-my-query"
-    // Écrire les autres routes disponibles
+    "/repeat-my-query",
+    "<Écrire les autres routes disponibles>"
   }
 }
 ```
