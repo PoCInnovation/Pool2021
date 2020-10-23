@@ -13,7 +13,7 @@
 - [NodeJS](https://nodejs.org/en/) >= 10 ([installation](https://lmgtfy.com/?q=how+to+install+nodejs))
 - [npm](https://www.npmjs.com/) (généralement installé avec NodeJS)
 
-Nous vous demanderons d'effectuer vos rendus sur GitHub, dans un dépôt public. Nommez le `POC_SoftwarePool2021` et créez le dossier `d01`.
+Nous vous demanderons d'effectuer vos rendus sur GitHub, dans un dépôt public. Nommez le `POC_SoftwarePool2021` et créez le dossier `day01`.
 
 Envoyez-nous un message sur Discord avec le lien de votre dépôt pour qu'on puisse suivre l'avancée de votre travail et, possiblement, faire passer des tests automatisés.
 
