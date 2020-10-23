@@ -409,7 +409,7 @@ Appliquer le middleware à votre API et vérifier que tout fonctionne en envoyan
 
 ## Bonus
 
-Si vous êtes toujours en quête d'exercices, voici trois exercices à faire en autonomie :
+Si vous êtes toujours en quête d'exercices, voici trois exercices intermédiaires :
 
 > Les exercices sont volontairement vagues afin de vous laisser chercher par vous-même.
 
@@ -454,7 +454,7 @@ Vous devez pour cela écrire :
  - Des `class` propres à chaque erreur
  - Un middleware qui va gérer toutes les erreurs throw.
  
- > Proposer votre démarche à un encadrant avant de coder.
+ > Proposer votre démarche à un encadrant avant de coder afin de vérifier sa faisabilité.
  
 ### Testing time, partie 2
 
