@@ -13,13 +13,13 @@
 - [NodeJS](https://nodejs.org/en/) >= 10 ([installation](https://lmgtfy.com/?q=how+to+install+nodejs))
 - [npm](https://www.npmjs.com/) (généralement installé avec NodeJS)
 
-Nous vous demanderons d'effectuer vos rendus sur GitHub, dans un dépôt public. Nommez le `POC_SoftwarePool2021` et créez le dossier `d01`.
+Nous vous demanderons d'effectuer vos rendus sur GitHub, dans un dépôt public. Nommez le `POC_SoftwarePool2021` et créez le dossier `day01`.
 
 Envoyez-nous un message sur Discord avec le lien de votre dépôt pour qu'on puisse suivre l'avancée de votre travail et, possiblement, faire passer des tests automatisés.
 
 De plus, vous devrez utiliser `VSCode` ou `WebStorm` pour cette piscine car emacs sera trop limité pour ce que nous allons voir.
 
-##### Ressources
+#### Ressources
 - [NodeJS](https://nodejs.org/en/)
 - [Npm](https://www.npmjs.com/)
 - [Installer Webstorm](https://console.bocal.org/)
@@ -37,7 +37,7 @@ De plus, vous devrez utiliser `VSCode` ou `WebStorm` pour cette piscine car emac
 >
 > Si tout se passe bien `npm start` devrait lancer votre application et afficher dans le terminal `Hello World`.
 
-##### Ressources
+#### Ressources
 - [Typescript pour les débutants](https://www.typescriptlang.org/docs/handbook/typescript-from-scratch.html)
 
 ## Exercice 02 - Coder bien pour soi et pour les autres
@@ -74,7 +74,7 @@ Si vous exécutez les deux règles que vous venez de créer sur votre fichier `i
 
 Vous pouvez installer l'extension Eslint pour votre IDE afin d'avoir les erreurs visibles directement sur votre code.
 
-##### Ressources
+#### Ressources
 - [ESlint](https://eslint.org/)
 - [ESlint sur Webstorm](https://www.jetbrains.com/help/webstorm/eslint.html)
 - [ESlint sur VSCode](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
@@ -112,7 +112,7 @@ type Callback = {(err: Error, result?: undefined): Error, (err: null, result: nu
 
 **Rendu :** `src/superComputer.ts`.
 
-##### Ressources
+#### Ressources
 - [Types](https://www.typescriptlang.org/docs/handbook/basic-types.html)
 - [Callback](https://developer.mozilla.org/en-US/docs/Glossary/Callback_function)
 - [Gestion d'erreur](https://basarat.gitbook.io/typescript/type-system/exceptions)
@@ -138,7 +138,7 @@ Elle renverra un objet du type `Cosmonaut`.
 
 **Rendu :** `src/createCosmonaut.ts`
 
-###### Ressources
+##### Ressources
 - [Objets](https://www.typescriptlang.org/docs/handbook/2/objects.html)
 - [Interface](https://www.typescriptlang.org/docs/handbook/interfaces.html)
 
@@ -151,6 +151,7 @@ Elle renverra un objet du type `Cosmonaut`.
     - Ajouter la règle 'test:watch' qui exécute `jest --watchAll`
 
 <Details><Summary><strong>Il faut également créer un fichier `jest.config.js` avec les règles suivantes:</strong></Summary>
+	
 ```js
 module.exports = {
 	roots: ['<rootDir>'],
@@ -161,11 +162,13 @@ module.exports = {
 	moduleFileExtensions: ['ts', 'js'],
 };
 ```
+
 </Details>
 
 Créer des tests pour `superComputer` et `createCosmonaut` dans le dossier `test` (qu'il faut créer)
 
 <Details><Summary><strong>Exemple d'utilisation de Jest:</strong></Summary>
+	
 Supposons que vous vouliez tester la fonction suivante:
 ```ts
 // sum.ts
@@ -212,7 +215,7 @@ describe('Test sum function', () => {
 
 **Rendu :** `tests/`
 
-##### Ressources
+#### Ressources
 - [Jest](https://jestjs.io/)
 - [JestConfig](https://jestjs.io/docs/en/configuration)
 
@@ -232,7 +235,7 @@ Et qui renvoie un objet `Cosmonaut` grâce aux fonctions précédentes.
 
 **Rendu :** `src/getCosmonaut.ts` et `resources/cosmonaut.json`
 
-##### Ressources
+#### Ressources
 - [Le JSON pour les débutants](https://www.w3schools.com/whatis/whatis_json.asp)
 - [Importer du JSON en Typescript](https://hackernoon.com/import-json-into-typescript-8d465beded79)
 
@@ -262,7 +265,7 @@ Les promesses sont une notion assez complexe du javascript, donc si vous bloquez
 
 **Rendu :** `src/selectCosmonaut.ts`
 
-##### Ressources
+#### Ressources
 - [Asynchronicité](https://eloquentjavascript.net/11_async.html)
 - [Méthode d'un tableau](https://www.tutorialsteacher.com/typescript/typescript-array)
 - [Promesse](https://basarat.gitbook.io/typescript/future-javascript/promise)
@@ -284,7 +287,7 @@ Elle devra créer un cosmonaut à partir des arguments puis envoyer le cosmonaut
 
 **Rendu :** `src/sendCosmonaut.ts`.
 
-##### Ressources
+#### Ressources
 - [Les méthodes http](https://developer.mozilla.org/fr/docs/Web/HTTP/M%C3%A9thode)
 - [Le couple async / await](https://blog.logrocket.com/async-await-in-typescript/)
 
@@ -362,7 +365,7 @@ Elle devra renvoyer un object contenant cosmonaut avec un champ `suit` contenant
 
 **Rendu :** `src/equipCosmonaut.ts`
 
-##### Ressources
+#### Ressources
 - [Overload](https://www.typescriptlang.org/docs/handbook/functions.html)
 - [Interface](https://www.typescriptlang.org/docs/handbook/interfaces.html)
 

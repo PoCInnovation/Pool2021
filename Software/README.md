@@ -4,10 +4,10 @@
 
 ## :closed_book: Day 1 -
  - [Go]()
- - [Typescript](https://github.com/PoCInnovation/Pool2021/Software/day01/Typescript.md)
+ - [Typescript](https://github.com/PoCInnovation/Pool2021/blob/master/Software/day01/Typescript.md)
 ## :radio_button: Day 2 -
  - [Go]()
- - [Typescript](https://github.com/PoCInnovation/Pool2021/Software/day02/Typescript.md)
+ - [Typescript](https://github.com/PoCInnovation/Pool2021/blob/master/Software/day02/Typescript.md)
 ## :package: Day 3 -
  - [Go]()
  - [Typescript]()
