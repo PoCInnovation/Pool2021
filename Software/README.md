@@ -2,16 +2,16 @@
 
 // Global description to do
 
-## :closed_book: Day 1 -
+## :closed_book: Day 1 - Bases du languages
  - [Go]()
  - [Typescript](https://github.com/PoCInnovation/Pool2021/blob/master/Software/day01/Typescript.md)
-## :radio_button: Day 2 -
+## :radio_button: Day 2 - Les serveurs HTTP
  - [Go]()
  - [Typescript](https://github.com/PoCInnovation/Pool2021/blob/master/Software/day02/Typescript.md)
-## :package: Day 3 -
+## :package: Day 3 - Les bases de données
  - [Go]()
  - [Typescript]()
-## :policeman: Day 4
+## :policeman: Day 4 - Docker et Authentification
  - [Go]()
  - [Typescript]()
 
