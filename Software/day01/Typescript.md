@@ -397,6 +397,7 @@ Vous pouvez passer au bonus si vous souhaitez apprendre la programmation orient�
 - [Classe](https://www.typescriptlang.org/docs/handbook/classes.html)
 
 ## Ressources complémentaires :
+- [Compiler du Typescript](https://www.typescriptlang.org/docs/handbook/compiler-options.html)
 - [Théorie des types appliqué au Typescript](https://medium.com/better-programming/understanding-typescripts-type-system-a3cdec8e95ae)
 - [Les décorateurs](https://www.typescriptlang.org/docs/handbook/decorators.html)
 - [Les décorateurs - Partie 2](https://medium.com/@simonb90/comprendre-et-utiliser-les-d%C3%A9corateurs-avec-typescript-3c6cf8d38065)
