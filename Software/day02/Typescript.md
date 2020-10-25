@@ -104,17 +104,19 @@ Pour ceux qui ne connaitraient pas, les variables d'environnement sont des varia
 
 Ces variables sont utilisées lors que vous déployez une application en production pour sécuriser des mots de passes et identifiants privés. Il est donc essentiel de savoir comment les utiliser dans votre code.
  
-Pour cela, nous allons utiliser le package `dotenv` qui permet de charger automatiquement des variables d'environnement depuis un fichier :
+Pour cela, nous allons utiliser le package [env-var](https://github.com/evanshortiss/env-var) qui permet de charger automatiquement des variables d'environnement depuis un fichier :
 
 ```sh
-npm i dotenv
+npm i env-var
 ```
 
-Par la suite, créez un fichier `.env` qui définira les variables d'environnement suivantes :
+Par la suite, créez un fichier `.envrc` qui exportera les variables d'environnement suivantes :
   - SERVER_PORT=8080
   - HELLO_MESSAGE=world
 
 Dans le fichier `src/serverConfig.ts`, récupérer les deux variables d'environnement et exporter les.
+
+:bulb: La manière la plus propre est d'avoir une fonction prenant en paramètre la `key` de la variable et si elle est obligatoire puis qui vous renvoie sa valeur. De plus, n'hésitez pas à typer vos variables d'env grâce aux méthodes proposées par le package.
 
 > Il est commun dans une API d'avoir un fichier spécifique à la configuration, il vous permet de garder une architecture propre et constante.
 
@@ -135,7 +137,6 @@ La bonne pratique est de créer un fichier `env.example` contenant les différen
 **Rendu :** `src/serverConfig.ts` et `src/server.ts`.
 
 #### Ressources :
-- [Dotenv](https://github.com/motdotla/dotenv)
 - [Env-var](https://github.com/evanshortiss/env-var)
 
 ## Exercice 04 - Les statuts HTTP
