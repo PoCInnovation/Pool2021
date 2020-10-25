@@ -114,6 +114,8 @@ Par la suite, créez un fichier `.envrc` qui exportera les variables d'environne
   - SERVER_PORT=8080
   - HELLO_MESSAGE=world
 
+:warning: Vous devrez également installer [direnv](https://direnv.net/) afin de charger les variables dans votre environnement avec la commande `direnv allow`.
+
 Dans le fichier `src/serverConfig.ts`, récupérer les deux variables d'environnement et exporter les.
 
 :bulb: La manière la plus propre est d'avoir une fonction prenant en paramètre la `key` de la variable et si elle est obligatoire puis qui vous renvoie sa valeur. De plus, n'hésitez pas à typer vos variables d'env grâce aux méthodes proposées par le package.
