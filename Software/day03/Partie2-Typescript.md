@@ -30,11 +30,13 @@ npm i typeorm pg pg-god reflect-metadata tsc --save
 ```
 
 <Details><Summary><strong>Cliquer sur le toggle pour avoir une explication de chaque dépendances</strong></Summary>
-- [Typeorm](https://github.com/typeorm/typeorm): ORM de gestion de base de donnée par classe / décorateurs
-- [pg](https://github.com/brianc/node-postgres): Client postgres utiliser par TypeOrm pour gérer les requêtes
-- [pg-god](https://github.com/ivawzh/pg-god): Intéragir avec postgres pour créer une base de donnée car TypeOrm ne la créée par nativement
-- [reflect-metadata](https://github.com/rbuckton/reflect-metadata): Permet d'utiliser des décorateurs en Typescript.
-- [tsc](https://www.typescriptlang.org/docs/handbook/compiler-options.html): Compilateur Typescript, permet d'activer les décorateurs sur le projet.
+
+- [Typeorm](https://github.com/typeorm/typeorm) : ORM de gestion de base de donnée par classe / décorateurs
+- [pg](https://github.com/brianc/node-postgres) : Client postgres utiliser par TypeOrm pour gérer les requêtes
+- [pg-god](https://github.com/ivawzh/pg-god) : Intéragir avec postgres pour créer une base de donnée car TypeOrm ne la créée par nativement
+- [reflect-metadata](https://github.com/rbuckton/reflect-metadata) : Permet d'utiliser des décorateurs en Typescript.
+- [tsc](https://www.typescriptlang.org/docs/handbook/compiler-options.html) : Compilateur Typescript, permet d'activer les décorateurs sur le projet.
+
 </Details>
 
 Importer `reflect-metadata` dans le fichier `index.ts` pour que TypeORM puisse utiliser les décorateurs.
