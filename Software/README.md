@@ -11,7 +11,7 @@
 ## :package: Day 3 - Les bases de données
  - [Datagrip](https://github.com/PoCInnovation/Pool2021/blob/master/Software/day03/Partie1.md)
  - [Go]()
- - [Typescript]()
+ - [Typescript](https://github.com/PoCInnovation/Pool2021/blob/master/Software/day03/Partie2-Typescript.md)
 ## :policeman: Day 4 - Docker et Authentification
  - [Go]()
  - [Typescript]()
