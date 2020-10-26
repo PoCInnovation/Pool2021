@@ -28,11 +28,14 @@ Afin de vous introduire aux principes du Go et de la syntaxe, faites ces deux pa
 
 (Vous pouvez passer les exercices de ce Go Tour)
 
+<br><br><br>
+
 ## Exercice 1 - Fichier Csv / Syntaxe / GoPackages
 
 Le but de cet exercice est de lire un fichier `csv` et stocker les données dans une liste d'int.
 
 ### 1. Lire un csv
+
 Un fichier csv (comma separated values) est un type de fichier contenant des lignes de données, séparées par une virgule.<br>
 Dans cet exercice, le fichier fourni sera généralement sous cette forme.
 ```
@@ -52,6 +55,7 @@ C'est une bonne pratique d'utiliser le package [log](https://golang.org/pkg/log/
 
 
 ### 2. Traiter les données.
+
 Faites une fonction qui prend en paramètre vos données lues à partir du csv (`[][]string`) et qui renvoie une liste de `int` (`[]int`) et une erreur (`error`).<br>
 À partir des données du fichier csv, vous devez transformer les strings en int et les mettre dans une liste.<br>
 Il est recommandé d'utiliser le package [strconv](https://golang.org/pkg/strconv/) pour traiter vos données.
@@ -64,8 +68,12 @@ Elle appellera vos deux fonctions qui lisent le csv et traitent les données pou
 Si une erreur survient pendant l'exécution de votre programme, renvoyez une slice nulle et cette erreur.<br>
 Si votre liste est vide, renvoyez une [erreur](https://golang.org/pkg/errors/) avec le message "list is empty".
 
+<br><br><br>
+
 ## Exercice 3 - Closure Functions
 
+
+<br><br><br>
 
 ## Exercice 4 - Higher-Order Functions
 
@@ -199,6 +207,8 @@ func testSort() {
 
 Ici, on se sert de `sort` afin de trier un tableau de façon croissante puis de façon décroissante.
 
+<br><br><br>
+
 ## Exercice 4. Structures - Interfaces - Compositions d'interfaces
 Maintenant, il est temps de revenir sur le GoTour. Faites la partie sur les [méthodes et interfaces](https://tour.golang.org/methods/1) .
 (Vous pouvez passer les exercices de ce Go Tour)
@@ -321,10 +331,14 @@ Pour finir, faites une function nommée `Area` qui prend comme unique paramètre
 ## Exercice 5 - Factory
 <!-- TODO: -->
 
+<br><br><br>
+
 ## Exercice 6 - Tests
 <!-- TODO: -->
 
-# Exercice 7 - Csv to Json
+<br><br><br>
+
+## Exercice 7 - Csv to Json
 
 Le but de cet exercice est de transformer un fichier `Csv` en `Json`.
 
@@ -353,7 +367,9 @@ type Worker struct {
 Tips : Google est votre ami.
 
 
-# Exercice 8 - Go Routine et Channel
+<br><br><br>
+
+## Exercice 8 - Go Routine et Channel
 
 Votre objectif dans cet exercice est d'optimiser vos temps de calcul grace a l'asynchrone.<br>
 Vous allez donc utiliser les différents keywords, `go`, `select` et `chan` pour y arriver.<br>
@@ -396,10 +412,12 @@ func Calcul(input int) int {
 Il vous est fortement conseiller d'utiliser votre `startTimer` fait lors de l'exercice 3 !
 Il existe beaucoup de doc utile sur la concurrency en ligne, jetez y un oeil https://devhints.io/go#Concurrency
 
-# Exercice 9 - ???
+## Exercice 9 - ???
 <!-- TODO: -->
 
-# Exercice 10 - Mashup ?
+<br><br><br>
+
+## Exercice 10 - Mashup
 Dans cet exercice,vous allez devoir créer une fonction qui :
 * Prends un path vers json en argument.
 * Récursivement et de manière asynchrone, passe dans toutes les branches du json.
