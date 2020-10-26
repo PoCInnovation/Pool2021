@@ -1,3 +1,13 @@
+# Piscine Software - Jour 2
+
+✔ Apprendre à créer un serveur HTTP basique avec Gin.
+
+✔ Comprendre les bases et les bonnes pratiques du développement web.
+
+✔ Sécuriser les routes de votre serveur avec des frameworks de validation.
+
+✔ Explorer les ressources d'une requête, leur localisation et leur utilité.
+
 ## Exercice 00 - Setup
 
 Comme hier, vous allez créer un nouveau dossier pour les exercices du jour, intitulé `d02` (dans le même repo qu'hier).
