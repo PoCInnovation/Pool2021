@@ -22,6 +22,12 @@ Le but de cet exercice est de mettre en place un server qui expose une route `/h
 
 **Rendu :** `src/server.go`
 
+#### Ressources :
+- [Gin](https://github.com/gin-gonic/gin#quick-start)
+- [Serveur HTTP](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_is_a_web_server)
+- [Méthode HTTP](https://developer.mozilla.org/fr/docs/Web/HTTP/M%C3%A9thode)
+
+
 ## Exercice 02 - Abuser des bonnes choses
 
 En HTTP, les paramètres de votre demande peuvent être exprimés à différents endroits :
@@ -67,7 +73,12 @@ Votre app mux devra par la suite utiliser (`use()`) sur ces 2 parsers pour les a
     - Définir le statut 400
     - Renvoyer `Bad Request`
 
-**Rendu :** `src/server.go`.
+> [Postman](https://www.postman.com/) peut-être utile pour tester vos routes HTTP.
+
+**Rendu :** `src/server.ts`.
+
+#### Ressources :
+- [Les Requêtes avec Gin](https://github.com/gin-gonic/gin#api-examples)
 
 ## Exercice 03 - Toujours penser au scaling
 
@@ -103,6 +114,9 @@ La bonne pratique est de créer un fichier `env.example` contenant les différen
 
 **Rendu :** `src/serverConfig.go` et `src/server.go`.
 
+#### Ressources :
+- [GoDotEnv](https://github.com/joho/godotenv)
+
 ## Exercice 04 - Les statuts HTTP
 
 Une API REST renvoie de la donnée en fonction de ce qu'un client demande, mais si jamais ce dernier tentait d'accéder à des données qui ne lui appartienne pas, ou qui n'existent pas, notre api ne pourra pas lui envoyer ce qu'il demande.  
@@ -119,6 +133,11 @@ Remplacez vos status-code écrits en dur dans votre code par l'enum du package.
 
 **Rendu :** `src/server.go`.
 
+#### Ressources :
+- [Les principaux codes HTTP](https://medium.com/@sahelasumi/http-status-codes-31644d99fb1)
+- [Liste complète des codes](http://www.standard-du-web.com/liste_des_codes_http.php)
+- [Les status HTTP en Go](https://golang.org/pkg/net/http/#pkg-constants)
+
 ## Exercice 05 - Tester vos routes
 
 Quand on crée des routes, on a envie de pouvoir tester simplement si elles fonctionnent, et si leur implémentation n'a pas cassé les autres routes.
@@ -128,3 +147,7 @@ Vous allez donc créer une collection Postman contenant des tests sur toutes les
 
 > Nous vous recommandons de mettre à jour cette collection pour toutes les routes des exercices suivants.
 
+#### Ressources :
+- [Collection Postman](https://learning.postman.com/docs/sending-requests/intro-to-collections/)
+- [Test suite Postman](https://www.postman.com/use-cases/api-testing-automation/)
+- [Environnement Postman](https://learning.postman.com/docs/sending-requests/managing-environments/)
