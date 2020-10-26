@@ -64,7 +64,10 @@ Elle appellera vos deux fonctions qui lisent le csv et traitent les données pou
 Si une erreur survient pendant l'exécution de votre programme, renvoyez une slice nulle et cette erreur.<br>
 Si votre liste est vide, renvoyez une [erreur](https://golang.org/pkg/errors/) avec le message "list is empty".
 
-## Exercice 2 - Higher-Order Functions
+## Exercice 3 - Closure Functions
+
+
+## Exercice 4 - Higher-Order Functions
 
 L'objectif de cet exercice est de découvrir le principe des `higher-order functions`.<br>
 Ce concept est utilisé en Go et dans de nombreux autres langages.<br>
@@ -215,7 +218,7 @@ Ou dans le même principe WriteCloser qui est une interface regroupant les deux 
 Les interfaces sont très utilisées en go pour faire des fonctions prenant en paramètre n'importe quel type implémentant cette interface.
 
 
-# 1. Stringer.
+### 1. Stringer.
 Pour commencer, déclarez les structures suivantes :
 ```go
 type circle struct {
@@ -235,7 +238,7 @@ Implémentez l'interface `Stringer` pour ces 3 types (le choix du format est lib
 Testez d'imprimer des variables déclarées avec ce 3 types différents.
 
 
-## 2. L'interface PerimeterCalculator
+### 2. L'interface PerimeterCalculator
 Déclarez l'interface `PerimeterCalculator` qui implémente la méthode `perim() float64`.
 Implémentez cette méthode pour ces trois types.
 
@@ -247,7 +250,7 @@ Pour rappel, le périmètre est obtenu par les formules suivantes :
   - Triangle: a + b + c
 
 
-## 3. L'interface AreaCalculator
+### 3. L'interface AreaCalculator
 Déclarez l'interface `AreaCalculator` qui implémente la méthode `area() float64`.
 Implémentez cette méthode pour ces trois types.
 
@@ -259,7 +262,7 @@ Pour rappel, l'aire est obtenue par les formules suivantes :
   - Triangle : \sqrt{s * (s - a) * (s - b) * (s - c)} (avec s = Périmètre / 2)
 
 
-## 4. L'interface AreaPerimCalculator.
+### 4. L'interface AreaPerimCalculator.
 En Go, il est possible de Composer des types à partir d'autres types déjà existants.
 
 Par exemple :

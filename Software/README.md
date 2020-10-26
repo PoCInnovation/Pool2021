@@ -2,7 +2,7 @@
 
 // Global description to do
 
-## :closed_book: Day 1 - Bases du languages
+## :closed_book: Day 1 - Bases du language
  - [Go](https://github.com/PoCInnovation/Pool2021/blob/master/Software/day01/Go.md)
  - [Typescript](https://github.com/PoCInnovation/Pool2021/blob/master/Software/day01/Typescript.md)
 ## :radio_button: Day 2 - Les serveurs HTTP
