@@ -470,7 +470,7 @@ La démarche à suivre pour écrire vos tests est simple :
 
 ## Ressources complémentaires
 
-Voici une liste de lien si vous souhaiter en apprendre plus sur la notion du jour :
+Voici une liste de lien si vous souhaitez en apprendre plus sur la notion du jour :
 - [Documenter son API](https://stoplight.io/)
 - [NestJS, le boilerplate express](https://nestjs.com/)
 - [Gérer l'asynchronicité sur son server](https://github.com/tranvansang/middleware-async)
