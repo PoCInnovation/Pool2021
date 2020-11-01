@@ -183,7 +183,8 @@ Créer une fonction _asynchrone_ `createDeveloper` qui prend en paramètre les a
  - `age`
  - `school`
  - `experience`
-La fonction doit créer un nouveau `Developer` et return le développeur une fois indexer en db.
+ 
+La fonction doit créer un nouveau `Developer` et retourner le développeur une fois indexer en db.
 
 ### R comme Read
 
@@ -196,9 +197,10 @@ Créer une fonction _asynchrone `getDeveloper` qui prend en paramètre un `id` e
 Créer une fonction asynchrone _updateDeveloper qui prend en paramètres :
  - `id` : le développeur à modifier
  - `infos` : les informations du développeur
+ 
 Elle doit modifier les attributs du développeur, sauvegarder le résultat en db puis le renvoyer.
 
-Il faut pouvoir envoyer à la fonction autant d'attribut que l'on souhaite tant qu'ils sont *valides* et uniques.
+:warning: Il faut pouvoir envoyer à la fonction autant d'attribut que l'on souhaite tant qu'ils sont *valides* et uniques.
 
 Exemple : 
 ```typescript
@@ -237,7 +239,17 @@ Dans le fichier `src/models/Contact.ts`, créer une classe `Contact` à la mani�
  - `phone` : le téléphone du développeur
  - `github` : le lien github du développeur
  - `linkedin` : le lien linkedin du développeur.
+ 
 Vous ajouterez bien sure un `construteur` adapté.
+
+### Lier les tables
+
+Il faut maintenant définir la relation entre ces tables.<br>
+Dans le fichier `src/models/Developer.ts`:
+ - Ajouter un attribut *optionnel* `contact` du type `Contact` à votre classe.
+ - Placer les *2* décorateurs adaptés pour créer votre liaison
+
+:warning: Si un développeur est supprimé, sa fiche de contact doit l'être également, on appelle cela une `cascade`.
 
 ### Créer le contrôleur
 
@@ -245,19 +257,22 @@ Dans le fichier `src/controllers/contactControllers.ts` :
  - Créer une fonction `addContact` qui prend en paramètre :
    - `id` : l'identifiant du développeur à lier
    - `email`, `phone`, `github`, `linkedin`, vous avez compris le concept
-   La fonction doit renvoyer une erreur si le développeur n'existe pas.
-   Sinon, elle doit créer un contact, l'affecter au développeur et renvoyer le résultat sauvegarder en bd.
+   
+La fonction doit renvoyer une erreur si le développeur n'existe pas.<br>
+Sinon, elle doit créer un contact, l'affecter au développeur et renvoyer le résultat sauvegarder en bd.
 
-  - Créer une fonction `updateContact` qui prend en paramètre :
-    - `id` : l'identifiant du développeur à modifier
-    - `infos` : l'objet `Contact` avec les nouvelles propriétés
-    La fonction doit renvoyer une erreur si le développeur n'existe pas.
-    Sinon elle doit modifier le contact et renvoyer le résultat sauvegarder.
+ - Créer une fonction `updateContact` qui prend en paramètre :
+   - `id` : l'identifiant du développeur à modifier
+   - `infos` : l'objet `Contact` avec les nouvelles propriétés
+
+La fonction doit renvoyer une erreur si le développeur n'existe pas.<br>
+Sinon elle doit modifier le contact et renvoyer le résultat sauvegarder.
 
 > La fonction doit respecter les mêmes contraintes que la fonction `updateDeveloper`.
 
-  - Créer une fonction `deleteContact` qui prend en paramètre l'`id`: l'identifiant du développeur à modifier.
-    Renvoyer une erreur si le développeur n'existe pas. Sinon, renvoyer le résultat sauvegarder.
+ - Créer une fonction `deleteContact` qui prend en paramètre l'`id`: l'identifiant du développeur à modifier.
+ 
+Renvoyer une erreur si le développeur n'existe pas. Sinon, renvoyer le résultat sauvegarder.
 
 > N'oubliez pas de tester vos fonctions.
 
@@ -267,4 +282,135 @@ Dans le fichier `src/controllers/contactControllers.ts` :
 - [Les relations dans une base de donnée](https://database.guide/the-3-types-of-relationships-in-database-design/)
 - [Les relations dans TypeOrm](https://typeorm.io/#/relations)
 
+## Exercice 05 - Des développeurs compétents
+
+Vous pouvez contacter vos développeurs, mais il serait peut-être appréciable d'avoir un peu plus d'informations sur eux avant ?<br>
+Un étendu de leur compétences par exemple ?
+
+Vous allez mettre en place une relation `One to Many` entre la table `Developer` et la table `Competences`.
+
+Ajouter un fichier `src/models/Competence` dans lequel vous allez exporter une classe `Compentece` contenant les champs suivants :
+ - `id` : L'identifient de la table
+ - `name` : Nom de la compétence
+ - `level` : Le niveau de maitrise (entre 0 et 10)
+ 
+Le `constructeur` n'est toujours pas en option :joy:
+
+Lier la table `Developer` à votre nouvelle table en `One to Many` et n'oubliez pas d'activer le mode `cascade` (au bon endroit).
+
+> :bulb: La liaison est spéciale, vous devrez surement modifier votre class Competence pour pouvoir la réaliser.<br>
+
+Créer un fichier `competenceControllers` dans votre dossier `src/controllers` dans lequel vous allez écrire les trois habituelles pour intéragir avec vos tables :
+- `addCompetence` qui prend en paramètres :
+  - `id` : Identifient du développeur
+  - `name`: Nom de la compétence
+  - `level`: Le niveau de la compétence
+  
+La fonction doit renvoyer une erreur si le développeur n'existe pas ou si le niveau de la compétence est invalide.<br>
+Sinon, elle doit renvoyer le développeur modifié avec la nouvelle compétence.
+
+- `updateCompetence` qui attend les paramètres :
+  - `devId` : Identifient du développeur
+  - `competenceId`: Identifient de la compétence
+  - `infos` : L'objet `Competence` avec les nouvelles propriétés.
+ 
+La fonction doit bien sure renvoyer une erreur si le développeur ou la compétence n'existe pas.<br>
+Sinon, renvoyer le développeur mis à jour.
+
+> La fonction doit respecter les mêmes contraintes que la fonction `updateDeveloper`.
+
+- `deleteCompetence` qui prend en paramètres :
+  - `devId` : Identifient du développeur
+  - `competenceId` : Identifient de la compétence
+  
+Renvoyer une erreur si l'un des deux identifient est inconnue, sinon renvoyer le développeur mis à jour.
+
+> N'oubliez pas de modifier les `controllers` de `Developer` pour ajouter les compétences.
+
+**Rendu :** `src/models/Compentence`, `src/models/Developer` et `src/controllers/competenceControllers.ts` 
+
+#### Ressources
+ - [One to Many](https://orkhan.gitbook.io/typeorm/docs/many-to-one-one-to-many-relations)
+ - [One to Many (seconde source)](https://typeorm.io/#/many-to-one-one-to-many-relations)
+ 
+## Exercice 06 - Des développeurs actifs
+
+Il est temps de passer à l'étape finale : les projets.
+L'exercice est volontairement moins guidé, vous avez appris tout le nécessaire sur le fonctionnement de TypeOrm pour vous documenter seul et réaliser l'exercice.
+
+Votre modèle `Project` doit avoir les propriétés suivantes :
+  - `id`: Identifient de le table
+  - `name`: Nom du projet
+  - `deadline`: La date de rendu du projet
+  - `type`: Le type de projet (du type ProjectType que vous trouverez dans le fichier `type.ts` sur le repo)
+  - `developers`: Les développeurs sur le projet
+  
+Vous allez créer une relation `Many to Many` entre les développeurs et les projets.
+
+> Documenter vous bien sur la manière de faire et les décorateurs à utiliser.
+
+Vous devrez ensuite écrire 6 controllers :
+ - `getProjects` qui renvoie tous les projets avec les développeurs associés.
+ - `createProject` qui prend en paramètre :
+   - `name` : Nom du projet
+   - `deadline` : Date limite du projet
+   - `type` : Type du projet
+    
+Renvoyer le projet nouvellement créé.
+
+> :warning: Attention à bien gérer les erreurs potentielles, une date *impossible* par exemple ?
+
+ - `updateProject` qui prend en paramètre : 
+   - `id` : Identifient du projet
+   - `infos` : Les infos à modifier
+   
+Renvoie le projet mise à jour
+
+ - `deleteProject` qui prend en paramètre l'id du projet à supprimer
+ - `addDevToProject` qui prend en paramètre :
+   - `projectId` : Identifient du projet
+   - `devId` : Identifient du développeur
+    
+Ajouter le projet au développeur donnée
+
+ - `deleteDevFromProject` qui prend en paramètre :
+   - `projectId` : Identifient du projet
+   - `devId` : Identifient du développeur
+
+Retirer le projet au développeur donnée
+
+> N'oubliez pas de gérer les erreurs en cas de projet ou développeur inconnu.
+
+> Les tests sont toujours de rigueur :joy: 
+
+**Rendu :** `src/models/Project`, `src/controllers/projectControllers.ts` et `src/models/Developer.ts`.
+
+#### Ressources
+ - [Many to Many](https://typeorm.io/#/many-to-many-relations) 
+
+## Bonus
+
+Voici un _petit_ bonus pratique et utile pour consolider vos connaissances :
+
+Vous avez actuellement des modèles et des controllers, c'est un bon début pour une API avec une architecture MVC n'est-ce pas ?
+
+> La structure MVC, Modèle, Vue, Controller est une architecture basique dans le développeur back-end.
+
+L'objectif est de créer un serveur express avec les routes nécessaires pour créer, modifier, afficher vos différents modèles.<br>
+Vous pouvez bien évidemment utiliser les controllers, mais aussi en rajouter.
+
+Basez-vous sur vos acquis pour terminer ce bonus.<br>
+Bon courage !
+
+## Ressources complémentaires
+
+Si vous souhaitez en apprendre plus sur les bases de données, voici quelques liens intéressants :
+ - [Prisma, l'ORM du futur](https://github.com/prisma/prisma)
+ - [Les bases de donnée graph](https://medium.com/wiidii/pourquoi-sint%C3%A9resser-aux-bases-de-donn%C3%A9es-orient%C3%A9es-graphe-e650f0395951)
+ - [Neo4Js](https://www.google.com/search?channel=fs&client=ubuntu&q=neo4j)
+ - [DGraph](https://dgraph.io/)
+ - [Prisma X Graphql](https://blog.geographer.fr/prisma-graphql-api)
+ - [MongoDB](https://www.mongodb.com/fr)
+ - [MikroORM](https://github.com/mikro-orm/mikro-orm/issues)
+ 
 > PoC - 2021
