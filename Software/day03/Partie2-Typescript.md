@@ -300,7 +300,7 @@ Lier la table `Developer` à votre nouvelle table en `One to Many` et n'oubliez 
 
 > :bulb: La liaison est spéciale, vous devrez surement modifier votre class Competence pour pouvoir la réaliser.<br>
 
-Créer un fichier `competenceControllers` dans votre dossier `src/controllers` dans lequel vous allez écrire les trois habituelles pour intéragir avec vos tables :
+Créer un fichier `competenceControllers` dans votre dossier `src/controllers` dans lequel vous allez écrire les trois fonctions habituelles pour intéragir avec vos tables :
 - `addCompetence` qui prend en paramètres :
   - `id` : Identifient du développeur
   - `name`: Nom de la compétence
