@@ -39,4 +39,9 @@ Almost all the main file formats have some structural similarities :
 -   sometimes a end pattern, used to know where the parsers should stop
 
 ## RSA Sage
+RSA keys need to conform to certain mathematical properties in order to be secure. If the key is not generated carefully it can have vulnerabilities which may totally compromise the encryption algorithm. Sometimes this can be determined from the public key alone. This article describes vulnerabilities that can be tested when in possession of a RSA public key.
+
+If the RSA key is too short, the modulus can be factored by just using brute force. A 256-bit modulus can be factored in a couple of minutes. A 512-bit modulus takes several weeks on modern consumer hardware. Factoring 1024-bit keys is definitely not possible in a reasonable time with reasonable means, but may be possible for well equipped attackers. 2048-bit is secure against brute force factoring.
+
+But actually with Sagemath (a mathematical open-source software) we can do a ROCA Attack on a 512-bit key and break it in only minutes.
 ## AES
