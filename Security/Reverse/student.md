@@ -71,7 +71,5 @@ Now we are going to learn how to patch a binary. Patching a binary means changin
 Depending on the size of the program and the impact of your changes, edition can take some time. Be patient !
 
 Start analysing the  _impossible_  binary : first understand why it is called impossible, then solve the challenge !
-## 3 - Use the graph
-Cutter 	
 ## 4 - Craft
 ## 5 - Enigma
