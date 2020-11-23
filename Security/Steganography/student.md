@@ -6,14 +6,6 @@ Steganography is the art of hiding the fact that you are hiding something . Basi
 ## Spectre Audio
 ## PDF
 ## Filter pictures
-Every documents, images, sounds … can be stored in a file. A file contains data which must be used to render its content. The data organisation in a file is defined by its file format specifications (pdf, jpg, png, wav, zip …).
-
-Almost all the main file formats have some structural similarities :
-
--   they start with a header describing the file : the size of its content, the targeted environments etc.
--   the content which can be organised in various ways
--   sometimes a end pattern, used to know where the parsers should stop
-
 ## LSB
 How to hide data in an image without using the filter technique and without concatenation ? With the widely used LSB technique, you can hide data in the image bits. LSB stands for Least Significant Bit which is the Bit which has the less importance on the final appearance of the image.
 
