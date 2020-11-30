@@ -37,7 +37,7 @@ Almost all the main file formats have some structural similarities :
 -   they start with a header describing the file : the size of its content, the targeted environments etc.
 -   the content which can be organised in various ways
 -   sometimes a end pattern, used to know where the parsers should stop
-## AES
+## Patrick au secours !
 ## RSA Sage
 RSA keys need to conform to certain mathematical properties in order to be secure. If the key is not generated carefully it can have vulnerabilities which may totally compromise the encryption algorithm. Sometimes this can be determined from the public key alone. This article describes vulnerabilities that can be tested when in possession of a RSA public key.
 
