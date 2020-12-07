@@ -26,5 +26,4 @@ A memory dump can contain valuable forensics data about the state of the system 
 
 The analysis of a memory dump is a very good way to find if a malware is operating on the computer at the time of the snapshot.
 
-## Linux
 ## Windows
