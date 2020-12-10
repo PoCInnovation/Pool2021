@@ -154,9 +154,9 @@ Votre docker-compose doit avoir :
 
 :warning: Faites attention à vos hosts
 
-:bulb: **Tips**
- - Vous pouvez set un environnement dans votre docker-compose
- - Vous pouvez build un Dockerfile directement dans votre docker-compose
+> :bulb: **Tips**
+> - Vous pouvez set un environnement dans votre docker-compose
+> - Vous pouvez build un Dockerfile directement dans votre docker-compose
 
 **Rendu :** `exo2/`
 
