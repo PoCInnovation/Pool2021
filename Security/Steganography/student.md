@@ -4,7 +4,7 @@ Steganography is the use of various methods to hide information from unwanted ey
 
 Steganography works by hiding information in a way that doesn’t arouse suspicion. Malicious hackers use steganography for a variety of tasks such as hiding malicious payloads and script files. Malware developers often use LSB steganography to hide the code for their malware in images of celebrities and famous songs and execute them with another program after the file is downloaded on the victim’s computer.
 
-“The term ‘Trojan Horse’ is used to describe a dangerous file hidden within a harmless file. 
+The term ‘Trojan Horse’ is used to describe a dangerous file hidden within a harmless file. 
 
 Steganography is often compared to cryptography. While steganography hides information, cryptography focuses on rendering the data unreadable to everyone except its intended recipient. Once a stream of data is encrypted, only a person who has access to its decryption key will be able to unlock it.
 
