@@ -72,4 +72,7 @@ Depending on the size of the program and the impact of your changes, edition can
 
 Start analysing the  _impossible_  binary : first understand why it is called impossible, then solve the challenge !
 ## 4 - Craft
+My friend got this cool game, but I can't seem to get it to work, maybe there's a security of some sort ?
+Use what you learned until now to run the game and show us your gamer screen to validate the exercice.
+
 ## 5 - Enigma
