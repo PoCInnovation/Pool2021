@@ -4,14 +4,14 @@
 
 ✔ Consolider les concepts des classes.
 
-✔ S'initialiser aux décorateurs.
+✔ Découvrir les décorateurs.
 
 ## Exercice 00 - Setup
 
-Vous avez l'habitude, créer un dossier `day03` (toujours dans le même repo)
+Vous avez l'habitude, créer un dossier `day03` (toujours dans le même repo).
 Créer une nouvelle application avec `npm init` et `npx eslint --init`
 
-> Aidez-vous des jours précédents si nécessaires.
+> Aidez-vous des jours précédents si nécessaire.
 
 #### Ressources
 
@@ -19,21 +19,21 @@ Créer une nouvelle application avec `npm init` et `npx eslint --init`
 
 ## Exercice 01 - Poser les bases
 
-Nous allons créer une base de donnée postgres grâce à [TypeORM](https://typeorm.io/#/).
-C'est une ORM basé sur des classes couplé à des décorateurs. Vos tables sont modélisées avec des classes, tout est donc typé et réutilisable !
+Nous allons créer une base de données postgres grâce à [TypeORM](https://typeorm.io/#/).
+C'est un ORM basé sur des classes couplé à des décorateurs. Vos tables sont modélisées avec des classes, tout est donc typé et réutilisable !
 
 ### Setup
 
-Installer TypeOrm et ses dépendances
+Installez TypeOrm et ses dépendances
 ```typescript
 npm i typeorm pg pg-god reflect-metadata tsc --save
 ```
 
-<Details><Summary><strong>Cliquer sur le toggle pour avoir une explication de chaque dépendances</strong></Summary>
+<Details><Summary><strong>Cliquez sur le toggle pour avoir une explication de chaque dépendance</strong></Summary>
 
-- [Typeorm](https://github.com/typeorm/typeorm) : ORM de gestion de base de donnée par classe / décorateurs
-- [pg](https://github.com/brianc/node-postgres) : Client postgres utiliser par TypeOrm pour gérer les requêtes
-- [pg-god](https://github.com/ivawzh/pg-god) : Intéragir avec postgres pour créer une base de donnée car TypeOrm ne la créée par nativement
+- [Typeorm](https://github.com/typeorm/typeorm) : ORM de gestion de base de données par classe / décorateurs
+- [pg](https://github.com/brianc/node-postgres) : Client postgres utilisé par TypeOrm pour gérer les requêtes
+- [pg-god](https://github.com/ivawzh/pg-god) : Interagir avec postgres pour créer une base de données car TypeOrm ne la créée par nativement
 - [reflect-metadata](https://github.com/rbuckton/reflect-metadata) : Permet d'utiliser des décorateurs en Typescript.
 - [tsc](https://www.typescriptlang.org/docs/handbook/compiler-options.html) : Compilateur Typescript, permet d'activer les décorateurs sur le projet.
 
@@ -48,28 +48,28 @@ Créer maintenant un dossier `src/models`, c'est ici que nous allons stocker nos
 
 ### Contexte
 
-L'objectif du jour est de créer et intéragir avec une base de donnée contenant :
+L'objectif du jour est de créer et intéragir avec une base de données contenant :
  - Des développeurs travaillant sur des projets
- - La fiche de contact de chaque développeurs
+ - La fiche de contact de chaque développeur
  - Des projets affectés à une équipe de développeurs
 
-Ne vous inquiéter, tout vas se faire étape par étape.
+Ne vous inquiétez pas, tout va se faire étape par étape.
 
 ### Let's code
 
 Il est temps de créer votre première table. 
-Comme dis précédemment, TypeOrm se base sur des [Classes](https://www.typescriptlang.org/docs/handbook/classes.html). Vous retrouverez donc les mêmes spécificités (héritage, constructeur, méthodes...).
+Comme dit précédemment, TypeOrm se base sur des [Classes](https://www.typescriptlang.org/docs/handbook/classes.html). Vous retrouverez donc les mêmes spécificités (héritage, constructeur, méthodes...).
 
 #### Modéliser
 
-Dans le fichier `src/models/Developer`, créer une classe `Developer` avec les propriétés suivantes:
+Dans le fichier `src/models/Developer`, créez une classe `Developer` avec les propriétés suivantes :
  - `id` : la clé unique de notre table (type : `string`)
  - `name` : le nom du développeur
  - `age` : l'âge du développeur
  - `school` : l'école d'origine
  - `experience` : le nombre d'années d'expérience
 
-> En base de donnée relationnel, chaque table contient un identifiant unique de façon à pouvoir distinguer chaque élément de cette table même si leur données sont les mêmes. Il est commun par sécurité de générer un `uuid` plutôt qu'un simple index.
+> En base de données relationnelle, chaque table contient un identifiant unique de façon à pouvoir distinguer chaque élément de cette table même si leurs données sont les mêmes. Il est commun par sécurité de générer un `uuid` plutôt qu'un simple index.
 
 > Par convention, un fichier définissant une classe portera le nom de celle-ci.
 
@@ -78,15 +78,15 @@ Dans le fichier `src/models/Developer`, créer une classe `Developer` avec les p
 Une fois votre classe créée, il faut la rendre utilisable par TypeORM.
 Pour cela :
  - Votre classe `Developer` doit hériter des propriétés de la classe `BaseEntity`
- - Ajouter le décorateur `@Entity` sur votre classe.
+ - Ajoutez le décorateur `@Entity` sur votre classe.
  - Définissez vos attributs comme étant des colonnes grâce aux décorateurs `@Columns`
 
-:warning: L'id est une colonne spéciale dites `Primaire`, utiliser un décorateur spécial qui vas _auto générée_ un `uuid`.
+:warning: L'id est une colonne spéciale dite `Primaire`, utilisez un décorateur spécial qui va _auto généré_ un `uuid`.
 
 #### Assigner
 
 Votre table est définie, mais n'oubliez pas, son comportement reste celui d'une classe.<br>
-Créer un constructeur dans la classe qui vas venir prendre en paramètres les variables nécessaires à la création d'un développeur.<br>
+Créer un constructeur dans la classe qui va venir prendre en paramètres les variables nécessaires à la création d'un développeur.<br>
 Votre constructeur doit également exécuter la fonction `super` pour hériter des méthodes de la classe `BaseEntity`.
 
 :bulb: L'exercice suivant vous permettra de vérifier si tout fonctionne comme prévu, vous pouvez néanmoins appeler un encadrant pour vérifier votre classe.
@@ -102,41 +102,41 @@ Votre constructeur doit également exécuter la fonction `super` pour hériter d
 
 ## Exercice 02 - Mise en db 
 
-Vous avez modélisé votre première table, il faut maintenant l'indexer en db. Ce matin, vous avez appris à créer des données à la main, l'ORM vas se charger de cela automatiquement lorsque vous créer une connexion à votre base de donnée.
-L'exercice va donc se faire en deux étapes : setup votre base de donnée puis vous y connecter.
+Vous avez modélisé votre première table, il faut maintenant l'indexer en db. Vous avez appris à créer des données à la main, l'ORM vas se charger de cela automatiquement lorsque vous créez une connexion à votre base de données.
+L'exercice va donc se faire en deux étapes : setup votre base de données puis vous y connecter.
 
 ### Configuration
 
-Nous allons utiliser une base de donnée [Postgres](https://www.postgresql.org/). Il s'agit de l'une des plus connues et des plus simples à setup.
-Pour créer une nouvelle de donnée, il vous suffit de lancer une image [Docker](https://www.docker.com/) de celle-ci.
+Nous allons utiliser une base de données [Postgres](https://www.postgresql.org/). Il s'agit de l'une des plus connues et des plus simples à mettre en place.
+Pour créer une nouvelle base de données, il vous suffit de lancer l'image [Docker](https://www.docker.com/) de celle-ci.
 
-> Docker est un système de containerisation très utilisé. Contenter vous d'exécuter les lignes que nous vous fournissons, vous verrez plus de détail demain.
+> Docker est un système de containerisation très utilisé. Contentez-vous d'exécuter les commandes que nous vous fournissons, vous verrez plus de détails demain.
 
 Créer un fichier `.envrc` dans lequel vous allez mettre les variables d'environnement relatives à votre db :
  - `DB_USER` : le nom d'utilisateur de votre db
  - `DB_PASS` : le mot de passe
  - `DB_HOST` : l'host pour se connecter (ici : `localhost`)
  - `DB_PORT` : le port d'écoute de votre db
- - `DB_NAME` : le nom de la base de donnée.
- - `DB_URL` : l'url de connection, elle groupe toutes les informations ci-dessus (valeur : `postgresql://$DB_USER:$DB_PASS@$DB_HOST:$DB_PORT/$DB_NAME`)
+ - `DB_NAME` : le nom de la base de données.
+ - `DB_URL` : l'url de connexion, elle groupe toutes les informations ci-dessus (valeur : `postgresql://$DB_USER:$DB_PASS@$DB_HOST:$DB_PORT/$DB_NAME`)
  - `ENTITIES_FOLDER`: le dossier contenant vos tables (ici : `models`)`
 
-> Il est possible de créer plusieurs db dans une seule base postgres, c'est pour cela qu'un nom est donnée à chaque db.
+> Il est possible de créer plusieurs db dans une seule base postgres, c'est pour cela qu'un nom est donné à chaque db.
 >
 > :warning: N'oubliez pas de charger vos variables avec `direnv`.
 
 Dans le fichier `appConfig.ts`, à l'aide de vos connaissances acquises au jour 2 :
- - Récupérer et exporter les variables : `DB_NAME`, `DB_URL` et `ENTITIES_FOLDER`.
+ - Récupérez et exportez les variables : `DB_NAME`, `DB_URL` et `ENTITIES_FOLDER`.
  - Vous aurez également besoin d'exporter un objet `db` contenant les variables : `user`, `password`, `host`, `port` et `database`.
 
 > L'objet db vous permettra de créer la db si elle n'existe pas. De plus, `database` correspond au type de la db donc `postgres`.
 
-### Connection
+### Connexion
 
-A présent, dans le fichier `src/appDatabase.ts`, exporter une fonction _asynchrone_ `dbInitialize`.
+À présent, dans le fichier `src/appDatabase.ts`, exporter une fonction _asynchrone_ `dbInitialize`.
 Cette fonction doit :
- - Créer la base de donnée grâce à [pg-god](https://github.com/ivawzh/pg-god#programmatic-invocation)
- - Créer une connection à votre base de donnée.
+ - Créer la base de données grâce à [pg-god](https://github.com/ivawzh/pg-god#programmatic-invocation)
+ - Créer une connection à votre base de données.
  - Synchroniser les `models` pour créer les tables dans votre db. 
 
 Appeler cette fonction dans votre `index.ts`
@@ -149,15 +149,15 @@ Ajouter dans votre `package.json` la commande suivante :
 "dev:db": "docker run --name ${DB_NAME} -e POSTGRES_PASSWORD=${DB_PASS} -e POSTGRES_USER=${DB_USER} -p ${DB_PORT}:${DB_PORT} -d postgres:alpine",
 ```
 
-Cette commande vous permet de lancer un `container postgres respectant votre configuration placée dans l'environnement.
-Vous avez maintenant une base de donnée lancée sur votre ordinateur.
+Cette commande vous permet de lancer un conteneur postgres respectant votre configuration placée dans l'environnement.
+Vous avez maintenant une base de données lancée sur votre ordinateur.
 
-> Il n'est pas rare d'ajouter le lancement de services externe directement dans votre `package.json`.
+> Il n'est pas rare d'ajouter le lancement de services externes directement dans votre `package.json`.
 
-Exécuter la commande `npm run dev:db` puis `npm run start`.<br>
+Exécute< la commande `npm run dev:db` puis `npm run start`.<br>
 Si tout se passe bien, le message de succès devrait apparaître :joy:
 
-> Vous pouvez également vous connecter à votre base de donnée grâce à Datagrip et voir votre table nouvellement créée.
+> Vous pouvez également vous connecter à votre base de données grâce à Datagrip et voir votre table nouvellement créée.
 
 **Rendu :** `src/appConfig.ts`, `src/appDatabase.ts` et `src/index.ts`
 
@@ -168,50 +168,49 @@ Si tout se passe bien, le message de succès devrait apparaître :joy:
 - [La connection aux db avec TypeOrm](https://typeorm.io/#/connection)
 - [PostgreSQL](https://www.postgresql.org/)
 
-## Exercice 03 - Le CRUD avec une ORM
+## Exercice 03 - Le CRUD avec un ORM
 
-Soyons sincère, une base de donnée vide ne sert à rien :joy:<br>
 Il faut maintenant développer les fonctions pour lire, ajouter, modifier et supprimer un `Developer`. Autrement dit, le CRUD de celui-ci.
 
-Vous allez créer un dossier `src/controllers` dans lequel vous allez stocker toutes les fonctions intéragissant avec la base de donnée.
+Vous allez créer un dossier `src/controllers` dans lequel vous allez stocker toutes les fonctions interagissant avec la base de données.
 Écrivez les fonctions ci-dessous dans le fichier `src/controllers/developerControllers.ts`.
 
 ### C comme Create
 
-Créer une fonction _asynchrone_ `createDeveloper` qui prend en paramètre les attributs du futur développeur :
+Créez une fonction _asynchrone_ `createDeveloper` qui prend en paramètres les attributs du futur développeur :
  - `name`
  - `age`
  - `school`
  - `experience`
  
-La fonction doit créer un nouveau `Developer` et retourner le développeur une fois indexer en db.
+La fonction doit créer un nouveau `Developer` et retourner le développeur une fois indexé en db.
 
 ### R comme Read
 
-Créer une fonction _asynchrone_ `getDevelopers` qui renvoie tous les développeurs présents dans la base de donnée.
+Créez une fonction _asynchrone_ `getDevelopers` qui renvoie tous les développeurs présents dans la base de données.
 
-Créer une fonction _asynchrone `getDeveloper` qui prend en paramètre un `id` et renvoie un développeur si son id match celui donnée en paramètre.
+Créez une fonction _asynchrone_ `getDeveloper` qui prend en paramètre un `id` et renvoie un développeur si son id correspond à celui donné en paramètre.
 
 ### U comme update
 
-Créer une fonction asynchrone _updateDeveloper qui prend en paramètres :
+Créez une fonction asynchrone `updateDeveloper` qui prend en paramètres :
  - `id` : le développeur à modifier
  - `infos` : les informations du développeur
  
 Elle doit modifier les attributs du développeur, sauvegarder le résultat en db puis le renvoyer.
 
-:warning: Il faut pouvoir envoyer à la fonction autant d'attribut que l'on souhaite tant qu'ils sont *valides* et uniques.
+:warning: Il faut pouvoir envoyer à la fonction autant d'attributs que l'on souhaite tant qu'ils sont *valides* et uniques.
 
 Exemple : 
 ```typescript
 updateDeveloper(id, { name: 'newName' }); // Fonctionne
 updateDeveloper(id, { name: 'newName', age: 19, school: 'Epitech' }); // Fonctionne aussi
-updateDeveloper(id, { name: 'newName', unknowPropertie: 'Unknown' }); // Doesn't work 
+updateDeveloper(id, { name: 'newName', unknowProperty: 'Unknown' }); // Doesn't work 
 ```
 
 ### D comme Delete
 
-Créer une fonction _asynchrone_ `deleteDeveloper` qui prend en paramètre un `id` et supprime le développeur sélectionné.
+Créez une fonction _asynchrone_ `deleteDeveloper` qui prend en paramètre un `id` et supprime le développeur sélectionné.
 
 **Rendu :** `src/controllers/developerControllers.ts`.
 
@@ -221,58 +220,58 @@ Créer une fonction _asynchrone_ `deleteDeveloper` qui prend en paramètre un `i
 
 ## Exercice 04 - Contacter les développeurs
 
-Si vous vous souvenez bien de l'exercice 1, la base de donnée finale doit contenir 3 tables : `Developer`, `Contact` et `Projects`.
+Si vous vous souvenez bien de l'exercice 1, la base de données finale doit contenir 3 tables : `Developer`, `Contact` et `Projects`.
 Il est temps de créer la table `Contact`.
 
-En base de donnée relationnelle, il existe 3 types de relations :
+En base de données relationnelle, il existe 3 types de relations :
  - One to One : Une entité reliée à une autre (Exemple : Un développeur n'a qu'une fiche de contact)
- - One to Many : Une entité qui peut être relié à plusieurs exemplaires d'une autre entité (Exemple : Une entreprise à plusieurs employés mais un employé n'a qu'une entreprise)
- - Many to Many : Plusieurs entités relié à plusieurs autres entités d'une autre table (Exemple : Un développeur peuvent avoir des projets et un projet peut avoir plusieurs développeurs)
+ - One to Many : Une entité qui peut être reliée à plusieurs exemplaires d'une autre entité (Exemple : Une entreprise a plusieurs employés mais un employé n'a qu'une entreprise)
+ - Many to Many : Plusieurs entités reliées à plusieurs autres entités d'une autre table (Exemple : Un développeur peut avoir des projets et un projet peut avoir plusieurs développeurs)
 
 Vous l'avez compris, vous vous apprêtez à créer une relation du type `One to One`.
 
 ### Définir le modèle
 
 Dans le fichier `src/models/Contact.ts`, créer une classe `Contact` à la manière de l'exercice 02 avec les attributs suivant :
- - `id` : l'identifient de la table
+ - `id` : l'identifiant de la table
  - `email` : l'email du développeur
  - `phone` : le téléphone du développeur
- - `github` : le lien github du développeur
- - `linkedin` : le lien linkedin du développeur.
+ - `github` : le lien GitHub du développeur
+ - `linkedin` : le lien LinkedIn du développeur.
  
-Vous ajouterez bien sure un `construteur` adapté.
+Vous ajouterez bien sûr un `construteur` adapté.
 
 ### Lier les tables
 
 Il faut maintenant définir la relation entre ces tables.<br>
 Dans le fichier `src/models/Developer.ts`:
- - Ajouter un attribut *optionnel* `contact` du type `Contact` à votre classe.
- - Placer les *2* décorateurs adaptés pour créer votre liaison
+ - Ajoutez un attribut *optionnel* `contact` du type `Contact` à votre classe.
+ - Placez les *2* décorateurs adaptés pour créer votre liaison
 
 :warning: Si un développeur est supprimé, sa fiche de contact doit l'être également, on appelle cela une `cascade`.
 
-### Créer le contrôleur
+### Créez le contrôleur
 
 Dans le fichier `src/controllers/contactControllers.ts` :
- - Créer une fonction `addContact` qui prend en paramètre :
+ - Créez une fonction `addContact` qui prend en paramètres :
    - `id` : l'identifiant du développeur à lier
    - `email`, `phone`, `github`, `linkedin`, vous avez compris le concept
    
 La fonction doit renvoyer une erreur si le développeur n'existe pas.<br>
-Sinon, elle doit créer un contact, l'affecter au développeur et renvoyer le résultat sauvegarder en bd.
+Sinon, elle doit créer un contact, l'affecter au développeur et renvoyer le résultat sauvegardé en db.
 
- - Créer une fonction `updateContact` qui prend en paramètre :
+ - Créez une fonction `updateContact` qui prend en paramètres :
    - `id` : l'identifiant du développeur à modifier
    - `infos` : l'objet `Contact` avec les nouvelles propriétés
 
 La fonction doit renvoyer une erreur si le développeur n'existe pas.<br>
-Sinon elle doit modifier le contact et renvoyer le résultat sauvegarder.
+Sinon elle doit modifier le contact et renvoyer le résultat sauvegardé.
 
 > La fonction doit respecter les mêmes contraintes que la fonction `updateDeveloper`.
 
- - Créer une fonction `deleteContact` qui prend en paramètre l'`id`: l'identifiant du développeur à modifier.
+ - Créez une fonction `deleteContact` qui prend en paramètre l'`id`: l'identifiant du développeur à modifier.
  
-Renvoyer une erreur si le développeur n'existe pas. Sinon, renvoyer le résultat sauvegarder.
+Renvoyez une erreur si le développeur n'existe pas. Sinon, renvoyez le résultat sauvegardé.
 
 > N'oubliez pas de tester vos fonctions.
 
@@ -285,24 +284,24 @@ Renvoyer une erreur si le développeur n'existe pas. Sinon, renvoyer le résulta
 ## Exercice 05 - Des développeurs compétents
 
 Vous pouvez contacter vos développeurs, mais il serait peut-être appréciable d'avoir un peu plus d'informations sur eux avant ?<br>
-Un étendu de leur compétences par exemple ?
+Un étendu de leurs compétences par exemple ?
 
 Vous allez mettre en place une relation `One to Many` entre la table `Developer` et la table `Competences`.
 
-Ajouter un fichier `src/models/Competence` dans lequel vous allez exporter une classe `Compentece` contenant les champs suivants :
- - `id` : L'identifient de la table
+Ajoutez un fichier `src/models/Competence` dans lequel vous allez exporter une classe `Compenence` contenant les champs suivants :
+ - `id` : L'identifiant de la table
  - `name` : Nom de la compétence
- - `level` : Le niveau de maitrise (entre 0 et 10)
+ - `level` : Le niveau de maîtrise (entre 0 et 10)
  
-Le `constructeur` n'est toujours pas en option :joy:
+Le `constructeur` n'est toujours pas en option.
 
-Lier la table `Developer` à votre nouvelle table en `One to Many` et n'oubliez pas d'activer le mode `cascade` (au bon endroit).
+Liez la table `Developer` à votre nouvelle table en `One to Many` et n'oubliez pas d'activer le mode `cascade` (au bon endroit).
 
-> :bulb: La liaison est spéciale, vous devrez surement modifier votre class Competence pour pouvoir la réaliser.<br>
+> :bulb: La liaison est spéciale, vous devrez sûrement modifier votre classe Competence pour pouvoir la réaliser.<br>
 
-Créer un fichier `competenceControllers` dans votre dossier `src/controllers` dans lequel vous allez écrire les trois fonctions habituelles pour intéragir avec vos tables :
+Créez un fichier `competenceControllers` dans votre dossier `src/controllers` dans lequel vous allez écrire les trois fonctions habituelles pour intéragir avec vos tables :
 - `addCompetence` qui prend en paramètres :
-  - `id` : Identifient du développeur
+  - `id` : Identifiant du développeur
   - `name`: Nom de la compétence
   - `level`: Le niveau de la compétence
   
@@ -310,20 +309,20 @@ La fonction doit renvoyer une erreur si le développeur n'existe pas ou si le ni
 Sinon, elle doit renvoyer le développeur modifié avec la nouvelle compétence.
 
 - `updateCompetence` qui attend les paramètres :
-  - `devId` : Identifient du développeur
-  - `competenceId`: Identifient de la compétence
+  - `devId` : Identifiant du développeur
+  - `competenceId`: Identifiant de la compétence
   - `infos` : L'objet `Competence` avec les nouvelles propriétés.
  
-La fonction doit bien sure renvoyer une erreur si le développeur ou la compétence n'existe pas.<br>
+La fonction doit bien sûr renvoyer une erreur si le développeur ou la compétence n'existe pas.<br>
 Sinon, renvoyer le développeur mis à jour.
 
 > La fonction doit respecter les mêmes contraintes que la fonction `updateDeveloper`.
 
 - `deleteCompetence` qui prend en paramètres :
-  - `devId` : Identifient du développeur
-  - `competenceId` : Identifient de la compétence
+  - `devId` : Identifiant du développeur
+  - `competenceId` : Identifiant de la compétence
   
-Renvoyer une erreur si l'un des deux identifient est inconnue, sinon renvoyer le développeur mis à jour.
+Renvoyer une erreur si l'un des deux identifient est inconnu, sinon renvoyer le développeur mis à jour.
 
 > N'oubliez pas de modifier les `controllers` de `Developer` pour ajouter les compétences.
 
@@ -339,7 +338,7 @@ Il est temps de passer à l'étape finale : les projets.
 L'exercice est volontairement moins guidé, vous avez appris tout le nécessaire sur le fonctionnement de TypeOrm pour vous documenter seul et réaliser l'exercice.
 
 Votre modèle `Project` doit avoir les propriétés suivantes :
-  - `id`: Identifient de le table
+  - `id`: Identifiant de le table
   - `name`: Nom du projet
   - `deadline`: La date de rendu du projet
   - `type`: Le type de projet (du type ProjectType que vous trouverez dans le fichier `type.ts` sur le repo)
@@ -347,11 +346,11 @@ Votre modèle `Project` doit avoir les propriétés suivantes :
   
 Vous allez créer une relation `Many to Many` entre les développeurs et les projets.
 
-> Documenter vous bien sur la manière de faire et les décorateurs à utiliser.
+> Documentez-vous bien sur la manière de faire et les décorateurs à utiliser.
 
 Vous devrez ensuite écrire 6 controllers :
  - `getProjects` qui renvoie tous les projets avec les développeurs associés.
- - `createProject` qui prend en paramètre :
+ - `createProject` qui prend en paramètres :
    - `name` : Nom du projet
    - `deadline` : Date limite du projet
    - `type` : Type du projet
@@ -360,28 +359,28 @@ Renvoyer le projet nouvellement créé.
 
 > :warning: Attention à bien gérer les erreurs potentielles, une date *impossible* par exemple ?
 
- - `updateProject` qui prend en paramètre : 
-   - `id` : Identifient du projet
+ - `updateProject` qui prend en paramètres : 
+   - `id` : Identifiant du projet
    - `infos` : Les infos à modifier
    
 Renvoie le projet mise à jour
 
  - `deleteProject` qui prend en paramètre l'id du projet à supprimer
- - `addDevToProject` qui prend en paramètre :
-   - `projectId` : Identifient du projet
-   - `devId` : Identifient du développeur
+ - `addDevToProject` qui prend en paramètres :
+   - `projectId` : Identifiant du projet
+   - `devId` : Identifiant du développeur
     
-Ajouter le projet au développeur donnée
+Ajouter le projet au développeur donné
 
- - `deleteDevFromProject` qui prend en paramètre :
-   - `projectId` : Identifient du projet
-   - `devId` : Identifient du développeur
+ - `deleteDevFromProject` qui prend en paramètres :
+   - `projectId` : Identifiant du projet
+   - `devId` : Identifiant du développeur
 
-Retirer le projet au développeur donnée
+Retirer le projet au développeur donné
 
 > N'oubliez pas de gérer les erreurs en cas de projet ou développeur inconnu.
 
-> Les tests sont toujours de rigueur :joy: 
+> Les tests sont toujours de rigueur :wink: 
 
 **Rendu :** `src/models/Project`, `src/controllers/projectControllers.ts` et `src/models/Developer.ts`.
 
@@ -406,7 +405,7 @@ Bon courage !
 
 Si vous souhaitez en apprendre plus sur les bases de données, voici quelques liens intéressants :
  - [Prisma, l'ORM du futur](https://github.com/prisma/prisma)
- - [Les bases de donnée graph](https://medium.com/wiidii/pourquoi-sint%C3%A9resser-aux-bases-de-donn%C3%A9es-orient%C3%A9es-graphe-e650f0395951)
+ - [Les bases de données graph](https://medium.com/wiidii/pourquoi-sint%C3%A9resser-aux-bases-de-donn%C3%A9es-orient%C3%A9es-graphe-e650f0395951)
  - [Neo4Js](https://www.google.com/search?channel=fs&client=ubuntu&q=neo4j)
  - [DGraph](https://dgraph.io/)
  - [Prisma X Graphql](https://blog.geographer.fr/prisma-graphql-api)
