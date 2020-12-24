@@ -4,14 +4,7 @@
 
 ✔ Apprendre les bases du Go.
 
-{
-
-MAYBE<br>
-✔ Intégrer les bonnes pratiques du développement web.
-
-✔ Communiquer avec une API.
-
-}
+✔ Optimiser votre programme grâce à l'utilisation de l'asynchrone.
 
 Un des principes fondamentaux du Go est que le language doit être facile d'apprentissage et d'utilisation.
 
@@ -172,7 +165,7 @@ additionner `acc` avec l'élément courant permet d'obtenir la somme !
 
 ### 4 - sort
 
-Vous allez implémenter une fonction de tri qui prend en paramètre un tableau de `int` et une fonction de comparison.<br>
+Vous allez implémenter une fonction de tri qui prend en paramètre un tableau de `int` et une fonction de comparaison.<br>
 Ce callback prend 2 `int ` et renvoie un `bool`.<br>
 La fonction `sort` considère que 2 éléments du tableau sont à `swap` uniquement si le callback renvoie `true`.<br>
 `sort` ne renvoie rien et tri le tableau passé en paramètre.
@@ -193,12 +186,12 @@ func descendingCmp(a, b int) bool {
 func testSort() {
     numbers := []int{6, 2, -1, 3, 0}
     
-	sort(numbers, ascendingCmp)
-	fmt.Println(numbers)
+    sort(numbers, ascendingCmp)
+    fmt.Println(numbers)
 
-	sort(numbers, descendingCmp)
-	fmt.Println(numbers)
-	
+    sort(numbers, descendingCmp)
+    fmt.Println(numbers)
+    
     // Output : 
     // [-1, 0, 2, 3, 6]
     // [6, 3, 2, 0, -1]
@@ -215,7 +208,7 @@ Maintenant, il est temps de revenir sur le GoTour. Faites la partie sur les [mé
 
 Une interface en Go est un moyen de définir un comportement sur des structures de données différentes.
 
-Par exemple, la fonction fmt.println(...) va tester l'existence de la méthode `String() string` sur les arguments qui lui sont donnés.
+Par exemple, la fonction fmt.Println(...) va tester l'existence de la méthode `String() string` sur les arguments qui lui sont donnés.
 Si cette méthode n'est pas implémentée, elle va imprimer l'argument du mieux qu'elle peut.
 Vous pouvez donc implémenter la méthode `String() string` pour vos propres types afin d'avoir un output plus clair.
 Si votre type implémente la méthode `String() string`, on dit donc qu'elle implémente l'interface `Stringer`.
@@ -232,20 +225,20 @@ Les interfaces sont très utilisées en go pour faire des fonctions prenant en p
 Pour commencer, déclarez les structures suivantes :
 ```go
 type circle struct {
-	radius float64
+    radius float64
 }
 
 type rect struct {
-	width, height float64
+    width, height float64
 }
 
 type triangle struct {
-	a, b, c float64
+    a, b, c float64
 }
 ```
 
 Implémentez l'interface `Stringer` pour ces 3 types (le choix du format est libre).
-Testez d'imprimer des variables déclarées avec ce 3 types différents.
+Testez d'imprimer des variables déclarées avec ces 3 types différents.
 
 
 ### 2. L'interface PerimeterCalculator
@@ -256,7 +249,7 @@ Pour finir, faites une fonction nommée `Perim` qui prend comme unique paramètr
 
 Pour rappel, le périmètre est obtenu par les formules suivantes :
   - Rectangle: 2 * width + 2 * height
-  - Cercle: 2* Pi * radius
+  - Cercle: 2 * Pi * radius
   - Triangle: a + b + c
 
 
@@ -291,12 +284,12 @@ type Worker struct {
 	Job string
 }
 
-// func (p Person) Greet() {
-// 	fmt.Println("Hello Worker", p.Name)
+// func (w Worker) Greet() {
+// 	fmt.Println("Hello Worker", w.Name)
 // }
 ```
 Le type Worker possède tous les champs et les méthodes de Person.
-Il possède donc les champ `Name` et `Age` et la méthode `Greet()` qu'il peut choisir de réécrire ou non.
+Il possède donc les champs `Name` et `Age` et la méthode `Greet()` qu'il peut choisir de réécrire ou non.
 On dit que Worker est composé à partir de Person.
 
 Il est naturellement possible de faire aussi :
@@ -321,7 +314,7 @@ Et toutes les méthodes communes aux 2 types doivent être spécifiées.
 
 
 Le principe est exactement le même pour les interfaces. Comme pour l'interface ReadWriter, il est possible de composer une interface à partir de 2 interfaces plus petites.
-C'est pourquoi des nombreuses interface en Go ne sont composées de qu'une seule méthode (pour respecter le principe de [Single Responsibility](https://en.wikipedia.org/wiki/Single-responsibility_principle)).
+C'est pourquoi des nombreuses interfaces en Go ne sont composées que d'une seule méthode (pour respecter le principe de [Single Responsibility](https://en.wikipedia.org/wiki/Single-responsibility_principle)).
 
 
 Déclarez l'interface `AreaPerimCalculator` qui est composée des 2 interfaces `PerimeterCalculator` et `AreaCalculator`.
@@ -367,13 +360,15 @@ type Worker struct {
 Tips : Google est votre ami.
 
 
-<br><br><br>
 
 ## Exercice 8 - Go Routine et Channel
 
-Votre objectif dans cet exercice est d'optimiser vos temps de calcul grace a l'asynchrone.<br>
+Votre objectif dans cet exercice est d'optimiser vos temps de calcul grâce à l'asynchrone.<br>
+
+<!-- TODO: donner une définition de l'asynchrone ou prévoir un talk sur le sujet -->
+
 Vous allez donc utiliser les différents keywords, `go`, `select` et `chan` pour y arriver.<br>
-*Prenez 10 minutes pour retourner sur la partie du go tour dédié à ça.*
+*Prenez 10 minutes pour retourner sur la partie du go tour dédiée à ça.*
 
 Voici un code en go, son temps d'exécution est d'environ 4.5 secondes si on lui donne `0` en entrée, votre objectif est d'obtenir un temps inférieur a 2 secondes.<br>
 Bien évidemment, vous ne pouvez modifier que la fonction `Calcul`
@@ -409,8 +404,8 @@ func Calcul(input int) int {
 }
 ```
 
-Il vous est fortement conseiller d'utiliser votre `startTimer` fait lors de l'exercice 3 !
-Il existe beaucoup de doc utile sur la concurrency en ligne, jetez y un oeil https://devhints.io/go#Concurrency
+Il vous est fortement conseillé d'utiliser votre `startTimer` fait lors de l'exercice 3 !
+Il existe beaucoup de documentation utile sur la concurrency en ligne, jetez y un œil https://devhints.io/go#Concurrency
 
 ## Exercice 9 - ???
 <!-- TODO: -->
@@ -418,10 +413,10 @@ Il existe beaucoup de doc utile sur la concurrency en ligne, jetez y un oeil htt
 <br><br><br>
 
 ## Exercice 10 - Mashup
-Dans cet exercice,vous allez devoir créer une fonction qui :
-* Prends un path vers json en argument.
-* Récursivement et de manière asynchrone, passe dans toutes les branches du json.
-* Le programme doit ressortir la somme de tout les floats qui se trouve dans le json avec le moins de temps d'exécution possible.
+Dans cet exercice, vous allez devoir créer une fonction qui :
+* prend un path vers un fichier json en argument.
+* récursivement et de manière asynchrone, passe dans toutes les branches du json.
+* ressort la somme de tous les floats qui se trouvent dans le json avec le moins de temps d'exécution possible.
 
 Attention, vous savez gérer des erreurs, votre fonction ne doit pas crash et doit ressortir une erreur claire au besoin.
 On vous donne un petit json de test pour celui-ci

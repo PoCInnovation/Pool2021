@@ -16,8 +16,6 @@ Reverse Engineer implies a certain knowledge of the way the computer memory work
 -   memory segmentation
 -   stack
 -   registers
-# Useful tools
-
 # GDB-Peda
 For this part, you will need to install  `gdb`  (if not already installed on your system) and  [PEDA](https://github.com/longld/peda), a Python plugin for the debugger.
 
@@ -72,4 +70,5 @@ Depending on the size of the program and the impact of your changes, edition can
 
 Start analysing the  _impossible_  binary : first understand why it is called impossible, then solve the challenge !
 ## 4 - Craft
-## 5 - Enigma
+My friend got this cool game, but I can't seem to get it to work, maybe there's a security of some sort ?
+Use what you learned until now to run the game and show us your gamer screen to validate the exercice.
