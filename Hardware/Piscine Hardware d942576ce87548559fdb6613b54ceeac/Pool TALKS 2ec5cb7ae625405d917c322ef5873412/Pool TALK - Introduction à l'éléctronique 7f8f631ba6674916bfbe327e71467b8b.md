@@ -1,0 +1,26 @@
+# Pool TALK - Introduction à l'éléctronique
+
+- Explications de schémas électroniques
+    - Commencer avec ceux de collège
+        - Série, dérivation
+    - Alimentation
+    - 5V, 0V, GND
+    - Tension, intensité, puissance, résistance
+    - Formules
+    - Mesures (Multimètre)
+- Explication de la breadboard
+    - Lignes et colonnes
+    - Court-circuit
+    - Optimisation de l'utilisation de jumpers
+    - Calretée du circuit
+- Arduino
+    - Pins de power
+    - Pins analogs
+    - Pins digitaux
+    - Composants
+    - Jeu de tri des différents composants entre sortie / entrée analogue ou digitale
+    - Relais
+    - IDE Arduino
+    - Transfert de code
+        - Port COM
+    - Fréquence de communication
