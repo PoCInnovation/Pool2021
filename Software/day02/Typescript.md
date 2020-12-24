@@ -1,6 +1,6 @@
 # Piscine Software - Jour 2
 
-✔ Apprendre à créer un serveur HTTP basique avec express.
+✔ Apprendre à créer un serveur HTTP avec express.
 
 ✔ Comprendre les bases et les bonnes pratiques du développement web.
 
@@ -12,7 +12,7 @@
 
 Comme hier, vous allez créer un nouveau dossier pour les exercices du jour, intitulé `day02` (dans le même repo qu'hier)
 
-Vous devriez déjà avoir VSCode ou WebStorm d'installé, il ne vous reste donc plus qu'à initialiser une nouvelle application avec `npm init` et `npx eslint --init`, cf les exercices 2 et 3 du d01.
+Vous devriez déjà avoir VSCode ou WebStorm d'installé, il ne vous reste donc plus qu'à initialiser une nouvelle application avec `npm init` et `npx eslint --init` (cf les exercices 2 et 3 du d01).
 
 #### Ressources
 - Premiers exercices du day01
@@ -25,7 +25,7 @@ Pour créer un serveur web en TS, vous allez avoir besoin du package [express](h
 npm install express @types/express
 ```
 
-Le but de cet exercice est de mettre en place un serveur qui expose une route `/hello` qui retourne `world` lorsque vous l'appelé avec la méthode **GET**.
+Le but de cet exercice est de mettre en place un serveur qui expose une route `/hello` qui retourne `world` lorsque vous l'appelez avec la méthode **GET**.
 
 - Créer une variable `server` qui vas instancier votre serveur express.
 - Lancer le serveur en écoutant sur le port `8080`.
@@ -55,42 +55,42 @@ Pour parser les données venant de ces différents endroits, vous aurez besoin d
 npm install body-parser cookie-parser @types/cookie-parser
 ```
 
-Votre app express devra par la suite utiliser (`use()`) sur ces 2 parsers pour les appliquer à l'ensemble du serveur.
+Votre application express devra par la suite utiliser (`use()`) sur ces 2 parsers pour les appliquer à l'ensemble du serveur.
   
 À présent, il ne vous reste plus qu'à créer ces différentes routes :
 
 - Créer une route **GET** `/repeat-my-query`
   - Prend un paramètre query `message`
-  - Renvoi le message donné en paramètre
-  - Si aucun message est donné
+  - Renvoie le message donné en paramètre
+  - Si aucun message n'est donné
     - Définir le statut 400
     - Renvoyer `Bad Request`
 
 - Créer une route **GET** `/repeat-my-param/:message`
   - Prend un paramètre `message`
-  - Renvoi le message donné en paramètre
+  - Renvoie le message donné en paramètre
 
 - Créer une route **POST** `/repeat-my-body`
-  - Renvoi le `messsage` donné dans le corps de la requête
+  - Renvoie le `messsage` donné dans le corps de la requête
   - Si le corps est vide
     - Définir le statut 400
     - Renvoyer `Bad Request`
 
 - Créer une route **GET** `/repeat-my-header`
   - Cherche un header `X-Message`
-  - Renvoi le message écris dans celui-ci
-  - Si aucun message est donné
+  - Renvoie le message écrit dans celui-ci
+  - Si aucun message n'est donné
     - Définir le statut 400
     - Renvoyer `Bad Request`
 
 - Créer une route **GET** `/repeat-my-cookie`
   - Cherche un cookie `message`
-  - Renvoie le message donné en cookie
-  - Si aucun message est donné
+  - Renvoie le message donné dans le cookie
+  - Si aucun message n'est donné
     - Définir le statut 400
     - Renvoyer `Bad Request`
 
-> [Postman](https://www.postman.com/) peut-être utile pour tester vos routes HTTP.
+> [Postman](https://www.postman.com/) peut être utile pour tester vos routes HTTP.
 
 **Rendu :** `src/server.ts`.
 
@@ -100,7 +100,7 @@ Votre app express devra par la suite utiliser (`use()`) sur ces 2 parsers pour l
 
 ## Exercice 03 - Toujours penser au scaling
 
-Pour ceux qui ne connaitraient pas, les variables d'environnement sont des variables utilisées par votre système d'exploitation dans de nombreux domaines. Elles sont visibles en tapant `env` dans votre terminal. 
+Les variables d'environnement sont des variables utilisées par votre système d'exploitation dans de nombreux domaines. Elles sont visibles en tapant `env` dans votre terminal. 
 
 Ces variables sont utilisées lors que vous déployez une application en production pour sécuriser des mots de passes et identifiants privés. Il est donc essentiel de savoir comment les utiliser dans votre code.
  
@@ -116,9 +116,9 @@ Par la suite, créez un fichier `.envrc` qui exportera les variables d'environne
 
 :warning: Vous devrez également installer [direnv](https://direnv.net/) afin de charger les variables dans votre environnement avec la commande `direnv allow`.
 
-Dans le fichier `src/serverConfig.ts`, récupérer les deux variables d'environnement et exporter les.
+Dans le fichier `src/serverConfig.ts`, récupérez les deux variables d'environnement et exportez-les.
 
-:bulb: La manière la plus propre est d'avoir une fonction prenant en paramètre la `key` de la variable et si elle est obligatoire puis qui vous renvoie sa valeur. De plus, n'hésitez pas à typer vos variables d'env grâce aux méthodes proposées par le package.
+:bulb: La manière la plus propre est d'avoir une fonction prenant en paramètre la `key` de la variable si elle est obligatoire, puis qui vous renvoie sa valeur. De plus, n'hésitez pas à typer vos variables d'env grâce aux méthodes proposées par le package.
 
 > Il est commun dans une API d'avoir un fichier spécifique à la configuration, il vous permet de garder une architecture propre et constante.
 
@@ -134,7 +134,7 @@ La bonne pratique est de créer un fichier `env.example` contenant les différen
 
 > Il est important de penser depuis le début de l'application à l'intégration de votre serveur dans une architecture Web en plaçant le maximum de variables susceptibles de changer dans l'environnement.
 >
-> :warning: Il n'est pas rare de stocker des informations confidentielles dans l'environnement, veillez donc à ne jamais push votre environnement remplie. Optez plutôt pour un fichier `env.example` qui spécifie les variables à rentrer par le développeur.
+> :warning: Il n'est pas rare de stocker des informations confidentielles dans l'environnement, veillez donc à ne jamais push votre environnement. Optez plutôt pour un fichier `env.example` qui spécifie les variables à rentrer par le développeur.
 
 **Rendu :** `src/serverConfig.ts` et `src/server.ts`.
 
@@ -143,7 +143,7 @@ La bonne pratique est de créer un fichier `env.example` contenant les différen
 
 ## Exercice 04 - Les statuts HTTP
 
-Une API REST renvoie de la donnée en fonction de ce qu'un client demande, mais si jamais ce dernier tentait d'accéder à des données qui ne lui appartienne pas, ou qui n'existent pas, notre api ne pourra pas lui envoyer ce qu'il demande.
+Une API REST renvoie de la donnée en fonction de ce qu'un client demande, mais si jamais ce dernier tentait d'accéder à des données qui ne lui appartiennent pas, ou qui n'existent pas, notre api ne pourra pas lui envoyer ce qu'il demande.
 
 Un code HTTP permet de déterminer le résultat d'une requête ou d'indiquer une erreur au client. Ces codes sont essentiels au bon fonctionnement des services communiquant en HTTP. Il est donc tout autant essentiel de bien coder son serveur pour renvoyer les codes adaptés à la situation.
 
@@ -158,7 +158,7 @@ Installez la dépendance avec la commande suivante :
 npm i http-status-codes
 ```
 
-Remplacez vos status-code écrit en dur par ceux proposés dans le package.
+Remplacez vos status-codes écrits en dur par ceux proposés dans le package.
 
 **Rendu :** `src/server.ts`.
 
@@ -184,7 +184,7 @@ Une fois vos requêtes créées, vous devriez pouvoir lancer une test-suite sur 
 
 ## Exercice 06 - Qui utilise du texte brut ?
 
-Formatter les données renvoyés est obligatoire pour faciliter l'utilisation de votre API !<br>
+Formatter les données renvoyées est obligatoire pour faciliter l'utilisation de votre API !<br>
 Vous pouvez renvoyer des informations sous diverses formes. La plus commune étant un tableau d'objet. 
 
 - Créez une route **GET** `/repeat-all-my-queries` :
@@ -217,7 +217,7 @@ Formatter les données c'est bien. Travailler avec, c'est mieux !
     [
         "meow",
         "lol"
-    
+    ]
     ```
   - Doit renvoyer un tableau d'objets de la forme suivante :
     ```json
@@ -240,10 +240,10 @@ Formatter les données c'est bien. Travailler avec, c'est mieux !
 
 ## Exercice 08 - Les bodyguards des serveurs
 
-En web, il est important de savoir quel type de donnée sont envoyés à votre API.<br>
+En web, il est important de savoir quels types de donnée sont envoyés à votre API.<br>
 Cela vous permet d'avoir un code stable et sécurisé.
 
-Essayer d'envoyer un body vide à la route précédente, vous devriez obtenir une erreur en retour. Ce genre d'erreur n'est pas acceptable pour une API
+Envoyez un body vide à la route précédente, vous devriez obtenir une erreur en retour. Ce genre d'erreur n'est pas acceptable pour une API.
 
 Pour assurer la sécurité d'une API, il existe un système que l'on appelle `Middleware`.
 
@@ -260,10 +260,10 @@ const monMiddleware = (req: Request, res: Response, next: NextFunction) => {
 }
 ```
 
-> Les Middlewares peuvent également servir à mettre en place un logger, une gestion des permissions ect...
+> Les Middlewares peuvent également servir à mettre en place un logger, une gestion des permissions etc.
 
 Nous allons utiliser le framework [Zod](https://github.com/vriad/zod) afin de vérifier nos entrées.<br>
-Zod permet de récupérer un body prédéfinis et typé, ce qui est essentiel en Typescript !
+Zod permet de récupérer un body prédéfini et typé, ce qui est essentiel en Typescript !
 
 Installer zod grâce à la commande :
 
@@ -271,11 +271,11 @@ Installer zod grâce à la commande :
 npm i zod@beta
 ```
 
-Ajouter la ligne `"strictNullChecks": true` dans votre `tsconfig.json` afin d'exploiter toute les features de Zod.
+Ajouter la ligne `"strictNullChecks": true` dans votre `tsconfig.json` afin d'exploiter toutes les features de Zod.
 
 ### Créer le schéma
 
-Zod fonctionne selon un système de `schéma`.<br>
+Zod fonctionne selon un système de `schema`.<br>
 La première étape est donc de créer un objet zod `palindromeSchema` avec les exigences du body attendu.<br>
 Vous écrirez tout cela dans le fichier `serverSchema.ts`.
 
@@ -283,16 +283,16 @@ Vous écrirez tout cela dans le fichier `serverSchema.ts`.
 
 ### Écrire le middleware
 
-Dans le fichier `serverMiddlewares`, écrivez un middleware `verifyPalindromeRoute` qui vas vérifier le body de la route `/are-these-palindromes`.<br>
+Dans le fichier `serverMiddlewares`, écrivez un middleware `verifyPalindromeRoute` qui va vérifier le body de la route `/are-these-palindromes`.<br>
 En cas de body invalide, renvoyer le status `400` et la raison du refus.
 
 Pour ajouter un middleware à une route spécifique, il vous suffit de l'appeler comme ci-dessous :
 
 ```typescript
-route.get('/ma-route', monMiddleware, (req: Request, res: Response) => {...});
+route.get('/my-route', myMiddleware, (req: Request, res: Response) => {...});
 ```
 
-> `server.use(monMiddleware())` permet d'appliquer votre middleware à toutes vos routes.
+> `server.use(myMiddleware())` permet d'appliquer votre middleware à toutes vos routes.
 
 **Rendu :** `src/serverSchema.ts`, `src/serverMiddlewares` et `src/server.ts`.
 
@@ -302,7 +302,7 @@ route.get('/ma-route', monMiddleware, (req: Request, res: Response) => {...});
 
 ## Exercice 09 - La forteresse automatique ⚙
 
-Écrire des middlewares, c'est très bien mais imaginons que nous ayons 10 routes à vérifier, nous n'allons pas écrire un middleware par schéma, cela serait contraire à la logique de l'informatique.
+Écrire des middlewares, c'est très bien mais imaginons que nous ayons 10 routes à vérifier, nous n'allons pas écrire un middleware par schéma.
 
 Le but de cet exercice est donc de créer un middleware générique.
 
@@ -314,9 +314,9 @@ Pour cela :
      - En cas de succès : continuer sur la route
 - Remplacer le middleware `verifyPalindromeRoute` par le nouveau middleware et vérifier que tout fonctionne.
 
-> Si vous avez bien tout compris, il s'agit bien d'une fonction qui retourne une fonction 🤯. Les [arrow functions](https://basarat.gitbook.io/typescript/future-javascript/arrow-functions) sont adaptés à ce genre d'usage
+> Si vous avez bien tout compris, il s'agit bien d'une fonction qui retourne une fonction 🤯. Les [arrow functions](https://basarat.gitbook.io/typescript/future-javascript/arrow-functions) sont adaptées à ce genre d'usage
 
-Les signatures des fonctions peuvent être imbriqués comme ci-dessous :
+Les signatures des fonctions peuvent être imbriquées comme ci-dessous :
 
 ```typescript
 const validate = (schema: any, location: string): void => (req: Request, res: Response, next: NextFunction): void => your logic goes here
@@ -327,7 +327,7 @@ const validate = (schema: any, location: string): void => (req: Request, res: Re
 
 > Vous pouvez bien évidemment mettre une location par défaut pour faciliter la lecture du code.
 >
-> Les résultats du parsing de Zod étant typées, vous pouvez stocker son résultat dans la requête sans crainte.
+> Les résultats du parsing de Zod étant typés, vous pouvez stocker son résultat dans la requête sans crainte.
 >
 > Il est important de penser à créer des middlewares quand une même action se répète souvent dans vos routes, cela rend le code plus agréable à lire et assure une maintenabilité.
 
@@ -352,7 +352,7 @@ Il s'agirait d'organiser ces routes dans différents fichiers et de les importer
   - Déplacer vos routes dans les fichiers correspondant
 - Trouver un moyen de les utiliser dans votre `server.ts`. 
 
-> Protip : `Express.Router()` vous mènera loin.
+> Protip : `Express.Router()` sera très utile.
 
 > Lorsque vos middlewares ou vos routes se multiplient, il peut être utile de d'abord les grouper dans un fichier `serverRoutes.ts` et `serverMiddleware.ts` avant de les utiliser dans `server.ts`. Vous conservez ainsi une architecture simple et solide.
 
@@ -378,10 +378,10 @@ npm install winston
 
 Vous allez maintenant setup le logger dans votre API.
 
-Dans le fichier `src/serverLogger.ts`, exporter un logger winston avec les propriétés suivantes :
+Dans le fichier `src/serverLogger.ts`, exportez un logger winston avec les propriétés suivantes :
   - Le format de sortie doit être le suivant : `"[{timestamp}] [{severity}]": {message}`
   - Les logs doivent s'écrire sur la sortie standard mais aussi dans le fichier `/var/log/api.log`
-  - Les logs écrient sur la sortie standard doivent être en couleur
+  - Les logs écris sur la sortie standard doivent être en couleur
 
 > Winston fonctionne avec un système de transport, vous pouvez donc en ajouter plusieurs en même temps. Un système de _severity_ est également intégré afin de classer les logs selon leur importance. Une good practice consiste à sauvegarder les logs d'erreur dans un fichier `/var/log/error.log` afin de simplifier les recherches de problèmes.
 
@@ -401,7 +401,7 @@ Dans le fichier `src/serverMiddlewares.ts`, créer un middleware `logMiddleware`
 
 > Logger la réponse nécessite un petit tour de passe-passe rendu possible grâce aux [events](https://nodejs.org/api/http.html).
 
-Appliquer le middleware à votre API et vérifier que tout fonctionne en envoyant des requêtes.
+Appliquez le middleware à votre API et vérifiez que tout fonctionne en envoyant des requêtes.
 
 **Rendu :** `src/server.ts`, `src/serverLogger.ts`, `src/serverMiddlewares.ts`.
 
@@ -414,13 +414,11 @@ Appliquer le middleware à votre API et vérifier que tout fonctionne en envoyan
 
 Si vous êtes toujours en quête d'exercices, voici trois exercices intermédiaires :
 
-> Les exercices sont volontairement vagues afin de vous laisser chercher par vous-même.
-
 ### 404, Trouvé 
 
-Actuellement, lorsque vous envoyer une requête à votre serveur sur une route non définit, celle-ci vous renvoi une erreur du type `404 Not found`.
+Actuellement, lorsque vous envoyez une requête à votre serveur sur une route non définie, celle-ci vous renvoie une erreur `404 Not found`.
 
-Créer un middleware capable de gérer des requêtes sur des routes inexistantes et d'envoyer le message suivant : 
+Créez un middleware capable de gérer des requêtes sur des routes inexistantes et d'envoyer le message suivant : 
 
 ```json
 {
@@ -443,8 +441,8 @@ Ils sont actuellement sous la forme :
 res.status(httpStatus.BAD_REQUEST).send(content);
 ```
 
-Il est temps d'alléger cette syntaxe tout en la simplifier<br>
-Trouver un moyen de pouvoir renvoyer une erreur de la manière suivante :
+Il est temps d'alléger cette syntaxe tout en la simplifiant.<br>
+Trouvez un moyen de pouvoir renvoyer une erreur de la manière suivante :
 
 ```typescript
 throw new BadRequestError(context);
