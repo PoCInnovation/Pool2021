@@ -4,14 +4,7 @@
 
 ✔ Apprendre les bases du Go.
 
-{
-
-MAYBE<br>
-✔ Intégrer les bonnes pratiques du développement web.
-
-✔ Communiquer avec une API.
-
-}
+✔ Optimiser votre programme grâce à l'utilisation de l'asynchrone.
 
 Un des principes fondamentaux du Go est que le language doit être facile d'apprentissage et d'utilisation.
 
