@@ -15,7 +15,7 @@
 
 Nous vous demanderons d'effectuer vos rendus sur GitHub, dans un dépôt public. Nommez le `POC_SoftwarePool2021` et créez le dossier `day01`.
 
-Envoyez-nous un message sur Discord avec le lien de votre dépôt pour qu'on puisse suivre l'avancée de votre travail et, possiblement, faire passer des tests automatisés.
+Envoyez-nous un message sur Discord avec le lien de votre dépôt pour que l'on puisse suivre l'avancée de votre travail et, possiblement, faire passer des tests automatisés.
 
 De plus, vous devrez utiliser `VSCode` ou `WebStorm` pour cette piscine car emacs sera trop limité pour ce que nous allons voir.
 
@@ -25,6 +25,8 @@ De plus, vous devrez utiliser `VSCode` ou `WebStorm` pour cette piscine car emac
 - [Installer Webstorm](https://console.bocal.org/)
 
 ## Exercice 01 - Hello World
+
+<!-- TODO leur apprendre à installer node avec nvm et spécifier une version -->
 
 - Créer une application NodeJS basique avc `npm init`.
 - Installer TypeScript avec `npm install -D typescript ts-node eslint @types/node`.
@@ -82,7 +84,7 @@ Vous pouvez installer l'extension Eslint pour votre IDE afin d'avoir les erreurs
 ## Exercice 03 - Super Computer
 
 Rentrons maintenant dans le vif du sujet ! 
-Un groupe d'ingénieur travaillant pour les programme spatiaux du monde entier. Ils se préparent à envoyer un certain nombre d'astronautes en mission. Pour cela, il leur faudra un super calculateur capable d'effectuer des opérations variées.
+Un groupe d'ingénieur travaillant pour les programme spatiaux du monde entier se préparent à envoyer un certain nombre d'astronautes en mission. Pour cela, il leur faudra un super calculateur capable d'effectuer des opérations variées.
 
 - Créer une fonction `superComputer` avec le prototype suivant consommant 4 paramètres :
   - Le premier nombre
@@ -97,7 +99,7 @@ Votre callback auras le type suivant :
 type Callback = {(err: Error, result?: undefined): Error, (err: null, result: number): number};
 ```
 
-> L'utilisation du type `any` est interdit
+> L'utilisation du type `any` est interdite
 
 > Prendre en paramètre une fonction où envoyer le résultat est une pratique courante en JavaScript. Ce sont des `callbacks` (pour `appel retour`). Nous vous laissons vous renseigner à ce sujet.
 
@@ -122,7 +124,7 @@ type Callback = {(err: Error, result?: undefined): Error, (err: null, result: nu
 Votre super calculateur est terminé !
 Il vous faut à présent les hommes pour envoyer votre programme. Quoi de mieux que des cosmonautes ?
 
-- Créer une `interface` "Cosmonaut" dans laquelle vous allez définir les attributs de celui-ci:
+- Créez une `interface` "Cosmonaut" dans laquelle vous allez définir les attributs de celui-ci:
   - Un `name`
   - Une `mission`
   - Un `country`
@@ -228,10 +230,9 @@ Nos cosmonautes étaient enregistrés dans ce format, suite à un flash solaire 
 C'est à vous de sauver le coup.
 
 - Écrivez le JSON d'un cosmonaute.
-- Créer fonction `getCosmonaut` qui prend en paramètres :
+- Créez la fonction `getCosmonaut` qui prend en paramètres :
   - Le `path` du JSON
-
-Et qui renvoie un objet `Cosmonaut` grâce aux fonctions précédentes.
+  - Et qui renvoie un objet `Cosmonaut` grâce aux fonctions précédentes.
 
 **Rendu :** `src/getCosmonaut.ts` et `resources/cosmonaut.json`
 
@@ -241,8 +242,10 @@ Et qui renvoie un objet `Cosmonaut` grâce aux fonctions précédentes.
 
 ## Exercice 07 - Touch the moon
    
-Vous allez maintenant envoyer des requêtes à la station afin de récupérer les cosmonauts déjà présents !
+Vous allez maintenant envoyer des requêtes à la station afin de récupérer les cosmonautes déjà présents !
 C'est une simple API rest sur laquelle vous pouvez envoyer des requêtes http.
+
+<!-- TODO définir ici ou pendant un talk ce qu'est HTTP et une API Rest -->
 
 Pour communiquer avec celle-ci, il vous faudra installer la dépendance [axios](https://www.npmjs.com/package/axios). C'est un client http.
 
@@ -251,17 +254,17 @@ L'objectif est simple :
   - Une `mission`
   - Un `pays`
 
-Elle devra renvoyer un `Array` de tout les cosmonauts présents sur la station respectant les critères envoyé en paramètres.
+Elle devra renvoyer un `Array` de tous les cosmonautes présents sur la station respectant les critères envoyés en paramètre.
 
 :warning: L'appel à l'API se fait de manière `asynchrone`, vous devrez donc utiliser une `Promise` pour englober le tout.
 
-Les promesses sont une notion assez complexe du javascript, donc si vous bloquez trop longtemps sur l'exercice, écrivez plutôt une fonction `asyncSelectCosmonaut` dans laquelle vous avez le droit d'utiliser le couple `async/await`.
+Les promesses sont une notion assez complexe du JavaScript, donc si vous bloquez trop longtemps sur l'exercice, écrivez plutôt une fonction `asyncSelectCosmonaut` dans laquelle vous avez le droit d'utiliser le couple `async/await`.
 
 > L'adresse de l'api est `http://localhost:7600`
 >
 > Une documentation de l'API est disponible à l'adresse : `http://localhost:8000`
 >
-> Que se passe-t-il si l'API ne vous réponds pas ?
+> Que se passe-t-il si l'API ne vous répond pas ?
 
 **Rendu :** `src/selectCosmonaut.ts`
 
@@ -272,16 +275,16 @@ Les promesses sont une notion assez complexe du javascript, donc si vous bloquez
 
 ## Exercice 08 - Direction l'espace
 
-Il est temps d'envoyer votre cosmonaut sur PoCSpace.
+Il est temps d'envoyer votre cosmonaute sur PoCSpace.
 
 Faites une fonction `sendCosmonaut` qui prend en paramètre 
   - Un `name`
   - Une `mission`
   - Un `country`
 
-Elle devra créer un cosmonaut à partir des arguments puis envoyer le cosmonaut à l'API à travers une requête. Vous renverrez le résultat de celle-ci.
+Elle devra créer un cosmonaute à partir des arguments puis envoyer le cosmonaute à l'API à travers une requête. Vous renverrez le résultat de celle-ci.
 
-> L'utilisation du couple `async/await` est permis.
+> L'utilisation du couple `async/await` est permise.
 
 > Attention à la méthode de votre requête.
 
@@ -293,20 +296,20 @@ Elle devra créer un cosmonaut à partir des arguments puis envoyer le cosmonaut
 
 ## Exercice 09 - Un petit pas pour l'homme
 
-Comme vous avez pu le remarquer, votre cosmonaut est resté bloqué sur Terre.
+Comme vous avez pu le remarquer, votre cosmonaute est resté bloqué sur Terre.
 
-En effet, il vous faut équiper une combinaison. Celle-ci étant composé de plusieurs parties, vous devrez faire plusieurs fonctions.
+En effet, il vous faut équiper une combinaison. Celle-ci étant composée de plusieurs parties, vous devrez faire plusieurs fonctions.
 
 ### Les composants
 
-L'objectif est de faire une chaîne d'assemblage, vous devrez donc pour pièces listées, faire une fonction recevant en paramètre :
+L'objectif est de faire une chaîne d'assemblage, vous devrez donc pour chaque pièce listée, faire une fonction recevant en paramètre :
   - La combinaison en cours de fabrication
   - Les différents paramètres nécessaires à la construction de la pièce
   - Une fonction `callback`
 
-La callback devra être appelé en cas de succès avec la combinaison mais aussi en cas d'échec avec l'erreur.
+La callback devra être appelée en cas de succès avec la combinaison mais aussi en cas d'échec avec l'erreur.
 
-Souvenez-vous de l'exercice `03`. Le concept des callback reste le même.
+Souvenez-vous de l'exercice `03`. Le concept des callbacks reste le même.
 
 Voici les différentes parties de la combinaison :
   - Helmet (via `createHelmet`), nécessitant une `color` et le `body` d'équipé
@@ -326,21 +329,21 @@ interface Suit {
 }
 ```
 
-> Toujours dans le fichier `types.ts`, vous trouverez des énumérations des couleurs alloués.
+> Toujours dans le fichier `types.ts`, vous trouverez des énumérations des couleurs allouées.
 
 > Demandez-vous à quoi sert le `?` après la déclaration du `helmet` dans l'interface.
 
 ### L'assemblage
 
-Une fois vos 4 fonctions écrites (et testés :joy:). Il vous faut créer la véritable chaîne d'assemblage.
+Une fois vos 4 fonctions écrites (et testées :joy:). Il vous faut créer la véritable chaîne d'assemblage.
 
-- Créer une fonction `conveyorBelt` prenant en paramètre une combinaison, la liste de fonctions à appeler `consumers` ainsi qu'une callback à appeler à la fin de l'assemblage de la combinaison.
+- Créez une fonction `conveyorBelt` prenant en paramètre une combinaison, la liste de fonctions à appeler `consumers` ainsi qu'une callback à appeler à la fin de l'assemblage de la combinaison.
 
 Les `consumers` prennent deux paramètres : la combinaison ainsi que la fonction `callback` après avoir ajouté la pièce.
 
 > :warning: Utilisez la récursivité est conseillée
 >
-> :warning: Le type `any` est interdit, n'hésitez pas à demander de l'aide sur le typage. C'est une notion complexe du typescript.
+> :warning: Le type `any` est interdit, n'hésitez pas à demander de l'aide sur le typage.
 
 Voici un exemple d'utilisation de la fonction `conveyorBelt`, vous trouverez aussi le type de la callback à utiliser :
 
@@ -352,10 +355,11 @@ conveyorBelt({}, [
 ], callback);
 ```
 
-Une fois la conveyorBelt terminé, écrivez une function `equipCosmonaut` qui prend en paramètres :
+Une fois la conveyorBelt terminée, écrivez une fonction `equipCosmonaut` qui prend en paramètres :
    - Un `cosmonaut`
    - Une `combinaison`
-Elle devra renvoyer un object contenant cosmonaut avec un champ `suit` contenant la combinaison.
+
+Elle devra renvoyer un object contenant `cosmonaut` avec un champ `suit` contenant la combinaison.
 
 > N'oubliez pas de typer vos retours de fonction afin d'être plus explicite.
 >
@@ -371,14 +375,14 @@ Elle devra renvoyer un object contenant cosmonaut avec un champ `suit` contenant
 
 ## Exercice 10 - Un grand pas pour l'humanité
 
-Vous avez un cosmonaut équipé ! Il peut enfin quitter le plancher des vaches pour rejoindre ses collègues sur l'ISS
+Vous avez un cosmonaute équipé ! Il peut enfin quitter le plancher des vaches pour rejoindre ses collègues sur l'ISS
 
-- Créer une fonction __asynchrone__ `sendSuit` qui prend en paramètre une `combinaison` et l'`id` de votre cosmonaut, elle devra envoyer une requête à l'API pour équiper le cosmonaut.
+- Créez une fonction __asynchrone__ `sendSuit` qui prend en paramètre une `combinaison` et l'`id` de votre cosmonaute, elle devra envoyer une requête à l'API pour équiper le cosmonaute.
 
-- Créez une fonction __asynchrone__ `flyCosmonaut` qui vas envoyer une requête sur la route `fly` avec en paramètre la mission ISS.
+- Créez une fonction __asynchrone__ `flyCosmonaut` qui va envoyer une requête sur la route `fly` avec en paramètre la mission ISS.
   - La fonction devra prendre en paramètre l'`id` du cosmonaut et la `mission`.
 
-> Vous avez compris le concept, trouvez les bons endpoints dans la documentation. Attention aux méthodes des requêtes envoyés.
+> Vous avez compris le concept, trouvez les bons endpoints dans la documentation. Attention aux méthodes des requêtes envoyées.
 >
 > Demandez-vous quel est le type de l'identifiant ? N'hésitez pas à utiliser les autres routes de l'API pour récupérer des informations. [Postman](https://www.postman.com/) peut vous être utile.
 

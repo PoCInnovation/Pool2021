@@ -11,12 +11,12 @@
 ## Exercice 00 - Setup
 
 Tout d'abord, il vous faut installer Docker et ses dépendances :
- - [docker-ce](https://docs.docker.com/engine/install/fedora/) : L'édition communautaire de docker
+ - [docker-ce](https://docs.docker.com/engine/install/fedora/) : L'édition communautaire de Docker
  - [docker-compose](https://docs.docker.com/compose/install/) : Un tool complémentaire vous permettant de gérer plusieurs containers à la fois très simplement
 
 ### Installation
 
-:warning: Les étapes d'installations décrient ci-dessous sont faites pour fedora (votre dump de base). Si vous êtes sur une autre distribution, voici un [lien](https://docs.docker.com/engine/install/)
+:warning: Les étapes d'installation décrites ci-dessous sont faites pour fedora (votre dump de base). Si vous êtes sur une autre distribution, voici un [lien](https://docs.docker.com/engine/install/)
 
 Désinstaller les paquets inutiles :
 
@@ -57,11 +57,11 @@ sudo chmod +x /usr/local/bin/docker-compose
 
 #### Activer Docker
 
-Une fois l'installation complétée, activer le service avec la commande `sudo systemctl start docker`.
+Une fois l'installation complétée, activez le service avec la commande `sudo systemctl start docker`.
 
 :bulb: Vous pouvez l'activer de façon permanante avec la commande `sudo systemctl enable docker`.
 
-> Pour le moment, vous serez obligé d'utiliser les commandes dockers avec `sudo`, il existe une façon de régler ce problème mais il faut redémarrer l'ordinateur ect... Vous pourrez le faire plus tard si vous le souhaitez.
+> Pour le moment, vous serez obligé d'utiliser les commandes Docker avec `sudo`, il existe une façon de régler ce problème mais il faut redémarrer. Vous pourrez le faire plus tard si vous le souhaitez.
 
 :warning: Fedora 31+
 
@@ -71,20 +71,20 @@ Si vous êtes sur Fedora 31, vous allez probablement voir l'erreur suivante :
 docker: Error response from daemon: cgroups: cannot found cgroup mount destination: unknown.
 ```
 
-Suivez la solution sur ce [lien](https://github.com/docker/for-linux/issues/219), attention, vous devrez executer ce scrypt à chaque reboot...
+Suivez la solution sur ce [lien](https://github.com/docker/for-linux/issues/219), attention, vous devrez executer ce script à chaque reboot.
 
 #### Hello World
 
 Exécuter la commande `docker run hello-world`.
 
-Si tout ce passe bien, vous devriez obtenir le résultat suivant
+Si tout se passe bien, vous devriez obtenir le résultat suivant
 
 ```shell
 Hello from Docker!
 This message shows that your installation appears to be working correctly.
 ```
 
-Vous êtes fin prêt pour cette initiation à Docker :joy:
+Vous êtes fin prêt pour cette initiation à Docker !
 
 #### Ressources
 - [Installer Docker](https://docs.docker.com/get-docker/)
@@ -92,15 +92,15 @@ Vous êtes fin prêt pour cette initiation à Docker :joy:
 
 ## Exercice 01 - Simple conteneur
 
-Les Dockerfiles forment la base pour containériser votre application. L'idée est de créer une image de votre app de façon a pouvoir la déployer très facilement.
-Cela vous évite par exemple d'installer l'application directement sur votre pc ou encore d'avoir des soucis de dépendances non installés. Avec une image, aucun problème, tout est installé dans celle-ci et vous n'avez plus qu'à lancer la commande `docker run <votre image>` pour lancer l'application.
+Les Dockerfiles forment la base pour conteneuriser votre application. L'idée est de créer une image de votre application de façon à pouvoir la déployer très facilement.
+Cela vous évite par exemple d'installer l'application directement sur votre pc ou encore d'avoir des soucis de dépendances non installées. Avec une image, aucun problème, tout est installé dans celle-ci et vous n'avez plus qu'à lancer la commande `docker run <votre image>` pour lancer l'application.
 
-L'objectif est de créer une image docker issue de l'API que vous avez faites au jour 2.
+L'objectif est de créer une image docker issue de l'API que vous avez faite au jour 2.
 
-Copiez coller vos sources dans le dossier `exo1` puis ajouter un fichier `Dockerfile`
+Copiez-collez vos sources dans le dossier `exo1` puis ajouter un fichier `Dockerfile`
 
 Votre dockerfile doit :
- - Être basée sur la dernière image `alpine` de node.
+ - Être basé sur la dernière image `alpine` de node.
  - Exposer le port 8080
  - Installer les dépendances npm
  - Set la variable d'env `HELLO_MESSAGE` à `docker`
@@ -109,10 +109,10 @@ Votre dockerfile doit :
 
 > :warning: Demandez-vous quel doit être l'host de votre API.
 
-> Le keyword `alpine` sur une image précise que celle-ci est allégé, seule le nécessaire est dans celle-ci.
-> Par exemple, les images alpines ont comme gestionnaire de packet `apk` et non `apt`.
+> Le keyword `alpine` sur une image précise que celle-ci est allégée, seule le nécessaire est dans celle-ci.
+> Par exemple, les images alpines ont comme gestionnaire de paquets `apk` et non `apt`.
 
-Une fois l'image lancé, vous devriez pouvoir accéder à votre application de 
+Une fois l'image lancée, vous devriez pouvoir accéder à votre application. 
 
 **Rendu :** `exo1/`
 
@@ -124,10 +124,10 @@ Une fois l'image lancé, vous devriez pouvoir accéder à votre application de
 
 Vous avez vu comment Dockeriser une application, il est temps de passer à la vitesse supérieure ! Vous allez maintenant gérer plusieurs conteneurs.
 
-L'objectif est de dockeriser cette ensemble d'application. 
+L'objectif est de dockeriser cet ensemble d'applications. 
 
 Les sources sont composées de : 
- - Une base de donnée postgres
+ - Une base de données postgres
  - Une API en Nestjs
  - Une webapp en React
 
@@ -136,8 +136,8 @@ Les sources sont composées de :
 ![archi micro-services](https://github.com/PoCInnovation/Pool2021/blob/master/.github/assets/software-day4-exo4-archi.png)
 
 Pour cela, vous devrez réaliser : 
- - Un dockerfile pour votre Backend
- - Un dockerfile pour votre Frontend
+ - Un Dockerfile pour votre Backend
+ - Un Dockerfile pour votre Frontend
  - Un docker-compose pour relier le tout
 
 Le [docker-compose](https://docs.docker.com/compose/) vous permet d'orchestrer simultanément différents services (conteneur). Cela vous simplifie énormément la tâche lorsqu'il s'agit de déployer plusieurs micro-services.
@@ -147,7 +147,7 @@ Votre docker-compose doit avoir :
   - backend
   - frontend
   - database
-- **1** networks :
+- **1** network :
   - backend
 - **1** volume :
   - db-data
