@@ -1,8 +1,14 @@
 
+
 # Introduction
 Cryptography is associated with the process of converting ordinary plain text into unintelligible text and vice-versa. It is a method of storing and transmitting data in a particular form so that only those for whom it is intended can read and process it. Cryptography not only protects data from theft or alteration, but can also be used for user authentication.
-# Useful tools
+Cryptography represent all the process used to insure the Confidentiality, the Authenticity and the Integrity of information. Warning : encryption != encoding ! When you encrypt data, you make sure that is only understandable by your targeted correspondants. When you encode a data, you transform it to another form to facilitate its use. For example, the base64 encoding is used in a lot of web applications (because it represents data with ascii characters only), but it is meant to be secure : anyone who has access to base64 data can decode it !
 
+Some words you should know :
+
+-   plaintext : unencrypted data
+-   cipher : generic name for encryption algorithm
+-   ciphertext : output of a cipher
 # Challenges
 ## Caesar
 Caesar cipher is one of the simplest encryption techniques. It is a type of substitution cipher in which each letter in the secret message is 'shifted' a certain number of places down the alphabet.
@@ -28,7 +34,10 @@ Now that you know how Caesar cipher works, it's time for you to start your first
  
 	 HGU{Lgmlw_ds_Ysmdw_wkl_guumhéw_hsj_dwk_Jgesafk._Lgmlw_?_Fgf_!_Mf_Naddsyw_hwmhdé_v’Ajjévmulatdwk_Ysmdgak_jékaklw_wfugjw_wl_lgmbgmjk_à_d’wfnszakkwmj.}
 	
+## Guess
+Can you find what format this string is and break it ?
 
+`7ecc19e1a0be36ba2c6f05d06b5d3058`
 
 ## eXORcisme
 Every documents, images, sounds … can be stored in a file. A file contains data which must be used to render its content. The data organisation in a file is defined by its file format specifications (pdf, jpg, png, wav, zip …).
@@ -42,11 +51,11 @@ Almost all the main file formats have some structural similarities :
 For example this is the format for JPEG:
 ![](https://ih0.redbubble.net/image.1889940775.6973/flat,1000x1000,075,f.u1.jpg)
 
-Now that you know all of this use this knowledge in order to decrypt those jpeg files and find the original pictures.
-## Patrick au secours !
-## RSA Sage
-RSA keys need to conform to certain mathematical properties in order to be secure. If the key is not generated carefully it can have vulnerabilities which may totally compromise the encryption algorithm. Sometimes this can be determined from the public key alone. This article describes vulnerabilities that can be tested when in possession of a RSA public key.
+The pictures in `eXORcism.zip` has been inadvertently encrypted. We are counting on you to decrypt them.
+## Baby RSA
+My grandpa used to be a cryptograph, for his 64 birthday his old colleague sent him this file (`rsa.txt`) saying he should give it to me in order to introduce me to cryptography. Help me solving it and I will pay you a lemonade.
+## Jacques au secours !
+One of our VIP clients, who wishes to remain anonymous, has apparently been hacked and all their important documents are now corrupted.
+Can you help us recover the files? We found a strange piece of software that might have caused all of this. 
 
-If the RSA key is too short, the modulus can be factored by just using brute force. A 256-bit modulus can be factored in a couple of minutes. A 512-bit modulus takes several weeks on modern consumer hardware. Factoring 1024-bit keys is definitely not possible in a reasonable time with reasonable means, but may be possible for well equipped attackers. 2048-bit is secure against brute force factoring.
-
-But actually with Sagemath (a mathematical open-source software) we can do a ROCA Attack on a 512-bit key and break it in only minutes.
+The piece of software is in `jacques.zip`.
