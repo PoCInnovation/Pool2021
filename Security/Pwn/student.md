@@ -15,8 +15,7 @@ printf, scanf etc. are really useful when you develop a program. But you can hav
 
 The first consequence of a format string injection vulnerability is that the attacker can read the stack. And as we know, the stack contains our local variables, which can store some precious content...
 
-Solve this [Root-me Challenge](https://www.root-me.org/fr/Challenges/App-Systeme/ELF32-Format-string-bug-basic-1) !
-
+TODO chall
 
 # 2 - Stack Buffer Overflows
 
@@ -48,24 +47,39 @@ Now that we understand how this vulnerability works, we are going to see how we 
 
 ### Changing variables values
 
-[Root-Me x86 Stack buffer overflow basic 1](https://www.root-me.org/fr/Challenges/App-Systeme/ELF-x86-Stack-buffer-overflow-basic-1)
+You must solve the `Dead Beef` challenge.
 
 ### Calling functions
 
-[Root-me x86 Stack Buffer Overflow basic 2](https://www.root-me.org/fr/Challenges/App-Systeme/ELF-x86-Stack-buffer-overflow-basic-2)
+You must solve the `Please be nice` challenge.
 
 # 3 - ROP chain
 
+Returned Oriented Programming is a way to exploit memory corruption vulnerability to modify the program behaviour. The goal here is to modify the execution flow of a binary in order to make it perform different actions (open files on the system, call a functions with specific parameters ...)
 
+### Discover pwntools
 
+pwntools is a framework used to automate pwn and reverse challenges resolution. We need it to go through ROP chain challenges. You must install it with
+```py
+python3 -m pip install --upgrade pwntools
+```
+If you have any issue with the installation, try to install the [development version](https://docs.pwntools.com/en/stable/install.html)
 
-# 4 - Race Condition
+You must flag the `Please be nice` challenge again using pwntools. Show it to an organizer to get your flag.
 
-The logical flow of a program can be poorly designed by the developer and have non-desired consequences. To exploit a race condition, you have to do a certain action at a certain timing, be quick !
+### Your first ROP chain
 
-Solve this [Root-me Challenge](https://www.root-me.org/fr/Challenges/App-Systeme/ELF-x86-Race-condition) !
+The challenge is available [here]. Here is some help to resolve it:
+1. What is the binary doing ?
+2. Can you find a memory corruption vulnerability ?
+3. What would you like the binary to do ?
+4. Write your ROP chain with pwntools
 
-# 5 - Use after Free
+Note that pwntools supports TCP communication. In order to make the challenge execute your payload, you may want to use [the remote function](https://docs.pwntools.com/en/stable/tubes/sockets.html)
+
+You must solve the `Abuse Me` challenge.
+
+# 4 - Use after Free
 
 When you allocate memory with malloc / calloc / realloc, this memory is dynamically given to you and you can modify its content. Imagine that you allocate 5 bytes of memory, in which you write "AAAAA". If you free this memory, we won't be able to access it anymore BUT the "AAAAA" value is not reset : it is still written in memory and our pointer still points to this adress !
 
@@ -103,6 +117,12 @@ What sould you do to be recognize as an administrator here ? Your explanation mu
 Here is a nice challenge on exploiting a Use After Free vulnerability to gain privileges in the program !
 
 [Root-me ELF x86 Use After Free](https://www.root-me.org/fr/Challenges/App-Systeme/ELF-x86-Use-After-Free-basic)
+
+# 5 - Race Condition
+
+The logical flow of a program can be poorly designed by the developer and have non-desired consequences. To exploit a race condition, you have to do a certain action at a certain timing, be quick !
+
+Solve this [Root-me Challenge](https://www.root-me.org/fr/Challenges/App-Systeme/ELF-x86-Race-condition) !
 
 # The End
 
