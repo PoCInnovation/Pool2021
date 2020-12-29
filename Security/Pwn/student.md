@@ -15,7 +15,7 @@ printf, scanf etc. are really useful when you develop a program. But you can hav
 
 The first consequence of a format string injection vulnerability is that the attacker can read the stack. And as we know, the stack contains our local variables, which can store some precious content...
 
-TODO chall
+Solve the `Format String 1` challenge.
 
 # 2 - Stack Buffer Overflows
 
