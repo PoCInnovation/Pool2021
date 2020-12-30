@@ -268,6 +268,8 @@ Les promesses sont une notion assez complexe du JavaScript, donc si vous bloquez
 >
 > Que se passe-t-il si l'API ne vous répond pas ?
 
+:bulb: N'hésitez pas à ajouter d'autres fichiers si vous le souhaitez, faire un objet `requester` qui s'occupe de gérer vos requêtes peut être utile pour la suite par exemple.
+
 **Rendu :** `src/selectCosmonaut.ts`
 
 #### Ressources
