@@ -140,7 +140,7 @@ Elle renverra un objet du type `Cosmonaut`.
 
 **Rendu :** `src/createCosmonaut.ts`
 
-##### Ressources
+#### Ressources
 - [Objets](https://www.typescriptlang.org/docs/handbook/2/objects.html)
 - [Interface](https://www.typescriptlang.org/docs/handbook/interfaces.html)
 
