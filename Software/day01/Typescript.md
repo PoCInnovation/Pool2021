@@ -231,12 +231,12 @@ Nos cosmonautes étaient enregistrés dans ce format, suite à un flash solaire 
 
 C'est à vous de sauver le coup.
 
-- Écrivez le JSON d'un cosmonaute.
+- Écrivez le JSON d'un cosmonaute dans le fichier `cosmonaut.json`.
 - Créez la fonction `getCosmonaut` qui prend en paramètres :
   - Le `path` du JSON
   - Et qui renvoie un objet `Cosmonaut` grâce aux fonctions précédentes.
 
-**Rendu :** `src/getCosmonaut.ts` et `resources/cosmonaut.json`
+**Rendu :** `src/getCosmonaut.ts` et `src/cosmonaut.json`
 
 #### Ressources
 - [Le JSON pour les débutants](https://www.w3schools.com/whatis/whatis_json.asp)
