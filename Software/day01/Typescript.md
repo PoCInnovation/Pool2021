@@ -150,9 +150,9 @@ Elle renverra un objet du type `Cosmonaut`.
 
 - Installer [jest](https://jestjs.io/): `npm install -D jest ts-jest @jest/globals @types/jest`
 - Dans votre `package.json`
-    - Ajouter la règle 'test' qui exécute `jest`
-    - Ajouter la règle 'test:cov' qui exécute `jest --coverage`
-    - Ajouter la règle 'test:watch' qui exécute `jest --watchAll`
+    - Ajouter la règle 'test' qui exécute `jest tests --env=node`
+    - Ajouter la règle 'test:cov' qui exécute `jest --coverage tests --env=node`
+    - Ajouter la règle 'test:watch' qui exécute `jest --watchAll tests --env=node`
 
 <Details><Summary><strong>Il faut également créer un fichier `jest.config.js` avec les règles suivantes:</strong></Summary>
 	
@@ -169,7 +169,7 @@ module.exports = {
 
 </Details>
 
-Créer des tests pour `superComputer` et `createCosmonaut` dans le dossier `test` (qu'il faut créer)
+Créer des tests pour `superComputer` et `createCosmonaut` dans le dossier `tests` (qu'il faut créer)
 
 <Details><Summary><strong>Exemple d'utilisation de Jest:</strong></Summary>
 	
