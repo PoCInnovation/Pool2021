@@ -306,7 +306,7 @@ En effet, il vous faut équiper une combinaison. Celle-ci étant composée de pl
 
 ### Les composants
 
-L'objectif est de faire une chaîne d'assemblage, vous devrez donc pour chaque pièce listée, faire une fonction recevant en paramètre :
+L'objectif est de faire une chaîne d'assemblage, vous devrez donc pour chaque pièce listée, faire une fonction dans le fichier `equipCosmonaut.ts` recevant en paramètre :
   - La combinaison en cours de fabrication
   - Les différents paramètres nécessaires à la construction de la pièce
   - Une fonction `callback`
