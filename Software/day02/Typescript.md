@@ -271,7 +271,7 @@ Installer zod grâce à la commande :
 npm i zod@beta
 ```
 
-Ajouter la ligne `"strictNullChecks": true` dans votre `tsconfig.json` afin d'exploiter toutes les features de Zod.
+Ajoutez la ligne `"strictNullChecks": true` dans votre `tsconfig.json` afin d'exploiter toutes les features de Zod.
 
 ### Créer le schéma
 
