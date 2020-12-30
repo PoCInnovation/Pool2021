@@ -68,13 +68,15 @@ The config that you've selected requires the following dependencies:
 </pre>
 </Details>
 
-- Ajouter dans votre `package.json` la règle 'lint' qui exécute `eslint`
-- Ajouter dans votre `package.json` la règle 'lint:format' qui exécute `eslint --fix`
+- Ajouter dans votre `package.json` la règle 'lint' qui exécute `eslint src/**/*`
+- Ajouter dans votre `package.json` la règle 'lint:format' qui exécute `eslint --fix src/**/*`
 
 Ces étapes viennent de paramétrer ESlint pour qu'il suive une norme spécifique, celle d'AirBnB. 
-Si vous exécutez les deux règles que vous venez de créer sur votre fichier `index.js`, vous verrez qu'il trouvera surement des erreurs de syntaxe, puis qu'il les corrigera tout seul !
+Si vous exécutez les deux règles que vous venez de créer sur votre fichier `index.ts`, vous verrez qu'il trouvera surement des erreurs de syntaxe, puis qu'il les corrigera tout seul !
 
 Vous pouvez installer l'extension Eslint pour votre IDE afin d'avoir les erreurs visibles directement sur votre code.
+
+> :bulb: Il existe aussi un module spécial nommé [Prettier](https://prettier.io/) qui vous permet de configurer le formatage de votre code.
 
 #### Ressources
 - [ESlint](https://eslint.org/)
@@ -119,7 +121,7 @@ type Callback = {(err: Error, result?: undefined): Error, (err: null, result: nu
 - [Callback](https://developer.mozilla.org/en-US/docs/Glossary/Callback_function)
 - [Gestion d'erreur](https://basarat.gitbook.io/typescript/type-system/exceptions)
 
-##### Exercice 04 - Un homme s'élève
+## Exercice 04 - Un homme s'élève
 
 Votre super calculateur est terminé !
 Il vous faut à présent les hommes pour envoyer votre programme. Quoi de mieux que des cosmonautes ?
@@ -140,7 +142,7 @@ Elle renverra un objet du type `Cosmonaut`.
 
 **Rendu :** `src/createCosmonaut.ts`
 
-##### Ressources
+#### Ressources
 - [Objets](https://www.typescriptlang.org/docs/handbook/2/objects.html)
 - [Interface](https://www.typescriptlang.org/docs/handbook/interfaces.html)
 
@@ -148,9 +150,9 @@ Elle renverra un objet du type `Cosmonaut`.
 
 - Installer [jest](https://jestjs.io/): `npm install -D jest ts-jest @jest/globals @types/jest`
 - Dans votre `package.json`
-    - Ajouter la règle 'test' qui exécute `jest`
-    - Ajouter la règle 'test:cov' qui exécute `jest --coverage`
-    - Ajouter la règle 'test:watch' qui exécute `jest --watchAll`
+    - Ajouter la règle 'test' qui exécute `jest tests --env=node`
+    - Ajouter la règle 'test:cov' qui exécute `jest --coverage tests --env=node`
+    - Ajouter la règle 'test:watch' qui exécute `jest --watchAll tests --env=node`
 
 <Details><Summary><strong>Il faut également créer un fichier `jest.config.js` avec les règles suivantes:</strong></Summary>
 	
@@ -167,7 +169,7 @@ module.exports = {
 
 </Details>
 
-Créer des tests pour `superComputer` et `createCosmonaut` dans le dossier `test` (qu'il faut créer)
+Créer des tests pour `superComputer` et `createCosmonaut` dans le dossier `tests` (qu'il faut créer)
 
 <Details><Summary><strong>Exemple d'utilisation de Jest:</strong></Summary>
 	
