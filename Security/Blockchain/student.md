@@ -1,10 +1,12 @@
 
 # Introduction
-Ethereum is a blockchain protocol that introduce smart contracts into the blockchain world. Smart contracts are contracts but written by a developer using the language Solidity. Once that the smart contract has been wrote on the blockchain using a transaction it becomes immutable and cannot be modified. So smart contracts are basically a way to make contracts on blockchain that cannot be change.
+Ethereum is a blockchain protocol that introduced smart contracts into the blockchain world. Smart Contracts are contracts but written by a developer using the Solidity programming language.
+Once the smart contract has been written on the blockchain using a transaction it becomes immutable and cannot be further modified.
 
-But as every IT program, smart contracts have flaws which can be use by hackers in order to hack to contracts and change their conditions. 
+But as every IT program, Smart Contracts have flaws which can be use by hackers in order to hack to contracts and change their behaviour. 
 
-So today and using the website [Capture the Ether](https://capturetheether.com) we are going to introduce you to the hacking of Ethereum smart contracts.
+So today, using the website [Capture the Ether](https://capturetheether.com), we are going to introduce you to the hacking of Ethereum Smart Contracts.
+
 # Challenges
 ## Deploy a contract
 For this exercice you have to solve  [this challenge](https://capturetheether.com/challenges/warmup/deploy/).
