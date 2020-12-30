@@ -119,7 +119,7 @@ type Callback = {(err: Error, result?: undefined): Error, (err: null, result: nu
 - [Callback](https://developer.mozilla.org/en-US/docs/Glossary/Callback_function)
 - [Gestion d'erreur](https://basarat.gitbook.io/typescript/type-system/exceptions)
 
-##### Exercice 04 - Un homme s'élève
+## Exercice 04 - Un homme s'élève
 
 Votre super calculateur est terminé !
 Il vous faut à présent les hommes pour envoyer votre programme. Quoi de mieux que des cosmonautes ?
