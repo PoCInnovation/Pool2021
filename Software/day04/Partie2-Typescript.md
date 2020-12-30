@@ -12,7 +12,51 @@ Pour ce jour-ci, nous allons retourner sur nos serveurs Express ! Vous pouvez re
 
 ## Exercice 01 - Les Sessions
 
-TODO
+### Présentation
+
+Une session est une manière assez simple de gérer l'authentification de vos utilisateurs. Vous allez stocker du coté du server les informations des utilisateurs qui sont connectés. Le server s'occupe d'envoyer un cookie au client qui permettra d'identifier toutes ses requêtes. Si les informations du cookie coincident avec ce qui est stoqué dans la session, alors l'utilisateur est bien connecté
+
+### Le concret
+
+Pour mettre tout ça en place, vous devez:
+
+- Ajouter un package pour gérer les sessions avec express:
+```
+npm i express-session @types/express-session
+```
+
+- Créez un objet `user` qui nous servira de base de donnée simplifiée, stockée en ram
+```ts
+interface User {
+  email: string;
+  password: string;
+}
+
+let user: User[] = []
+```
+
+- Créez une route **POST** `/signin-session`
+  - Prend un body contenant l'`email` et le `password` de l'utilisateur
+  - Enregistre l'utilisateur dans l'objet `user`
+  - Renvoie un cookie contenant le body signé reçu
+  - Si aucun message n'est donné
+    - Définir le statut 400
+    - Renvoyer `Bad Request`
+
+- Créez une route **POST** `/singup-session`
+  - Prend un body contenant l'`email` et le `password` de l'utilisateur
+  - Si les les identifiants matchent, renvoie un cookie contenant le body signé reçu
+  - Si aucun message n'est donné ou que les identifiants ne matchent pas
+    - Définir le statut 400
+    - Renvoyer `Bad Request`
+
+- Créez une route **GET** `/me-session`
+  - Si le header contient un cookie
+    - Renvoie les informations de l'utilisateur authentifié s'il existe en db
+    - Renvoie le status 401 et le message `Unauthorized` dans le cas contraire
+  - Si aucun cookie n'est donné
+    - Définir le statut 403
+    - Renvoyer `Forbidden`
 
 ## Exercice 02 - Les JWT, ou JSON Web Token
 
@@ -37,7 +81,7 @@ Passons à présent au concret ! Créons un flow d'authentification basé sur le
 npm i jsonwebtoken
 ```
 
-- Créez un objet `UserJWT` qui nous servira de base de donnée simplifiée, stockée en ram
+- Créez un objet `userJWT` qui nous servira de base de donnée simplifiée, stockée en ram
 ```ts
 interface UserJWT {
   email: string;
@@ -97,7 +141,7 @@ Nous allons passer par google pour cet exercice et nous nous aiderons de passpor
 npm i passport passport-google-oauth20 @types/passport @types/passport-google-oauth20
 ```
 
-- Créez un objet `UserOAuth` qui nous servira de base de donnée simplifiée, stockée en ram
+- Créez un objet `userOAuth` qui nous servira de base de donnée simplifiée, stockée en ram
 ```ts
 interface UserOAuth {
   displayName: string;
