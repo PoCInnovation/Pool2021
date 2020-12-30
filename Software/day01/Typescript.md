@@ -68,8 +68,8 @@ The config that you've selected requires the following dependencies:
 </pre>
 </Details>
 
-- Ajouter dans votre `package.json` la règle 'lint' qui exécute `eslint`
-- Ajouter dans votre `package.json` la règle 'lint:format' qui exécute `eslint --fix`
+- Ajouter dans votre `package.json` la règle 'lint' qui exécute `eslint src/**/*`
+- Ajouter dans votre `package.json` la règle 'lint:format' qui exécute `eslint --fix src/**/*`
 
 Ces étapes viennent de paramétrer ESlint pour qu'il suive une norme spécifique, celle d'AirBnB. 
 Si vous exécutez les deux règles que vous venez de créer sur votre fichier `index.ts`, vous verrez qu'il trouvera surement des erreurs de syntaxe, puis qu'il les corrigera tout seul !
