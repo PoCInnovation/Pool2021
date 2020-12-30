@@ -76,6 +76,8 @@ Si vous exécutez les deux règles que vous venez de créer sur votre fichier `i
 
 Vous pouvez installer l'extension Eslint pour votre IDE afin d'avoir les erreurs visibles directement sur votre code.
 
+> :bulb: Il existe aussi un module spécial nommé [Prettier](https://prettier.io/) qui vous permet de configurer le formatage de votre code.
+
 #### Ressources
 - [ESlint](https://eslint.org/)
 - [ESlint sur Webstorm](https://www.jetbrains.com/help/webstorm/eslint.html)
