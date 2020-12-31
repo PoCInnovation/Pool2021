@@ -131,7 +131,7 @@ Il vous faut à présent les hommes pour envoyer votre programme. Quoi de mieux 
   - Une `mission`
   - Un `country`
 
-> Copiez le fichier `types.ts` présent sur le repo du sujet dans votre dossier `src`, vous trouverez des énumérations des missions et pays alloués.
+> Copiez le fichier `types.ts` présent dans le dossier `resources` du repo du sujet dans votre dossier `src`, vous trouverez des énumérations des missions et pays alloués.
 
 - Écrivez une fonction `createCosmonaut` qui prend en paramètres :
   - Un nom
@@ -249,6 +249,14 @@ C'est une simple API rest sur laquelle vous pouvez envoyer des requêtes http.
 
 <!-- TODO définir ici ou pendant un talk ce qu'est HTTP et une API Rest -->
 
+Pour lancer l'API, copiez le fichier `docker-compose.yaml` et le dossier `docs` présent dans le dossier `resources` du repository du sujet. Une fois les deux ressources doivent être à la racine de votre repo, il vous suffis de lancer la commande `docker-compose up -d`.
+
+L'API sera ensuite accessible à l'adresse `http://localhost:7600`, vous trouverez également une documentation sur `http://localhost:8000`.
+
+> Vous en apprendez plus sur docker et la commande docker-compose lors du jour 4 de la piscine, ne perdez pas de temps là-dessus pour le moment.
+>
+> Si vous avez des difficultés à lancer l'API, réinstaller docker et docker-compose avec ce [guide](https://github.com/PoCInnovation/Workshops/blob/master/software/4.Docker/SETUP.md).
+
 Pour communiquer avec celle-ci, il vous faudra installer la dépendance [axios](https://www.npmjs.com/package/axios). C'est un client http.
 
 L'objectif est simple : 
@@ -262,10 +270,6 @@ Elle devra renvoyer un `Array` de tous les cosmonautes présents sur la station 
 
 Les promesses sont une notion assez complexe du JavaScript, donc si vous bloquez trop longtemps sur l'exercice, écrivez plutôt une fonction `asyncSelectCosmonaut` dans laquelle vous avez le droit d'utiliser le couple `async/await`.
 
-> L'adresse de l'api est `http://localhost:7600`
->
-> Une documentation de l'API est disponible à l'adresse : `http://localhost:8000`
->
 > Que se passe-t-il si l'API ne vous répond pas ?
 
 :bulb: N'hésitez pas à ajouter d'autres fichiers si vous le souhaitez, faire un objet `requester` qui s'occupe de gérer vos requêtes peut être utile pour la suite par exemple.
