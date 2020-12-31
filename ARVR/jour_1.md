@@ -18,11 +18,11 @@ Votre troisième tâche est de modéliser (enfin !) deux meubles.
 Voici les schémas correspondants à l’etajaren ainsi que l’assoiren.
 
 <div align="center">
-  <img src=".github/etajaren.jpg" width=50%"/>
+  <img src=".github/assets/etajaren.jpg" width=50%"/>
 </div>
 
 <div align="center">
-  <img src=".github/assoirien.jpg" width=50%"/>
+  <img src=".github/assets/assoirien.jpg" width=50%"/>
 </div>
 
 ## IKEO War
