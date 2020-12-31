@@ -254,8 +254,8 @@ Pour lancer l'API, copiez le fichier `docker-compose.yaml` et le dossier `docs` 
 L'API sera ensuite accessible à l'adresse `http://localhost:7600`, vous trouverez également une documentation sur `http://localhost:8000`.
 
 > Vous en apprendez plus sur docker et la commande docker-compose lors du jour 4 de la piscine, ne perdez pas de temps là-dessus pour le moment.
->
-> Si vous avez des difficultés à lancer l'API, réinstaller docker et docker-compose avec ce [guide](https://github.com/PoCInnovation/Workshops/blob/master/software/4.Docker/SETUP.md).
+
+> :bulb: Si vous avez des difficultés à lancer l'API, réinstallez docker et docker-compose avec ce [guide](https://github.com/PoCInnovation/Workshops/blob/master/software/4.Docker/SETUP.md).
 
 Pour communiquer avec celle-ci, il vous faudra installer la dépendance [axios](https://www.npmjs.com/package/axios). C'est un client http.
 
