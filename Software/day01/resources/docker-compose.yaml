@@ -1,0 +1,49 @@
+version: '3'
+
+services:
+  api:
+    image: the0only0vasek/poc_api_day01
+    environment:
+      - HOST=0.0.0.0
+      - PORT=7600
+      - DB_HOST=database
+      - DB_USERNAME=root
+      - DB_PASSWORD=password
+      - DB_NAME=database
+      - DB_PORT=5432
+      - BUILD="false"
+    ports:
+      - "7600:7600"
+    networks:
+      - pocspace
+    volumes:
+      - ./logs:/app/logs
+    depends_on:
+      - database
+
+  database:
+    image: postgres:alpine
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=database
+    networks:
+      pocspace:
+    volumes:
+      - db-volume:/var/lib/postgresql/data
+
+  doc:
+    image: redocly/redoc
+    environment:
+      - SPEC_URL=openapi.yaml
+    ports:
+      - 8000:80
+    volumes:
+      - ./docs/api/poc-space.yaml:/usr/share/nginx/html/openapi.yaml
+
+networks:
+  pocspace:
+
+volumes:
+  db-volume:
+

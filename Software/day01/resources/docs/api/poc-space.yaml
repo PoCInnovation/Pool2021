@@ -1,0 +1,777 @@
+openapi: 3.0.0
+info:
+  title: PoCSpace
+  version: '1.0'
+  description: Classic CRUD Api to manage cosmonauts
+  contact:
+    name: 'Tom '
+    url: 'https://github.com/TomChv'
+    email: tom.chauveau@epitech.eu
+  license:
+    name: MIT
+servers:
+  - url: 'http://localhost:7600'
+paths:
+  /ping:
+    get:
+      summary: Check health
+      tags:
+        - Ping
+      responses:
+        '200':
+          description: pong
+      operationId: get-ping
+      description: Verify if API is responding correctly
+  '/cosmo/{id}':
+    get:
+      summary: Get cosmonaut
+      tags:
+        - Cosmonaut
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      format: uuid
+                    name:
+                      type: string
+                      example: Foo
+                    mission:
+                      type: string
+                      enum:
+                        - ISS
+                        - MOON
+                        - MARS
+                      example: ISS
+                    country:
+                      type: string
+                      enum:
+                        - France
+                        - United-State
+                        - Russia
+                        - China
+                        - India
+                      example: France
+                    suit:
+                      type: object
+                      required:
+                        - helmet
+                        - body
+                        - gloves
+                        - boots
+                      properties:
+                        helmet:
+                          type: object
+                          required:
+                            - color
+                            - id
+                          properties:
+                            color:
+                              type: string
+                              enum:
+                                - blue
+                                - red
+                                - green
+                                - black
+                                - yellow
+                                - pink
+                                - white
+                                - purple
+                              example: purple
+                            id:
+                              type: string
+                              format: uuid
+                        body:
+                          type: object
+                          required:
+                            - color
+                            - kind
+                            - id
+                          properties:
+                            color:
+                              type: string
+                              enum:
+                                - blue
+                                - red
+                                - green
+                                - black
+                                - yellow
+                                - pink
+                                - white
+                                - purple
+                              example: red
+                            kind:
+                              type: string
+                              enum:
+                                - EMU
+                                - CES
+                                - SOKOL
+                                - RO
+                              example: EMU
+                            id:
+                              type: string
+                              format: uuid
+                        gloves:
+                          type: object
+                          required:
+                            - color
+                            - id
+                          properties:
+                            color:
+                              type: string
+                              enum:
+                                - blue
+                                - red
+                                - green
+                                - black
+                                - yellow
+                                - pink
+                                - white
+                                - purple
+                              example: purple
+                            id:
+                              type: string
+                              format: uuid
+                        boots:
+                          type: object
+                          required:
+                            - color
+                            - id
+                          properties:
+                            color:
+                              type: string
+                              enum:
+                                - blue
+                                - red
+                                - green
+                                - black
+                                - yellow
+                                - pink
+                                - white
+                                - purple
+                              example: white
+                            id:
+                              type: string
+                  required:
+                    - id
+                    - name
+                    - mission
+                    - country
+                    - suit
+              examples:
+                Exemple:
+                  value:
+                    - id: 497f6eca-6276-4993-bfeb-53cbbbba6f08
+                      name: Foo
+                      mission: ISS
+                      country: France
+                      suit:
+                        helmet:
+                          color: purple
+                          id: 497f6eca-6276-4993-bfeb-53cbbbba6f08
+                        body:
+                          color: red
+                          kind: EMU
+                          id: 497f6eca-6276-4993-bfeb-53cbbbba6f08
+                        gloves:
+                          color: purple
+                          id: 497f6eca-6276-4993-bfeb-53cbbbba6f08
+                        boots:
+                          color: white
+                          id: string
+                    - id: 497f6eca-6276-4993-bfeb-53cbbbba6f08
+                      name: Foo
+                      mission: ISS
+                      country: France
+                      suit:
+                        helmet:
+                          color: purple
+                          id: 497f6eca-6276-4993-bfeb-53cbbbba6f08
+                        body:
+                          color: red
+                          kind: EMU
+                          id: 497f6eca-6276-4993-bfeb-53cbbbba6f08
+                        gloves:
+                          color: purple
+                          id: 497f6eca-6276-4993-bfeb-53cbbbba6f08
+                        boots:
+                          color: white
+                          id: string
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: string
+              examples:
+                Example:
+                  value: Id xxxxx not found
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                type: string
+                example: Service Unavalaible
+      operationId: get-cosmo
+      description: Get all cosmonauts
+      parameters: []
+    post:
+      summary: Create cosmonaut
+      operationId: post-cosmo
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  id:
+                    type: string
+                    minLength: 1
+                  name:
+                    type: string
+                    minLength: 1
+                  mission:
+                    type: string
+                    minLength: 1
+                  country:
+                    type: string
+                    minLength: 1
+                  suit:
+                    type: object
+                    properties:
+                      helmet:
+                        type: object
+                        properties:
+                          color:
+                            type: string
+                            minLength: 1
+                          id:
+                            type: string
+                            minLength: 1
+                        required:
+                          - color
+                          - id
+                      body:
+                        type: object
+                        properties:
+                          color:
+                            type: string
+                            minLength: 1
+                          kind:
+                            type: string
+                            minLength: 1
+                          id:
+                            type: string
+                            minLength: 1
+                        required:
+                          - color
+                          - kind
+                          - id
+                      gloves:
+                        type: object
+                        properties:
+                          color:
+                            type: string
+                            minLength: 1
+                          id:
+                            type: string
+                            minLength: 1
+                        required:
+                          - color
+                          - id
+                      boots:
+                        type: object
+                        properties:
+                          color:
+                            type: string
+                            minLength: 1
+                          id:
+                            type: string
+                            minLength: 1
+                        required:
+                          - color
+                          - id
+                    required:
+                      - helmet
+                      - body
+                      - gloves
+                      - boots
+                required:
+                  - id
+                  - name
+                  - mission
+                  - country
+                  - suit
+              examples:
+                Exemple:
+                  value:
+                    id: 497f6eca-6276-4993-bfeb-53cbbbba6f08
+                    name: Foo
+                    mission: ISS
+                    country: France
+                    suit:
+                      helmet:
+                        color: purple
+                        id: 497f6eca-6276-4993-bfeb-53cbbbba6f08
+                      body:
+                        color: red
+                        kind: EMU
+                        id: 497f6eca-6276-4993-bfeb-53cbbbba6f08
+                      gloves:
+                        color: purple
+                        id: 497f6eca-6276-4993-bfeb-53cbbbba6f08
+                      boots:
+                        color: white
+                        id: string
+          headers: {}
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: string
+                example: Cosmonaut must wear a suit
+              examples:
+                Bad request:
+                  value: Bad Request
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                type: string
+                example: Service Unavalaible
+      description: Create a cosmonaut
+      tags:
+        - Cosmonaut
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              properties:
+                name:
+                  type: string
+                  minLength: 1
+                mission:
+                  type: string
+                  minLength: 1
+                country:
+                  type: string
+                  minLength: 1
+                suit:
+                  type: object
+                  properties:
+                    helmet:
+                      type: object
+                      properties:
+                        color:
+                          type: string
+                          minLength: 1
+                      required:
+                        - color
+                    body:
+                      type: object
+                      properties:
+                        color:
+                          type: string
+                          minLength: 1
+                        kind:
+                          type: string
+                          minLength: 1
+                      required:
+                        - color
+                        - kind
+                    gloves:
+                      type: object
+                      properties:
+                        color:
+                          type: string
+                          minLength: 1
+                      required:
+                        - color
+                    boots:
+                      type: object
+                      properties:
+                        color:
+                          type: string
+                          minLength: 1
+                      required:
+                        - color
+                  required:
+                    - helmet
+                    - body
+                    - gloves
+                    - boots
+              required:
+                - name
+                - mission
+                - country
+                - suit
+            examples:
+              Exemple:
+                value:
+                  name: Foo
+                  mission: ISS
+                  country: France
+                  suit:
+                    helmet:
+                      color: purple
+                    body:
+                      color: red
+                      kind: EMU
+                    gloves:
+                      color: purple
+                    boots:
+                      color: white
+        description: Cosmonaut body
+      parameters: []
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        description: Cosmonaut ID
+    patch:
+      summary: Modify cosmonaut
+      operationId: patch-cosmo
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  name:
+                    type: string
+                  mission:
+                    type: string
+                  country:
+                    type: string
+                  suit:
+                    type: object
+                    properties:
+                      helmet:
+                        type: object
+                        properties:
+                          color:
+                            type: string
+                          id:
+                            type: string
+                      body:
+                        type: object
+                        properties:
+                          color:
+                            type: string
+                          kind:
+                            type: string
+                          id:
+                            type: string
+                      gloves:
+                        type: object
+                        properties:
+                          color:
+                            type: string
+                          id:
+                            type: string
+                      boots:
+                        type: object
+                        properties:
+                          color:
+                            type: string
+                          id:
+                            type: string
+              examples:
+                Example:
+                  value:
+                    id: 497f6eca-6276-4993-bfeb-53cbbbba6f08
+                    name: Foo
+                    mission: ISS
+                    country: France
+                    suit:
+                      helmet:
+                        color: purple
+                        id: 497f6eca-6276-4993-bfeb-53cbbbba6f08
+                      body:
+                        color: red
+                        kind: EMU
+                        id: 497f6eca-6276-4993-bfeb-53cbbbba6f08
+                      gloves:
+                        color: purple
+                        id: 497f6eca-6276-4993-bfeb-53cbbbba6f08
+                      boots:
+                        color: white
+                        id: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: string
+              examples:
+                Example:
+                  value: Color xxxx isn't valid
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: string
+              examples:
+                Example:
+                  value: Id xxxxx not found
+        '503':
+          description: Service Unavailable
+      description: Modify cosmonaut attributs
+      parameters: []
+      tags:
+        - Cosmonaut
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              properties:
+                helmet:
+                  type: object
+                  properties:
+                    color:
+                      type: string
+                      minLength: 1
+                  required:
+                    - color
+                body:
+                  type: object
+                  properties:
+                    color:
+                      type: string
+                      minLength: 1
+                    kind:
+                      type: string
+                      minLength: 1
+                  required:
+                    - color
+                    - kind
+                gloves:
+                  type: object
+                  properties:
+                    color:
+                      type: string
+                      minLength: 1
+                  required:
+                    - color
+                boots:
+                  type: object
+                  properties:
+                    color:
+                      type: string
+                      minLength: 1
+                  required:
+                    - color
+              required:
+                - helmet
+                - body
+                - gloves
+                - boots
+            examples:
+              Example:
+                value:
+                  helmet:
+                    color: purple
+                  body:
+                    color: blue
+                    kind: EMU
+                  gloves:
+                    color: green
+                  boots:
+                    color: white
+        description: New cosmo properties
+    delete:
+      summary: Delete cosmonaut
+      operationId: delete-cosmo
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+              examples:
+                Example:
+                  value: User XXXX has been successfully deleted
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: string
+              examples:
+                Example:
+                  value: Id xxxx not found
+      description: Delete a cosmonaut
+      tags:
+        - Cosmonaut
+  '/fly/{id}':
+    patch:
+      summary: Fly cosmonaut
+      operationId: patch-fly-id
+      responses:
+        '200':
+          description: Updated cosmonaut
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  id:
+                    type: string
+                    minLength: 1
+                  name:
+                    type: string
+                    minLength: 1
+                  mission:
+                    type: string
+                    minLength: 1
+                  country:
+                    type: string
+                    minLength: 1
+                  suit:
+                    type: object
+                    properties:
+                      helmet:
+                        type: object
+                        properties:
+                          color:
+                            type: string
+                            minLength: 1
+                          id:
+                            type: string
+                            minLength: 1
+                        required:
+                          - color
+                          - id
+                      body:
+                        type: object
+                        properties:
+                          color:
+                            type: string
+                            minLength: 1
+                          kind:
+                            type: string
+                            minLength: 1
+                          id:
+                            type: string
+                            minLength: 1
+                        required:
+                          - color
+                          - kind
+                          - id
+                      gloves:
+                        type: object
+                        properties:
+                          color:
+                            type: string
+                            minLength: 1
+                          id:
+                            type: string
+                            minLength: 1
+                        required:
+                          - color
+                          - id
+                      boots:
+                        type: object
+                        properties:
+                          color:
+                            type: string
+                            minLength: 1
+                          id:
+                            type: string
+                            minLength: 1
+                        required:
+                          - color
+                          - id
+                    required:
+                      - helmet
+                      - body
+                      - gloves
+                      - boots
+                required:
+                  - id
+                  - name
+                  - mission
+                  - country
+                  - suit
+              examples:
+                Example:
+                  value:
+                    id: string
+                    name: string
+                    mission: string
+                    country: string
+                    suit:
+                      helmet:
+                        color: string
+                        id: string
+                      body:
+                        color: string
+                        kind: string
+                        id: string
+                      gloves:
+                        color: string
+                        id: string
+                      boots:
+                        color: string
+                        id: string
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: string
+              examples:
+                No suit:
+                  value: You must wear a suit to go outside earth
+                Not found:
+                  value: Id xxxx not found
+      description: Put cosmonaut on a mission
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: mission
+          description: Mission type
+          required: true
+      tags:
+        - Fly
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        description: Cosmonaut id
+components:
+  schemas: {}
+  securitySchemes: {}
+  parameters: {}
+tags:
+  - name: Cosmonaut
+  - name: Ping
+  - name: Fly
