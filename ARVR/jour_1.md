@@ -18,11 +18,11 @@ Votre troisième tâche est de modéliser (enfin !) deux meubles.
 Voici les schémas correspondants à l’etajaren ainsi que l’assoiren.
 
 <div align="center">
-  <img src=".github/assets/arvr_1.png" width=50%"/>
+  <img src="https://github.com/PoCInnovation/Pool2021/blob/master/.github/assets/arvr_1.png" width=50%"/>
 </div>
 
 <div align="center">
-  <img src=".github/assets/arvr_2.png" width=50%"/>
+  <img src="https://github.com/PoCInnovation/Pool2021/blob/master/.github/assets/arvr_2.png" width=50%"/>
 </div>
 
 ## IKEO War
