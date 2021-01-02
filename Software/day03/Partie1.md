@@ -2,7 +2,7 @@
 
 ✔ Envoyer des requêtes SQL simples.
 
-✔ Apprendre les bases de l'EDI Datagrip.
+✔ Apprendre les bases de l'IDE Datagrip ou de SQL Online.
 
 ✔ Comprendre les fondamentaux des bases de données relationnelles.
 
