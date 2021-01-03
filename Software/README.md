@@ -1,6 +1,8 @@
-# :wave: Welcome to PoC Software Pool 2021
+# :wave: Bienvenue à la piscine software 2021 de PoC !
 
-// Global description to do
+Pendant une semaine, vous allez pouvoir découvrir les différentes facettes du développement software : de la gestion de base de données au `devops`, en passant par un tour des technologies existantes.
+
+Vous aurez, à l'issue de cette piscine, les clés pour démarrer n'importe quels projets web, logiciel ou cloud.
 
 ## :closed_book: Day 1 - Bases du langage
  - [Go](https://github.com/PoCInnovation/Pool2021/blob/master/Software/day01/Go.md)
