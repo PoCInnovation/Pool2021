@@ -2,14 +2,14 @@
 
 // Global description to do
 
-## :closed_book: Day 1 - Bases du language
+## :closed_book: Day 1 - Bases du langage
  - [Go](https://github.com/PoCInnovation/Pool2021/blob/master/Software/day01/Go.md)
  - [Typescript](https://github.com/PoCInnovation/Pool2021/blob/master/Software/day01/Typescript.md)
 ## :radio_button: Day 2 - Les serveurs HTTP
  - [Go](https://github.com/PoCInnovation/Pool2021/blob/master/Software/day02/Go.md)
  - [Typescript](https://github.com/PoCInnovation/Pool2021/blob/master/Software/day02/Typescript.md)
 ## :package: Day 3 - Les bases de données
- - [Datagrip](https://github.com/PoCInnovation/Pool2021/blob/master/Software/day03/Partie1.md)
+ - [Datagrip](https://github.com/PoCInnovation/Pool2021/blob/mas5 journée à themeter/Software/day03/Partie1.md)
  - [Go]()
  - [Typescript](https://github.com/PoCInnovation/Pool2021/blob/master/Software/day03/Partie2-Typescript.md)
 ## :policeman: Day 4 - Docker et Authentification
