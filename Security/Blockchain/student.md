@@ -48,11 +48,21 @@ This will load your contract ABI (abstract binary interface, used to know what y
 The contract functions and variables are now loaded in the Deployed Contracts field.
 
 ## Choose a nickname
-[This challenge](https://capturetheether.com/challenges/warmup/nickname/)   is pretty similar to the previous one, but it lets you choose your Capture The Ether username.
+[This challenge](https://capturetheether.com/challenges/warmup/nickname/) is pretty similar to the previous one, but it lets you choose your Capture The Ether username.
+
+There are two contracts in this challenge, think about this while you try to resolve it.
+
 ## Guess the number
-The real security begins !  [The following challenge](https://capturetheether.com/challenges/lotteries/guess-the-number/)  is a first example of a proper contract. Try to steal the ether contained in the contract.
+The real security begins ! [The following challenge](https://capturetheether.com/challenges/lotteries/guess-the-number/)  is a first example of a proper contract.
+Try to steal the ether contained in the contract.
+
 ## Guess the secret number
-[This challenge](https://capturetheether.com/challenges/lotteries/guess-the-secret-number/)  will require you to write a small script, to, again, steal the ether contained in the contract.
+[This challenge](https://capturetheether.com/challenges/lotteries/guess-the-secret-number/) will require you to write a small script to steal the ether contained in the contract.
+Think about how you can reverse the cryptographic hash of the secret number.
+
 ## Assume ownership
-[This challenge](https://capturetheether.com/challenges/miscellaneous/assume-ownership/) is a bit different from the previous challenges, but it's very simple. The person that write this contract made a terrible mistake that could be serious in real life. 
+[This challenge](https://capturetheether.com/challenges/miscellaneous/assume-ownership/) is a bit different from the previous challenges, but it's very simple.
+The person that wrote this contract made a terrible mistake that could be serious in real life. 
 Your job is to find this mistake and to use it.
+
+This kind of flaws are very useful to extract ether stored in the contract.
