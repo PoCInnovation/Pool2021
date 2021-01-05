@@ -26,18 +26,27 @@ In the `Deploy & run transactions` :
   JavaScript VM means that the code will execute on a local network
   Injected Web3 will use metamask to connect to the real Ethereum network.
   
-No worries, you will install metamask in the first step.
+No worries, you will install metamask in the first challenge.
 
 # Challenges
 ## Deploy a contract
 For this exercise you have to solve  [this challenge](https://capturetheether.com/challenges/warmup/deploy/).
 
-The goal of this challenge is for you to set up the environment you need to solve the following exercises.
+This will ensure that your Metamask account is properly configured and that you can send a transaction to the network.
 
 No worries if the actions you make with the platform are slow, since you are working on a blockchain, all transactions are verified (yes, even on a test network), thus taking a bit of time (rarely more than a few minutes, but don’t hesitate to call a teacher if you have any doubt).
 
 ## Call me
-[The following exercise](https://capturetheether.com/challenges/warmup/call-me/)  expects you to interact with a deployed challenge.
+[The following exercise](https://capturetheether.com/challenges/warmup/call-me/) expects you to interact with a deployed contract's function.
+
+As you've read on the first challenge subject, whenever you click the ``Begin Challenge`` button the contract is deployed.
+If you need to interact with one of the contract function, there is a corresponding tool in the Remix Editor.
+
+Go to the ``Deploy & run transactions``. There is a field named `At Address` where you can paste your contract address.
+This will load your contract ABI (abstract binary interface, used to know what your contract contains so that you can interact with it).
+
+The contract functions and variables are now loaded in the Deployed Contracts field.
+
 ## Choose a nickname
 [This challenge](https://capturetheether.com/challenges/warmup/nickname/)   is pretty similar to the previous one, but it lets you choose your Capture The Ether username.
 ## Guess the number
