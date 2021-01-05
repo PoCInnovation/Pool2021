@@ -4,8 +4,11 @@ Pendant une semaine, vous allez pouvoir découvrir les différentes facettes du 
 
 Vous aurez, à l'issue de cette piscine, les clés pour démarrer n'importe quels projets web, logiciel ou cloud.
 
-La formation se découpe en 5 jours avec chacun un thème précis, chaque jour sera accompagné de talks sur la notion afin d'élargir le sujet.
+La piscine se découpe en 2 parties : une formation et une mise en application des connaissances.
 
+La formation se déroule en 5 jours, chacun portera sur un thème du software et sera encadrés par des étudiants ayant de grandes connaissances dans ces domaines. Des talks quotidiens sont également aux programmes pour éclaircir les notions les plus complexes du software et apporter des connaissances annexes très importantes. 
+
+Des intervenants extérieurs viendront aussi apporter leur expériences du domaine et expliquer les grands axes du développment software dans une entreprise.
 
 ## :closed_book: Day 1 - Bases du langage
 
