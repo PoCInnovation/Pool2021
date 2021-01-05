@@ -37,7 +37,7 @@ Voici les informations à remplir :
 
 Vous devriez obtenir le résultat suivant :
 
-// Image database exemple 
+![Database example on datagrip](https://github.com/PoCInnovation/Pool2021/blob/master/.github/assets/software-day3-database-example.png)
 
 ### SQL IDE Online
 
@@ -45,7 +45,7 @@ Connectez-vous à la base de donnée postgresql puis dans la catégorie `File`, 
 
 Vous devriez obtenir le résultat suivant :
 
-// Image SQL IDE
+![sql ide online](https://github.com/PoCInnovation/Pool2021/blob/master/.github/assets/software-day3-sql-ide.png)
 
 ### Let's code
 
