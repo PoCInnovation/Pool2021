@@ -1,6 +1,6 @@
 # :wave: Bienvenue à la piscine software 2021 de PoC !
 
-Pendant une semaine, vous allez pouvoir découvrir les différentes facettes du développement software : de la gestion de base de données au `devops`, en passant par un tour des technologies existantes.
+Pendant une semaine, vous allez pouvoir découvrir les différentes facettes du développement software : de la gestion de base de données au devops, en passant par un tour des technologies existantes.
 
 Vous aurez, à l'issue de cette piscine, les clés pour démarrer n'importe quels projets web, logiciel ou cloud.
 
