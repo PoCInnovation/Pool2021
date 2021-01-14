@@ -39,12 +39,12 @@ npm i typeorm pg pg-god reflect-metadata tsc --save
 
 </Details>
 
-Importer `reflect-metadata` dans le fichier `index.ts` pour que TypeORM puisse utiliser les décorateurs.
-Copier le fichier `tsconfig.json` présent sur le repos du sujet et coller le fichier la racine de votre projet.
+Importez `reflect-metadata` dans le fichier `index.ts` pour que TypeORM puisse utiliser les décorateurs.
+Copiez le fichier `tsconfig.json` présent sur le repo du sujet et coller le fichier à la racine de votre projet.
 
 > Nous vous donnons directement le fichier afin de ne pas perdre de temps sur la configuration mais vous pouvez trouver une explication [ici](https://www.typescriptlang.org/tsconfig).
 
-Créer maintenant un dossier `src/models`, c'est ici que nous allons stocker nos entités.
+Créez maintenant un dossier `src/models`, c'est ici que nous allons stocker nos entités.
 
 ### Contexte
 
@@ -81,12 +81,12 @@ Pour cela :
  - Ajoutez le décorateur `@Entity` sur votre classe.
  - Définissez vos attributs comme étant des colonnes grâce aux décorateurs `@Columns`
 
-:warning: L'id est une colonne spéciale dite `Primaire`, utilisez un décorateur spécial qui va _auto généré_ un `uuid`.
+:warning: L'id est une colonne spéciale dite `Primaire`, utilisez un décorateur spécial qui va _auto générer_ un `uuid`.
 
 #### Assigner
 
 Votre table est définie, mais n'oubliez pas, son comportement reste celui d'une classe.<br>
-Créer un constructeur dans la classe qui va venir prendre en paramètres les variables nécessaires à la création d'un développeur.<br>
+Créee un constructeur dans la classe qui va venir prendre en paramètres les variables nécessaires à la création d'un développeur.<br>
 Votre constructeur doit également exécuter la fonction `super` pour hériter des méthodes de la classe `BaseEntity`.
 
 :bulb: L'exercice suivant vous permettra de vérifier si tout fonctionne comme prévu, vous pouvez néanmoins appeler un encadrant pour vérifier votre classe.
@@ -133,17 +133,17 @@ Dans le fichier `appConfig.ts`, à l'aide de vos connaissances acquises au jour 
 
 ### Connexion
 
-À présent, dans le fichier `src/appDatabase.ts`, exporter une fonction _asynchrone_ `dbInitialize`.
+À présent, dans le fichier `src/appDatabase.ts`, exportez une fonction _asynchrone_ `dbInitialize`.
 Cette fonction doit :
  - Créer la base de données grâce à [pg-god](https://github.com/ivawzh/pg-god#programmatic-invocation)
  - Créer une connection à votre base de données.
  - Synchroniser les `models` pour créer les tables dans votre db. 
 
-Appeler cette fonction dans votre `index.ts`
+Appelez cette fonction dans votre `index.ts`
  - Si l'opération réussie, écrivez : `Database <nom de la db> is ready`
  - Si l'opération échoue, écrivez : `Failed to initialize database: <raison de l'échec>`
 
-Ajouter dans votre `package.json` la commande suivante :
+Ajoutez dans votre `package.json` la commande suivante :
 
 ```json
 "dev:db": "docker run --name ${DB_NAME} -e POSTGRES_PASSWORD=${DB_PASS} -e POSTGRES_USER=${DB_USER} -p ${DB_PORT}:${DB_PORT} -d postgres:alpine",
@@ -154,7 +154,7 @@ Vous avez maintenant une base de données lancée sur votre ordinateur.
 
 > Il n'est pas rare d'ajouter le lancement de services externes directement dans votre `package.json`.
 
-Exécute< la commande `npm run dev:db` puis `npm run start`.<br>
+Exécutez la commande `npm run dev:db` puis `npm run start`.<br>
 Si tout se passe bien, le message de succès devrait apparaître :joy:
 
 > Vous pouvez également vous connecter à votre base de données grâce à Datagrip et voir votre table nouvellement créée.
@@ -172,7 +172,7 @@ Si tout se passe bien, le message de succès devrait apparaître :joy:
 
 Il faut maintenant développer les fonctions pour lire, ajouter, modifier et supprimer un `Developer`. Autrement dit, le CRUD de celui-ci.
 
-Vous allez créer un dossier `src/controllers` dans lequel vous allez stocker toutes les fonctions interagissant avec la base de données.
+Vous allez créer un dossier `src/controllers` dans lequel vous allez stocker toutes les fonctions intéragissant avec la base de données.
 Écrivez les fonctions ci-dessous dans le fichier `src/controllers/developerControllers.ts`.
 
 ### C comme Create
@@ -232,7 +232,7 @@ Vous l'avez compris, vous vous apprêtez à créer une relation du type `One to 
 
 ### Définir le modèle
 
-Dans le fichier `src/models/Contact.ts`, créer une classe `Contact` à la manière de l'exercice 02 avec les attributs suivant :
+Dans le fichier `src/models/Contact.ts`, créez une classe `Contact` à la manière de l'exercice 02 avec les attributs suivant :
  - `id` : l'identifiant de la table
  - `email` : l'email du développeur
  - `phone` : le téléphone du développeur
