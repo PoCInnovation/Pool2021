@@ -78,7 +78,7 @@ Vous allez faire 3 requêtes :
 Vous avez récupéré les informations d'une table, il est temps de mettre en relations ses données. 
 
 Vous allez écrire 3 nouvelles requêtes :
-- Récupérer les noms des membres et des projets présent dans les tables `members` et `projects`. Vous devrez expliciter le nom des colonnes contenant des noms en `members_name` et `projects_name`.
+- Récupérer les noms des membres et des projets présents dans les tables `members` et `projects`. Vous devrez expliciter le nom des colonnes contenant des noms en `members_name` et `projects_name`.
 - Récupérer tous les membres du projet `Researchshare`. 
 - Récupérer tous les projets du responsable `petit.lucas@epitech.eu`. Les résultats devront être triés par pôle.
 
@@ -93,9 +93,9 @@ Lire des informations, c'est bien, mais il est primordial de pouvoir modifier sa
 Vous allez écrire 3 requêtes :
 - Ajouter un nouveau `membre`. Son `id` doit avoir la valeur `100`.
 - Supprimer tous les projets ayant le status `done`.
-- Ajouter le membre créée précédemment au projet `PoCZero`.
+- Ajouter le membre créé précédemment au projet `PoCZero`.
 
-> :warning: N'oubliez pas, les membres et les projets sont reliés grâce à une table de relation, vous devrez peut-être faire votre délétion en deux temps. 
+> :warning: N'oubliez pas, les membres et les projets sont reliés grâce à une table de relation, vous devrez peut-être faire votre suppression en deux temps. 
 
 #### Ressources
 - [Supprimer des éléments en SQL](https://sql.sh/cours/delete)
@@ -109,8 +109,8 @@ Vous allez vous servir d'outils d'agrégations pour relever des chiffres sur la 
 
 Pour cela, écrivez les 3 requêtes suivantes capables de :
 - Compter le nombre de membres.
-- Compter le nombre de projets par pole.
-- Compter le nombre de membres réparties sur les projets en les triant par pole. Le résultat doit être renvoyé dans l'ordre croissant.
+- Compter le nombre de projets par pôle.
+- Compter le nombre de membres répartis sur les projets en les triant par pôle. Le résultat doit être trié dans l'ordre croissant.
 
 > :warning: Faites attention aux doublons sur le dernier exercice.
 
@@ -119,7 +119,7 @@ Pour cela, écrivez les 3 requêtes suivantes capables de :
 
 ## Exercice 05 - La famille Martin
 
-Vous avez surement remarqué, il y a un nombre important de `xxxxxxx.martin@epitech.eu` parmi les membres de PoC.
+Vous avez sûrement remarqué, il y a un nombre important de `xxxxxxx.martin@epitech.eu` parmi les membres de PoC.
 
 La famille Martin aimerait organiser une petite fête, elle a besoin de vous pour dresser la liste des invités !
 
