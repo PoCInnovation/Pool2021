@@ -47,6 +47,26 @@ There various way of protecting a binary from Reverse Engineering, for example :
 -   dynamic analysis protection with ptrace
 -   stripped binaries : remove the useful debugging information, which are basically metadata about variables and functions addresses and names.
 
+## 4- Vault
+[Polymorphism](https://en.wikipedia.org/wiki/Polymorphism_(computer_science)) is the idea of self-modifying programs. You should already have had a talk about it. Feel free to search about it anyway.
+If you're familiar with this concept, you should know a bit about the linux's ELF format and it's sections. Don't hesitate to document yourself about it aswell.
+
+You saw what GDB's about, that's cool! Now let's learn a little about `objdump`. It's a prorgam that can show you a lot about file objects, so everything tied to compilation (your binary for example). Here are some random options :
+- `-D` Display assembler content of your binary and it's different sections
+- `-x` Display all the headers informations
+- `-EB` Assume Big Endian
+- `-EL` Assume Little Endian
+`man objdump` is your friend :)
+
+This program is crypted ! There should be a key somewhere that could help me decrypt it.. 
+
+Find the encryption key in the ELF sections.
+
+Flag format: `PoC{key}`
+
+`key` is 17 bytes long. It must be submitted in base 16.
+
+
 Try to identify which protection(s) is/are used on  _im-protected_. Find a way to bypass it and solve the challenge !
 ## 4 - Gladiator
 It’s time to use your knowledge in a typical CTF exercice. The _gladiator_ binary will take you through various way to check an input. Each step has its own logic : you have to find ways to go and to validate the final step. Try to strictly apply all the techniques you have learnt before !
