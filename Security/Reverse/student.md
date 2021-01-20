@@ -62,7 +62,7 @@ You saw what GDB's about, that's cool! Now let's learn a little about `objdump`.
 
 This program is crypted ! There should be a key somewhere that could help me decrypt it.. 
 
-Find the encryption key in the ELF sections, get back to GDB!
+Find the encryption key in the ELF sections.
 
 Flag format: `PoC{key}`
 
@@ -75,7 +75,8 @@ Find the real instruction at offset `401ad1`.
 
 Flag format: `PoC{ins}`
 
-`ins` is the instruction and it's operand(s), as seen in a disassambler.
+`ins` is the instruction and it's operand(s), as seen in a disassambler, but the binary is still crypted..
+Get back to GDB!
 
 <details>
   <summary>hint</summary>
