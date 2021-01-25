@@ -402,7 +402,11 @@ Vous pouvez passer au bonus si vous souhaitez apprendre la programmation orient�
 
 ## Bonus
 
-// TODO: Refaire tous les exercices mais en orienté objet (road map à écrire)
+Tout d'abord, félicitation d'avoir terminé ce day, il n'est vraiment pas simple quand on débute.
+ 
+Vous pouvez maintenant essayer de refaire toute cette journée mais en orientée objet !
+
+Vous êtes libre sur l'implémentation (c'est un bonus après tout) mais n'hésitez pas à poser des questions aux encadrants sur vos choix d'implémentations !
 
 ##### Ressources
 - [L'orienté object](https://codaholic.sillo.org/2016/04/05/typescript-poo-et-espaces-de-noms/)
