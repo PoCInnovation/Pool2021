@@ -14,8 +14,35 @@ Comme hier, vous allez créer un nouveau dossier pour les exercices du jour, int
 
 Vous devriez déjà avoir VSCode ou WebStorm d'installé, il ne vous reste donc plus qu'à initialiser une nouvelle application avec `npm init` et `npx eslint --init` (cf les exercices 01 et 02 du [day01](https://github.com/PoCInnovation/Pool2021/blob/master/Software/day01/Typescript.md)).
 
+Vous devrez également créer un fichier `tsconfig.json` à la racine du dossier et y insérer la configuration suivante :
+
+```json
+{
+  "compilerOptions": {
+    "target": "es2020",
+    "module": "commonjs",
+    "sourceMap": true, 
+    "outDir": "./dist",  
+    "strict": true,  
+    "allowUnreachableCode": false,
+
+    "baseUrl": "./src",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": [
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "tests/**/*.ts"
+  ]
+}
+```
+
 #### Ressources
 - Premiers exercices du day01
+- [Le TSconfig](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html)
 
 ## Exercice 01 - Le Hello World du serveur web
 
