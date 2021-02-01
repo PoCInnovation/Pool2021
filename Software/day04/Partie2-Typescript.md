@@ -43,7 +43,7 @@ let user: User[] = []
     - Définir le statut 400
     - Renvoyer `Bad Request`
 
-- Créez une route **POST** `/singup-session`
+- Créez une route **POST** `/signup-session`
   - Prend un body contenant l'`email` et le `password` de l'utilisateur
   - Si les les identifiants matchent, renvoie un cookie contenant le body signé reçu
   - Si aucun message n'est donné ou que les identifiants ne matchent pas
@@ -101,7 +101,7 @@ let userJWT: UserJWT[] = []
 
 - Créez une fonction qui recoit un token et comapre dans la base de donnée si les mots de passe matchent, en renvoyant un bool
 
-- Créez une route **POST** `/singup-jwt`
+- Créez une route **POST** `/signup-jwt`
   - Prend un body contenant l'`email` et le `password` de l'utilisateur
   - Si les les identifiants matchent, renvoie un token contenant le body signé reçu
   - Si aucun message n'est donné ou que les identifiants ne matchent pas
