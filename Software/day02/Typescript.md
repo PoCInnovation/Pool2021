@@ -350,7 +350,7 @@ Les signatures des fonctions peuvent être imbriquées comme ci-dessous :
 const validate = (schema: any, location: string): void => (req: Request, res: Response, next: NextFunction): void => your logic goes here
 ```
 
-:warning: Le type du schéma est `any`, car il n'y a pas de type générique disponible pour un schéma zod.
+:warning: Le type du schéma est `any`, car il n'y a pas de type générique disponible pour un schéma zod (à moins que...).
 
 
 > Vous pouvez bien évidemment mettre une location par défaut pour faciliter la lecture du code.
