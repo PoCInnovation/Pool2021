@@ -12,7 +12,7 @@
 
 Comme hier, vous allez créer un nouveau dossier pour les exercices du jour, intitulé `day02` (dans le même repo qu'hier)
 
-Vous devriez déjà avoir VSCode ou WebStorm d'installé, il ne vous reste donc plus qu'à initialiser une nouvelle application avec `npm init` et `npx eslint --init` (cf les exercices 2 et 3 du d01).
+Vous devriez déjà avoir VSCode ou WebStorm d'installé, il ne vous reste donc plus qu'à initialiser une nouvelle application avec `npm init` et `npx eslint --init` (cf les exercices 2 et 3 du [day01](https://github.com/PoCInnovation/Pool2021/blob/master/Software/day01/Typescript.md)).
 
 #### Ressources
 - Premiers exercices du day01
