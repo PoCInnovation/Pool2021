@@ -1,0 +1,9 @@
+[
+    { "name": "jeremie.joannard@epitech.eu", "uid": "04293432A96A80", "authorized": false },
+    { "name": "theo.rocchetti@epitech.eu", "uid": "044D6032A96A80", "authorized": false },
+    { "name": "axel.zenine@epitech.eu", "uid": "040931B2AA6A80", "authorized": true },
+    { "name": "kallista1.rhoc@epitech.eu", "uid": "040339B2AA6A80", "authorized": false },
+    { "name": "zacharie.lawson@epitech.eu", "uid": "04174132A96A80", "authorized": true },
+    { "name": "naoufel.berrada@epitech.eu", "uid": "04395BC2A86A80", "authorized": false },
+    { "name": "cyril.de-lajudie@epitech.eu", "uid": "043B3822A96A80", "authorized": true }
+]
