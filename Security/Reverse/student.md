@@ -100,6 +100,10 @@ GDB and PEDA are good tools but when we face complex / heavy programs, it’s ha
 -   a good integration of the Ghidra decompiler (a decompiler deduces the C code from the binary asm instructions).  [Ghidra](https://github.com/NationalSecurityAgency/ghidra)  was developped and released by the NSA.
 -   a built-in debugger
 
+Discover and install Cutter [here](https://cutter.re).
+
+![cutter img](https://cutter.re/assets/images/cutter_head_light_theme.png)
+
 ## 0 - hash
 Cutter gives you a nice dashboard every time you load a binary. Try to check it out on this binary and find the sha1 hash to validate the challenge.
 ## 1 - strings
