@@ -100,21 +100,40 @@ GDB and PEDA are good tools but when we face complex / heavy programs, it’s ha
 -   a good integration of the Ghidra decompiler (a decompiler deduces the C code from the binary asm instructions).  [Ghidra](https://github.com/NationalSecurityAgency/ghidra)  was developped and released by the NSA.
 -   a built-in debugger
 
-## 1 - Translate me
-Cutter decompiler has an unusual syntax. The purpose of this challenge is not to find a flag but to translate the decompiler code you get with Cutter to C code and then send it to us so we can give you the flag.
-## 2 - Binary Changes
-Now we are going to learn how to patch a binary. Patching a binary means changing some instructions to change the behaviour of the program. To patch a binary in Cutter, you have to :
+## 0 - hash
+Cutter gives you a nice dashboard every time you load a binary. Try to check it out on this binary and find the sha1 hash to validate the challenge.
+## 1 - strings
+A string containing the flag is hidden in this binary. Try to find at which address it is located with Cutter. When you have the address, you validate this challenge.
+## 2 - imports
+What is the name of the function imported in the binary from the magic library ?
+## 3 - graph
+This challenge does various checks on your input. With the Graph view of Cutter, try to understand what the code is doing and find an input that matches all the checks !
+## 4 - patching
+This challenge is litteraly impossible to solve. Try to edit it with Cutter to get the victory print !
+## 5 - checks
+This program is a brand new ultra-secured password checking system. Can you break it ?
 
--   open the binary in write mode (the option must be set in the first popup window at the beginning of Cutter).
--   make a right click on the C / asm code and go to Edit -> instruction to rewrite the instruction !
--   then you can launch again your program and see the effect of your changes !
+You may use the Graph, the Disassembly and the Decompiler views but you SHOULD NOT use the patching features provided by Cutter.
+## 6 - mycraft
+I can't play a game of MyCraft, it keeps telling me "Wrong Licence" .... :'(
 
-Depending on the size of the program and the impact of your changes, edition can take some time. Be patient !
+HELP MEEEEEEEEEEEEEEEEEEEEEEEEE
 
-Start analysing the  _impossible_  binary : first understand why it is called impossible, then solve the challenge !
-## 3 - Craft
-My friend got this cool game, but I can't seem to get it to work, maybe there's a security of some sort ?
-Use what you learned until now to run the game and show us your gamer screen to validate the exercice.
+Download the files here : https://pwnh4.com/poc-workshop-craft.zip 
 
-## 4 - Heroes
+When you have unzip this folder, you have to :
+
+1. Install libcurl4-openssl-dev with your system packet manager, if not already installed
+2. Do a `mkdir build && cd build && cmake .. && make && ./craft`
+
+Load the binary in writabe mode in Cutter and use the edition feature to bypass all the licence checks !
+## 7 - arena
+Welcome to the Arena.
+
+You must defeat all champions to get the flag.
+
+You can use all the Cutter features except patching, which is useless here to get the flag.
+
+May the force be with you !
+## 8 - Heroes
 All the informations you need are in the challenge description at https://challs.poc-innovation.com.
