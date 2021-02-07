@@ -84,8 +84,14 @@ This instruction is found in a malicious function.
 </details>
 
 
+# 6 - Alien
 
-## 6 - Gladiator
+*Challenge name: alien*
+
+The *alien* binary is different from what we have encountered so far. Find out why and try to flag the challenge anyway.
+Find the flag !
+
+## 7 - Gladiator
 It’s time to use your knowledge in a typical CTF exercice. The _gladiator_ binary will take you through various way to check an input. Each step has its own logic : you have to find ways to go and to validate the final step. Try to strictly apply all the techniques you have learnt before !
 # Cutter
 GDB and PEDA are good tools but when we face complex / heavy programs, it’s hard to make an efficient analysis. That’s why today we are going to learn how to use Cutter, a GUI tool built on top of  [Radare2](https://github.com/radareorg/radare2)  This tool is great because it features :
