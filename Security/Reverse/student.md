@@ -109,3 +109,6 @@ Start analysing the  _impossible_  binary : first understand why it is called im
 ## 3 - Craft
 My friend got this cool game, but I can't seem to get it to work, maybe there's a security of some sort ?
 Use what you learned until now to run the game and show us your gamer screen to validate the exercice.
+
+## 4 - Heroes
+All the informations you need are in the challenge description at https://challs.poc-innovation.com.
