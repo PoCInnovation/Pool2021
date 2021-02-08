@@ -68,7 +68,15 @@ Flag format: `PoC{key}`
 
 `key` is 17 bytes long. It must be submitted in base 16.
 
-## 5- Robbery
+
+# 5 - Alien
+
+*Challenge name: alien*
+
+The *alien* binary is different from what we have encountered so far. Find out why and try to flag the challenge anyway.
+Find the flag !
+
+## 6 - Robbery
 This is an x64 ELF polymorphic binary.
 
 Find the real instruction at offset `401ad1`.
@@ -82,14 +90,6 @@ Get back to GDB!
   <summary>hint</summary>
 This instruction is found in a malicious function.  
 </details>
-
-
-# 6 - Alien
-
-*Challenge name: alien*
-
-The *alien* binary is different from what we have encountered so far. Find out why and try to flag the challenge anyway.
-Find the flag !
 
 ## 7 - Gladiator
 It’s time to use your knowledge in a typical CTF exercice. The _gladiator_ binary will take you through various way to check an input. Each step has its own logic : you have to find ways to go and to validate the final step. Try to strictly apply all the techniques you have learnt before !
