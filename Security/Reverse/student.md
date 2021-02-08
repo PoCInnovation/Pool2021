@@ -33,7 +33,7 @@ Keep all this recognition process in mind, it’s really useful when you face a 
 Static analysis is the process of studying a program without running it. To do so, we can use GDB to interpret the asm code in binary form to plaintext binary. Then we read this code and deduce the way the program work. So go ahead and open  _translate_me_  with  `gdb ./translate_me`  ! To display the asm instructions of a function, use  `pdisas function_name`  or  `pd function_name`.
 
 The purpose of this challenge is not to find a flag but to translate the asm code you get with gdb to C code and then send it to us so we can give you the flag.
-## 2- Break Point
+## 2- Dynamic Analysis
 Now we are going to learn how to analyze dynamically a binary. With GDB we can run our binary instruction by instruction and see, for each one of them, the corresponding values of the registers and the stack. To dynamically analyze a binary, you can use  `start`  in gdb. Here are the most useful commands during a dynamic analysis in GDB :
 
 -   `s`  to execute the next instruction.
