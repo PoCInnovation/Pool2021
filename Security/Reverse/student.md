@@ -40,7 +40,7 @@ Now we are going to learn how to analyze dynamically a binary. With GDB we can r
 -   `finish`  to go directly to the next instruction after the current function.
 -   `b*addr`  where addr is the address of an instruction. This sets a breakpoint to this address.
 -   `run`  to go to the next breakpoint or to the end of the program if no breakpoint set.
-## 3- Protection
+## 3- Basic protection
 There various way of protecting a binary from Reverse Engineering, for example :
 
 -   obfuscation : you pollute your binary with useless instructions to make the work of the reverse engineer harder.
