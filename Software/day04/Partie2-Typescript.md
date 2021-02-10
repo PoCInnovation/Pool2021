@@ -80,7 +80,7 @@ Passons à présent au concret ! Créons un flow d'authentification basé sur le
 - Ré-utilisez l'objet user de l'exercice précédent
 - Ajoutez un package pour générer les JWT:
 ```
-npm i jsonwebtoken
+npm i jsonwebtoken @types/jsonwebtoken
 ```
 
 - Créez une route **POST** `/signin-jwt`
@@ -115,7 +115,7 @@ Sauvegarder des utilisateurs, c'est bien, mais si vous voulez qu'ils vous fassen
 Pour cela, nous allons utiliser la librairie de hash [Bcrypt](https://en.wikipedia.org/wiki/Bcrypt). Il existe des implémentation dans de nombreux langages, notamment JS/TS
 
 ```bash
-npm i bcrypt
+npm i bcrypt @types/bcrypt
 ```
 
 Mettez à jour vos routes afin de hash le mot de passe lors de la création d'un utilisateur, puis utilisez les fonctions de bcrypt pour comparer le mot de passe reçu lors du signup et voir s'ils matchent bien.
@@ -182,3 +182,5 @@ Maintenant que vous maîtrisez plusieurs méthodes pour authentifier vos utilisa
 - Combiner deux méthodes d'authentification, par exemple pouvoir se connecter au même compte via Google ou aussi avec un email et mot de passe
 - Implémenter l'authentification avec d'autres sites comme facebook ou github, ce qui se fait assez simplement grâce à passport
 - Utiliser une véritable base de donnée, comme vu hier, pour stocker vos utilisateurs
+
+> PoC - 2021

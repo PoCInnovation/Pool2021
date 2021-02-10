@@ -48,7 +48,7 @@ sudo dnf config-manager --add-repo https://download.docker.com/linux/fedora/dock
 sudo dnf install docker-ce docker-ce-cli containerd.io
 ```
 
-Installer `docker-compoe` :
+Installer `docker-compose` :
 
 ```shell
 sudo curl -L "https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
@@ -59,7 +59,7 @@ sudo chmod +x /usr/local/bin/docker-compose
 
 Une fois l'installation complétée, activez le service avec la commande `sudo systemctl start docker`.
 
-:bulb: Vous pouvez l'activer de façon permanante avec la commande `sudo systemctl enable docker`.
+:bulb: Vous pouvez l'activer de façon permanente avec la commande `sudo systemctl enable docker`.
 
 > Pour le moment, vous serez obligé d'utiliser les commandes Docker avec `sudo`, il existe une façon de régler ce problème mais il faut redémarrer. Vous pourrez le faire plus tard si vous le souhaitez.
 
@@ -71,11 +71,11 @@ Si vous êtes sur Fedora 31, vous allez probablement voir l'erreur suivante :
 docker: Error response from daemon: cgroups: cannot found cgroup mount destination: unknown.
 ```
 
-Suivez la solution sur ce [lien](https://github.com/docker/for-linux/issues/219), attention, vous devrez executer ce script à chaque reboot.
+Suivez la solution sur ce [lien](https://github.com/docker/for-linux/issues/219), attention, vous devrez exécuter ce script à chaque reboot.
 
 #### Hello World
 
-Exécuter la commande `docker run hello-world`.
+Exécuter la commande `sudo docker run hello-world`.
 
 Si tout se passe bien, vous devriez obtenir le résultat suivant
 
@@ -112,7 +112,7 @@ Votre dockerfile doit :
 > Le keyword `alpine` sur une image précise que celle-ci est allégée, seule le nécessaire est dans celle-ci.
 > Par exemple, les images alpines ont comme gestionnaire de paquets `apk` et non `apt`.
 
-Une fois l'image lancée, vous devriez pouvoir accéder à votre application. 
+Une fois l'image lancée, vous devriez pouvoir accéder à votre application.
 
 **Rendu :** `exo1/`
 
@@ -124,25 +124,25 @@ Une fois l'image lancée, vous devriez pouvoir accéder à votre application.
 
 Vous avez vu comment Dockeriser une application, il est temps de passer à la vitesse supérieure ! Vous allez maintenant gérer plusieurs conteneurs.
 
-L'objectif est de dockeriser cet ensemble d'applications. 
+L'objectif est de dockeriser cet ensemble d'applications.
 
-Les sources sont composées de : 
+Les sources sont composées de :
  - Une base de données postgres
  - Une API en Nestjs
  - Une webapp en React
 
 À l'issue de cet exercice, vous devrez obtenir le résultat suivant :
 
-![archi micro-services](https://github.com/PoCInnovation/Pool2021/blob/master/.github/assets/software-day4-exo4-archi.png)
+![archi micro-services](../../.github/assets/software-day4-exo4-archi.png)
 
-Pour cela, vous devrez réaliser : 
+Pour cela, vous devrez réaliser :
  - Un Dockerfile pour votre Backend
  - Un Dockerfile pour votre Frontend
  - Un docker-compose pour relier le tout
 
 Le [docker-compose](https://docs.docker.com/compose/) vous permet d'orchestrer simultanément différents services (conteneur). Cela vous simplifie énormément la tâche lorsqu'il s'agit de déployer plusieurs micro-services.
 
-Votre docker-compose doit avoir : 
+Votre docker-compose doit avoir :
 - **3** services :
   - backend
   - frontend
