@@ -8,13 +8,13 @@
 
 ## Exercice 00 - Setup
 
-Pour ce jour-ci, nous allons retourner sur nos serveurs Express ! Vous pouvez repartir du code de votre jour 2 si vous souhaitez, ou initialiser un nouveau server vide, à vous de voir, vous connaissez les commandes.
+Pour cette demi-journée, nous allons retourner sur nos serveurs Express ! Vous pouvez repartir du code de votre jour 2 si vous souhaitez, ou initialiser un nouveau server vide, à vous de voir, vous connaissez la procédure.
 
 ## Exercice 01 - Les Sessions
 
 ### Présentation
 
-Une session est une manière assez simple de gérer l'authentification de vos utilisateurs. Vous allez stocker du coté du server les informations des utilisateurs qui sont connectés. Le server s'occupe d'envoyer un cookie au client qui permettra d'identifier toutes ses requêtes. Si les informations du cookie coincident avec ce qui est stoqué dans la session, alors l'utilisateur est bien connecté
+Une session est une manière assez simple de gérer l'authentification de vos utilisateurs. Vous allez stocker du coté du server les informations des utilisateurs qui sont connectés. Le server s'occupe d'envoyer un cookie au client qui lui permettra d'identifier toutes ses requêtes. Si les informations du cookie coincident avec ce qui est stocké dans la session, alors l'utilisateur est considéré comme connecté.
 
 ### Le concret
 
@@ -32,12 +32,13 @@ interface User {
   password: string;
 }
 
-let user: User[] = []
+let users: User[] = []
 ```
+> Si vous souhaitez utiliser une vrai base de donnée comme vu dans les jours précédents, libre à vous de le faire !
 
 - Créez une route **POST** `/signin-session`
   - Prend un body contenant l'`email` et le `password` de l'utilisateur
-  - Enregistre l'utilisateur dans l'objet `user`
+  - Enregistre l'utilisateur dans l'objet `users`
   - Renvoie un cookie contenant le body signé reçu
   - Si aucun message n'est donné
     - Définir le statut 400
@@ -64,7 +65,7 @@ let user: User[] = []
 
 Les JSON Web Token, d'après wikipedia *permetent l'échange sécurisé de jetons entre plusieurs parties. Cette sécurité de l’échange se traduit par la vérification de l’intégrité des données à l’aide d’une signature numérique. Elle s’effectue par l'algorithme HMAC ou RSA*.
 
-Pour l'expliquer simplement, ces tokens vous permettrons d'identifier vos utilisateurs, qui les stockerons dans un cookies, ou dans le local storage. leur structure en 3 partie garantis que l'information qui transite entre l'utilisateur et le server n'a pas été modifiée. Pour plus d'explications sur leur fonctionnement et leur intérét, rendez vous sur [jwt.io](https://jwt.io/introduction/). Vous pourrez également utiliser un [débuggeur pour visualiser](https://jwt.io/#debugger-io) les différentes parties qui composent un jwt
+Pour l'expliquer simplement, ces tokens vous permettrons d'identifier vos utilisateurs, qui les stockerons dans un cookies, ou dans le local storage. leur structure en 3 partie garantis que l'information qui transite entre l'utilisateur et le server n'a pas été modifiée. Pour plus d'explications sur leur fonctionnement et leur intérét, rendez vous sur [jwt.io](https://jwt.io/introduction/). Vous pourrez également utiliser un [débuggeur pour visualiser](https://jwt.io/#debugger-io) les différentes parties qui composent un jwt.
 
 Le flow sera le suivant:
 - vous envoyez à votre api vos identifiants (email, password etc.)
@@ -76,24 +77,15 @@ Le flow sera le suivant:
 
 Passons à présent au concret ! Créons un flow d'authentification basé sur les JWT, pour cela:
 
+- Ré-utilisez l'objet user de l'exercice précédent
 - Ajoutez un package pour générer les JWT:
 ```
 npm i jsonwebtoken
 ```
 
-- Créez un objet `userJWT` qui nous servira de base de donnée simplifiée, stockée en ram
-```ts
-interface UserJWT {
-  email: string;
-  password: string;
-}
-
-let userJWT: UserJWT[] = []
-```
-
 - Créez une route **POST** `/signin-jwt`
   - Prend un body contenant l'`email` et le `password` de l'utilisateur
-  - Enregistre l'utilisateur dans l'objet `userJWT`
+  - Enregistre l'utilisateur dans l'objet `users`
   - Renvoie un token contenant le body signé reçu
   - Si aucun message n'est donné
     - Définir le statut 400
@@ -116,22 +108,36 @@ let userJWT: UserJWT[] = []
     - Définir le statut 403
     - Renvoyer `Forbidden`
 
-## Exercice 03 - Oauth 2 et Google
+## Exercice 03 - Hash de mots de passe
+
+Sauvegarder des utilisateurs, c'est bien, mais si vous voulez qu'ils vous fassent confiance, vous ne devez pas laisser leurs données sensibles lisibles. Nous allons donc *hash* leur mot de passe afin que même nous, nous ne puissions pas le lire.
+
+Pour cela, nous allons utiliser la library de hash [Bcrypt](https://en.wikipedia.org/wiki/Bcrypt). Il existe des implémentation dans de nombreux langages, nottament JS/TS
+
+```bash
+npm i bcrypt
+```
+
+Mettez à jour vos routes afin de hash le mot de passe lors de la création d'un utilisateur, puis utilisez les fonctions de bcrypt pour comparer le mot de passe reçu lors du signup et voir s'ils matchent bien.
+> Créez des fonctions utilisataires génénriques réutilisables peu importe le type d'authentification utilisé.
+
+## Exercice 04 - Oauth 2 et Google
 
 ### Présentation
 
-OAuth 2.0 est un framework d’autorisation permettant à une application tierce d’accéder à un service web. Vous l'avez obligatoirement déjà vu grace aux fameux boutons "Se connecter avec Google", "se connecter avec Facebook", etc. Concretement, vous allez utiliser des sites externes pour identifier vos utilisateurs.
+OAuth 2.0 est un framework d’autorisation permettant à une application tierce d’accéder à un service web. Vous l'avez obligatoirement déjà vu grace aux fameux boutons "Se connecter avec Google", "se connecter avec Facebook", etc. Concrètement, vous allez utiliser des sites/services externes pour identifier vos utilisateurs.
 
 Le fonctionnement est assez simple:
 - Vous créez une application OAuth sur le site que vous souhaitez utiliser (google, facebook, twitter, github, microsoft etc.)
 - vous definissez une URL de redirection qui vous ramène vers votre site une fois les étapes de connexion faites
-- Depuis votre server, vous récuperez dans cette url de redicrection les identifiants
+- Depuis votre server, vous récuperez dans cette url de redicrection un token
+- Ce tokens vous permettrons par la suite de récuperer les informations de l'utilisateur
 
-Ces identifiants sont liés à l'application: un id qui represente votre compte Facebook ne sera pas le même sur votre app et sur celle de votre voisin.
+Ces identifiants sont liés à l'application: un id qui représente votre compte Facebook ne sera pas le même sur votre app et sur celle de votre voisin.
 
 ### Le concret
 
-Nous allons passer par google pour cet exercice et nous nous aiderons de passport pour simplifier les démarches:
+Nous allons passer par google pour cet exercice et nous nous aiderons de [passport](https://github.com/jaredhanson/passport) pour simplifier les démarches:
 
 - Créez une application avec google sur la [console developpeurs](https://console.developers.google.com/)
   - vous aurez besoin de bien parametrer la callback url que vous ferez dans les étapes suivantes
@@ -151,7 +157,7 @@ interface UserOAuth {
 let userOAuth: UserOAuth[] = []
 ```
 
-- Mettez en place la `GoogleStrategy` de passport à l'aide de l'id de votre application, son code secret et la callback URL, ainsi que la fonction qui sera appellée une fois que google redirgera l'utilisateur sur votre api
+- Mettez en place la `GoogleStrategy` de passport à l'aide de l'id de votre application, son code secret et la callback URL, ainsi que la fonction qui sera appellée une fois que google redirgera l'utilisateur sur votre api.
 
 - Créez les différents routes qui vous permettrons d'utiliser la statégie fraichement créee
 
@@ -165,7 +171,7 @@ let userOAuth: UserOAuth[] = []
     - Définir le statut 403
     - Renvoyer `Forbidden`
 
-**ATTENTION**: si l'id de l'utilisateur existe déjà en db, vous devez obligatoirement renvoyer ses informations plutot que créer un nouvel utilisateur avec le même id à chaque fois
+**ATTENTION**: si l'id de l'utilisateur existe déjà en db, vous devez obligatoirement renvoyer ses informations plutôt que de créer un nouvel utilisateur avec le même id à chaque fois
 
 
 > Pour plus d'infos sur le fonctionnement de passport avec google, [voilà comment l'utiliser](http://www.passportjs.org/packages/passport-google-oauth20/)

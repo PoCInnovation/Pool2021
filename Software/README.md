@@ -42,7 +42,7 @@ L'après-midi sera consacré à la mise en place d'authentification. Vous allez 
 
  - [Docker](https://github.com/PoCInnovation/Pool2021/blob/master/Software/day04/Partie1.md)
  - [Go]()
- - [Typescript]()
+ - [Typescript](https://github.com/PoCInnovation/Pool2021/blob/master/Software/day04/Partie2-Typescript.md)
 
 ## :fireworks: Day 5 - Frontend avec React
 
