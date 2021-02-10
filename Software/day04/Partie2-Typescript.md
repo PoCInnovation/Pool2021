@@ -2,7 +2,7 @@
 
 ✔ Authentifier vos utilisateurs.
 
-✔ Maîtriser différentes methodes d'auth.
+✔ Maîtriser différentes méthodes d'auth.
 
 ✔ Connexion avec Google.
 
@@ -14,7 +14,7 @@ Pour cette demi-journée, nous allons retourner sur nos serveurs Express ! Vous 
 
 ### Présentation
 
-Une session est une manière assez simple de gérer l'authentification de vos utilisateurs. Vous allez stocker du coté du server les informations des utilisateurs qui sont connectés. Le server s'occupe d'envoyer un cookie au client qui lui permettra d'identifier toutes ses requêtes. Si les informations du cookie coincident avec ce qui est stocké dans la session, alors l'utilisateur est considéré comme connecté.
+Une session est une manière assez simple de gérer l'authentification de vos utilisateurs. Vous allez stocker du côté du server les informations des utilisateurs qui sont connectés. Le server s'occupe d'envoyer un cookie au client qui lui permettra d'identifier toutes ses requêtes. Si les informations du cookie coïncident avec ce qui est stocké dans la session, alors l'utilisateur est considéré comme connecté.
 
 ### Le concret
 
@@ -34,7 +34,7 @@ interface User {
 
 let users: User[] = []
 ```
-> Si vous souhaitez utiliser une vrai base de donnée comme vu dans les jours précédents, libre à vous de le faire !
+> Si vous souhaitez utiliser une vraie base de données comme vu dans les jours précédents, libre à vous de le faire !
 
 - Créez une route **POST** `/signin-session`
   - Prend un body contenant l'`email` et le `password` de l'utilisateur
@@ -63,9 +63,9 @@ let users: User[] = []
 
 ### Présentation
 
-Les JSON Web Token, d'après wikipedia *permetent l'échange sécurisé de jetons entre plusieurs parties. Cette sécurité de l’échange se traduit par la vérification de l’intégrité des données à l’aide d’une signature numérique. Elle s’effectue par l'algorithme HMAC ou RSA*.
+Les JSON Web Token, d'après wikipedia *permettent l'échange sécurisé de jetons entre plusieurs parties. Cette sécurité de l’échange se traduit par la vérification de l’intégrité des données à l’aide d’une signature numérique. Elle s’effectue par l'algorithme HMAC ou RSA*.
 
-Pour l'expliquer simplement, ces tokens vous permettrons d'identifier vos utilisateurs, qui les stockerons dans un cookies, ou dans le local storage. leur structure en 3 partie garantis que l'information qui transite entre l'utilisateur et le server n'a pas été modifiée. Pour plus d'explications sur leur fonctionnement et leur intérét, rendez vous sur [jwt.io](https://jwt.io/introduction/). Vous pourrez également utiliser un [débuggeur pour visualiser](https://jwt.io/#debugger-io) les différentes parties qui composent un jwt.
+Pour l'expliquer simplement, ces tokens vous permettront d'identifier vos utilisateurs, qui les stockerons dans un cookies, ou dans le local storage. Leur structure en 3 parties garantit que l'information qui transite entre l'utilisateur et le server n'a pas été modifiée. Pour plus d'explications sur leur fonctionnement et leur intérêt, rendez vous sur [jwt.io](https://jwt.io/introduction/). Vous pourrez également utiliser un [débuggeur pour visualiser](https://jwt.io/#debugger-io) les différentes parties qui composent un jwt.
 
 Le flow sera le suivant:
 - vous envoyez à votre api vos identifiants (email, password etc.)
@@ -91,7 +91,7 @@ npm i jsonwebtoken
     - Définir le statut 400
     - Renvoyer `Bad Request`
 
-- Créez une fonction qui recoit un token et comapre dans la base de donnée si les mots de passe matchent, en renvoyant un bool
+- Créez une fonction qui reçoit un token et compare dans la base de donnée si les mots de passe matchent, en renvoyant un bool
 
 - Créez une route **POST** `/signup-jwt`
   - Prend un body contenant l'`email` et le `password` de l'utilisateur
@@ -112,26 +112,26 @@ npm i jsonwebtoken
 
 Sauvegarder des utilisateurs, c'est bien, mais si vous voulez qu'ils vous fassent confiance, vous ne devez pas laisser leurs données sensibles lisibles. Nous allons donc *hash* leur mot de passe afin que même nous, nous ne puissions pas le lire.
 
-Pour cela, nous allons utiliser la library de hash [Bcrypt](https://en.wikipedia.org/wiki/Bcrypt). Il existe des implémentation dans de nombreux langages, nottament JS/TS
+Pour cela, nous allons utiliser la librairie de hash [Bcrypt](https://en.wikipedia.org/wiki/Bcrypt). Il existe des implémentation dans de nombreux langages, notamment JS/TS
 
 ```bash
 npm i bcrypt
 ```
 
 Mettez à jour vos routes afin de hash le mot de passe lors de la création d'un utilisateur, puis utilisez les fonctions de bcrypt pour comparer le mot de passe reçu lors du signup et voir s'ils matchent bien.
-> Créez des fonctions utilisataires génénriques réutilisables peu importe le type d'authentification utilisé.
+> Créez des fonctions utilitaires génériques réutilisables peu importe le type d'authentification utilisé.
 
 ## Exercice 04 - Oauth 2 et Google
 
 ### Présentation
 
-OAuth 2.0 est un framework d’autorisation permettant à une application tierce d’accéder à un service web. Vous l'avez obligatoirement déjà vu grace aux fameux boutons "Se connecter avec Google", "se connecter avec Facebook", etc. Concrètement, vous allez utiliser des sites/services externes pour identifier vos utilisateurs.
+OAuth 2.0 est un framework d’autorisation permettant à une application tierce d’accéder à un service web. Vous l'avez obligatoirement déjà vu grâce aux fameux boutons "Se connecter avec Google", "se connecter avec Facebook", etc. Concrètement, vous allez utiliser des sites/services externes pour identifier vos utilisateurs.
 
 Le fonctionnement est assez simple:
 - Vous créez une application OAuth sur le site que vous souhaitez utiliser (google, facebook, twitter, github, microsoft etc.)
-- vous definissez une URL de redirection qui vous ramène vers votre site une fois les étapes de connexion faites
-- Depuis votre server, vous récuperez dans cette url de redicrection un token
-- Ce tokens vous permettrons par la suite de récuperer les informations de l'utilisateur
+- vous définissez une URL de redirection qui vous ramène vers votre site une fois les étapes de connexion faites
+- Depuis votre server, vous récupérez dans cette url de redirection un token
+- Ce tokens vous permettront par la suite de récupérer les informations de l'utilisateur
 
 Ces identifiants sont liés à l'application: un id qui représente votre compte Facebook ne sera pas le même sur votre app et sur celle de votre voisin.
 
@@ -140,7 +140,7 @@ Ces identifiants sont liés à l'application: un id qui représente votre compte
 Nous allons passer par google pour cet exercice et nous nous aiderons de [passport](https://github.com/jaredhanson/passport) pour simplifier les démarches:
 
 - Créez une application avec google sur la [console developpeurs](https://console.developers.google.com/)
-  - vous aurez besoin de bien parametrer la callback url que vous ferez dans les étapes suivantes
+  - vous aurez besoin de bien paramétrer la callback url que vous ferez dans les étapes suivantes
 
 - Ajoutez passport aux dépendances:
 ```
@@ -157,9 +157,9 @@ interface UserOAuth {
 let userOAuth: UserOAuth[] = []
 ```
 
-- Mettez en place la `GoogleStrategy` de passport à l'aide de l'id de votre application, son code secret et la callback URL, ainsi que la fonction qui sera appellée une fois que google redirgera l'utilisateur sur votre api.
+- Mettez en place la `GoogleStrategy` de passport à l'aide de l'id de votre application, son code secret et la callback URL, ainsi que la fonction qui sera appelée une fois que google redirigera l'utilisateur sur votre api.
 
-- Créez les différents routes qui vous permettrons d'utiliser la statégie fraichement créee
+- Créez les différents routes qui vous permettront d'utiliser la stratégie fraîchement créée
 
 - Une fois que vous avez récupéré l'id de l'utilisateur connecté, sauvegardez le dans la db et renvoyez un JWT comme dans l'exercice 2 contenant cet id
 
@@ -178,7 +178,7 @@ let userOAuth: UserOAuth[] = []
 
 ## Bonus
 
-Maintenant que vous maitrisez plusieurs methodes pour authentifier vos utilisateurs, vous pouvez:
-- Combiner deux methodes d'autentification, par exemple pouvoir se connecter au même compte via Google ou aussi avec un email et mot de passe
+Maintenant que vous maîtrisez plusieurs méthodes pour authentifier vos utilisateurs, vous pouvez:
+- Combiner deux méthodes d'authentification, par exemple pouvoir se connecter au même compte via Google ou aussi avec un email et mot de passe
 - Implémenter l'authentification avec d'autres sites comme facebook ou github, ce qui se fait assez simplement grâce à passport
 - Utiliser une véritable base de donnée, comme vu hier, pour stocker vos utilisateurs
