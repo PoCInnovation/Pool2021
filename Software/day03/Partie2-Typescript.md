@@ -44,7 +44,7 @@ Copiez le fichier `tsconfig.json` présent sur le repo du sujet et coller le fic
 
 > Nous vous donnons directement le fichier afin de ne pas perdre de temps sur la configuration mais vous pouvez trouver une explication [ici](https://www.typescriptlang.org/tsconfig).
 
-Créez maintenant un dossier `src/models`, c'est ici que nous allons stocker nos entités.
+Créez maintenant un dossier `src/entities`, c'est ici que nous allons stocker nos entités.
 
 ### Contexte
 
@@ -62,7 +62,7 @@ Comme dit précédemment, TypeOrm se base sur des [Classes](https://www.typescri
 
 #### Modéliser
 
-Dans le fichier `src/models/Developer`, créez une classe `Developer` avec les propriétés suivantes :
+Dans le fichier `src/entities/Developer`, créez une classe `Developer` avec les propriétés suivantes :
  - `id` : la clé unique de notre table (type : `string`)
  - `name` : le nom du développeur
  - `age` : l'âge du développeur
@@ -91,7 +91,7 @@ Votre constructeur doit également exécuter la fonction `super` pour hériter d
 
 :bulb: L'exercice suivant vous permettra de vérifier si tout fonctionne comme prévu, vous pouvez néanmoins appeler un encadrant pour vérifier votre classe.
 
-**Rendu :** `src/index.ts` et `src/models/Developer.ts`.
+**Rendu :** `src/index.ts` et `src/entities/Developer.ts`.
 
 #### Ressources
 - [Décorateurs](https://typeorm.io/#/decorator-reference)
@@ -119,7 +119,7 @@ Créer un fichier `.envrc` dans lequel vous allez mettre les variables d'environ
  - `DB_PORT` : le port d'écoute de votre db
  - `DB_NAME` : le nom de la base de données.
  - `DB_URL` : l'url de connexion, elle groupe toutes les informations ci-dessus (valeur : `postgresql://$DB_USER:$DB_PASS@$DB_HOST:$DB_PORT/$DB_NAME`)
- - `ENTITIES_FOLDER`: le dossier contenant vos tables (ici : `models`)`
+ - `ENTITIES_FOLDER`: le dossier contenant vos tables (ici : `entities`)`
 
 > Il est possible de créer plusieurs db dans une seule base postgres, c'est pour cela qu'un nom est donné à chaque db.
 >
@@ -135,9 +135,8 @@ Dans le fichier `appConfig.ts`, à l'aide de vos connaissances acquises au jour 
 
 À présent, dans le fichier `src/appDatabase.ts`, exportez une fonction _asynchrone_ `dbInitialize`.
 Cette fonction doit :
- - Créer la base de données grâce à [pg-god](https://github.com/ivawzh/pg-god#programmatic-invocation)
  - Créer une connection à votre base de données.
- - Synchroniser les `models` pour créer les tables dans votre db. 
+ - Synchroniser les `entities` pour créer les tables dans votre db. 
 
 Appelez cette fonction dans votre `index.ts`
  - Si l'opération réussie, écrivez : `Database <nom de la db> is ready`
@@ -146,7 +145,7 @@ Appelez cette fonction dans votre `index.ts`
 Ajoutez dans votre `package.json` la commande suivante :
 
 ```json
-"dev:db": "docker run --name ${DB_NAME} -e POSTGRES_PASSWORD=${DB_PASS} -e POSTGRES_USER=${DB_USER} -p ${DB_PORT}:${DB_PORT} -d postgres:alpine",
+"dev:db": "docker run --name ${DB_NAME} -e POSTGRES_PASSWORD=${DB_PASS} -e POSTGRES_USER=${DB_USER} -e POSTGRES_DB=${DB_NAME} -p ${DB_PORT}:${DB_PORT} -d postgres:alpine",
 ```
 
 Cette commande vous permet de lancer un conteneur postgres respectant votre configuration placée dans l'environnement.
@@ -172,8 +171,8 @@ Si tout se passe bien, le message de succès devrait apparaître :joy:
 
 Il faut maintenant développer les fonctions pour lire, ajouter, modifier et supprimer un `Developer`. Autrement dit, le CRUD de celui-ci.
 
-Vous allez créer un dossier `src/controllers` dans lequel vous allez stocker toutes les fonctions intéragissant avec la base de données.
-Écrivez les fonctions ci-dessous dans le fichier `src/controllers/developerControllers.ts`.
+Vous allez créer un dossier `src/models` dans lequel vous allez stocker toutes les fonctions interagissant avec la base de données.
+Écrivez les fonctions ci-dessous dans le fichier `src/models/developerModels.ts`.
 
 ### C comme Create
 
@@ -212,7 +211,7 @@ updateDeveloper(id, { name: 'newName', unknowProperty: 'Unknown' }); // Doesn't 
 
 Créez une fonction _asynchrone_ `deleteDeveloper` qui prend en paramètre un `id` et supprime le développeur sélectionné.
 
-**Rendu :** `src/controllers/developerControllers.ts`.
+**Rendu :** `src/models/developerModels.ts`.
 
 #### Ressources
 - [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete)
@@ -232,7 +231,7 @@ Vous l'avez compris, vous vous apprêtez à créer une relation du type `One to 
 
 ### Définir le modèle
 
-Dans le fichier `src/models/Contact.ts`, créez une classe `Contact` à la manière de l'exercice 02 avec les attributs suivant :
+Dans le fichier `src/entities/Contact.ts`, créez une classe `Contact` à la manière de l'exercice 02 avec les attributs suivant :
  - `id` : l'identifiant de la table
  - `email` : l'email du développeur
  - `phone` : le téléphone du développeur
@@ -244,7 +243,7 @@ Vous ajouterez bien sûr un `construteur` adapté.
 ### Lier les tables
 
 Il faut maintenant définir la relation entre ces tables.<br>
-Dans le fichier `src/models/Developer.ts`:
+Dans le fichier `src/entities/Developer.ts`:
  - Ajoutez un attribut *optionnel* `contact` du type `Contact` à votre classe.
  - Placez les *2* décorateurs adaptés pour créer votre liaison
 
@@ -252,7 +251,7 @@ Dans le fichier `src/models/Developer.ts`:
 
 ### Créez le contrôleur
 
-Dans le fichier `src/controllers/contactControllers.ts` :
+Dans le fichier `src/models/contactModels.ts` :
  - Créez une fonction `addContact` qui prend en paramètres :
    - `id` : l'identifiant du développeur à lier
    - `email`, `phone`, `github`, `linkedin`, vous avez compris le concept
@@ -275,7 +274,7 @@ Renvoyez une erreur si le développeur n'existe pas. Sinon, renvoyez le résulta
 
 > N'oubliez pas de tester vos fonctions.
 
-**Rendu :** `src/models/Contact.ts` et `src/controllers/contactControllers.ts`.
+**Rendu :** `src/entities/Contact.ts` et `src/models/contactModels.ts`.
 
 #### Ressources
 - [Les relations dans une base de donnée](https://database.guide/the-3-types-of-relationships-in-database-design/)
@@ -288,7 +287,7 @@ Un étendu de leurs compétences par exemple ?
 
 Vous allez mettre en place une relation `One to Many` entre la table `Developer` et la table `Competences`.
 
-Ajoutez un fichier `src/models/Competence` dans lequel vous allez exporter une classe `Compenence` contenant les champs suivants :
+Ajoutez un fichier `src/entities/Competence` dans lequel vous allez exporter une classe `Compenence` contenant les champs suivants :
  - `id` : L'identifiant de la table
  - `name` : Nom de la compétence
  - `level` : Le niveau de maîtrise (entre 0 et 10)
@@ -299,7 +298,7 @@ Liez la table `Developer` à votre nouvelle table en `One to Many` et n'oubliez 
 
 > :bulb: La liaison est spéciale, vous devrez sûrement modifier votre classe Competence pour pouvoir la réaliser.<br>
 
-Créez un fichier `competenceControllers` dans votre dossier `src/controllers` dans lequel vous allez écrire les trois fonctions habituelles pour intéragir avec vos tables :
+Créez un fichier `competenceModels.ts` dans votre dossier `src/models` dans lequel vous allez écrire les trois fonctions habituelles pour intéragir avec vos tables :
 - `addCompetence` qui prend en paramètres :
   - `id` : Identifiant du développeur
   - `name`: Nom de la compétence
@@ -324,9 +323,9 @@ Sinon, renvoyer le développeur mis à jour.
   
 Renvoyer une erreur si l'un des deux identifient est inconnu, sinon renvoyer le développeur mis à jour.
 
-> N'oubliez pas de modifier les `controllers` de `Developer` pour ajouter les compétences.
+> N'oubliez pas de modifier les `models` de `Developer` pour ajouter les compétences.
 
-**Rendu :** `src/models/Compentence`, `src/models/Developer` et `src/controllers/competenceControllers.ts` 
+**Rendu :** `src/entities/Compentence`, `src/entities/Developer` et `src/models/competenceModels.ts` 
 
 #### Ressources
  - [One to Many](https://orkhan.gitbook.io/typeorm/docs/many-to-one-one-to-many-relations)
@@ -348,7 +347,7 @@ Vous allez créer une relation `Many to Many` entre les développeurs et les pro
 
 > Documentez-vous bien sur la manière de faire et les décorateurs à utiliser.
 
-Vous devrez ensuite écrire 6 controllers :
+Vous devrez ensuite écrire 6 models :
  - `getProjects` qui renvoie tous les projets avec les développeurs associés.
  - `createProject` qui prend en paramètres :
    - `name` : Nom du projet
@@ -382,7 +381,7 @@ Retirer le projet au développeur donné
 
 > Les tests sont toujours de rigueur :wink: 
 
-**Rendu :** `src/models/Project`, `src/controllers/projectControllers.ts` et `src/models/Developer.ts`.
+**Rendu :** `src/entities/Project`, `src/models/projectModels.ts` et `src/entities/Developer.ts`.
 
 #### Ressources
  - [Many to Many](https://typeorm.io/#/many-to-many-relations) 
@@ -391,12 +390,12 @@ Retirer le projet au développeur donné
 
 Voici un _petit_ bonus pratique et utile pour consolider vos connaissances :
 
-Vous avez actuellement des modèles et des controllers, c'est un bon début pour une API avec une architecture MVC n'est-ce pas ?
+Vous avez actuellement des modèles et des models, c'est un bon début pour une API avec une architecture MVC n'est-ce pas ?
 
 > La structure MVC, Modèle, Vue, Controller est une architecture basique dans le développeur back-end.
 
 L'objectif est de créer un serveur express avec les routes nécessaires pour créer, modifier, afficher vos différents modèles.<br>
-Vous pouvez bien évidemment utiliser les controllers, mais aussi en rajouter.
+Vous pouvez bien évidemment utiliser les models, mais aussi en rajouter.
 
 Basez-vous sur vos acquis pour terminer ce bonus.<br>
 Bon courage !
