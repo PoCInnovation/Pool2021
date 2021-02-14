@@ -249,11 +249,11 @@ C'est une simple API rest sur laquelle vous pouvez envoyer des requêtes http.
 
 <!-- TODO définir ici ou pendant un talk ce qu'est HTTP et une API Rest -->
 
-Pour lancer l'API, copiez le fichier `docker-compose.yaml` et le dossier `docs` présent dans le dossier `resources` du repository du sujet. Une fois les deux ressources doivent être à la racine de votre repo, il vous suffis de lancer la commande `docker-compose up -d`.
+Pour lancer l'API, copiez le fichier `docker-compose.yaml` et le dossier `docs` présent dans le dossier `resources` du repository du sujet. Les deux ressources doivent être à la racine de votre repo, il vous suffit de lancer la commande `docker-compose up -d`.
 
 L'API sera ensuite accessible à l'adresse `http://localhost:7600`, vous trouverez également une documentation sur `http://localhost:8000`.
 
-> Vous en apprendez plus sur docker et la commande docker-compose lors du jour 4 de la piscine, ne perdez pas de temps là-dessus pour le moment.
+> Vous en apprendrez plus sur docker et la commande docker-compose lors du jour 4 de la piscine, ne perdez pas de temps là-dessus pour le moment.
 
 > :bulb: Si vous avez des difficultés à lancer l'API, réinstallez docker et docker-compose avec ce [guide](https://github.com/PoCInnovation/Workshops/blob/master/software/4.Docker/SETUP.md).
 
