@@ -394,8 +394,8 @@ Vous avez actuellement des modèles et des models, c'est un bon début pour une 
 
 > La structure MVC, Modèle, Vue, Controller est une architecture basique dans le développeur back-end.
 
-L'objectif est de créer un serveur express avec les routes nécessaires pour créer, modifier, afficher vos différents modèles.<br>
-Vous pouvez bien évidemment utiliser les models, mais aussi en rajouter.
+L'objectif est de créer un serveur express avec les routes nécessaires pour créer, modifier, afficher vos différentes entitées.<br>
+Vous pouvez bien évidemment utiliser les entitées actuellement définis, mais aussi en rajouter.
 
 Basez-vous sur vos acquis pour terminer ce bonus.<br>
 Bon courage !
