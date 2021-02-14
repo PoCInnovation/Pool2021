@@ -35,6 +35,8 @@ De plus, vous devrez utiliser `VSCode` ou `WebStorm` pour cette piscine car emac
 - Ajouter une règle `start` dans le `package.json`:
   - Elle execute `ts-node src/index.ts`
 
+:warning: Ne pushez pas le dossier `node-modules`.
+
 > Se documenter sur la structure basique d'une application NodeJS, à quoi servent les fichiers `package.json`, `package.lock.json` ?
 >
 > Si tout se passe bien `npm start` devrait lancer votre application et afficher dans le terminal `Hello World`.
