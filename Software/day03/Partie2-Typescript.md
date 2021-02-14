@@ -392,7 +392,7 @@ Voici un _petit_ bonus pratique et utile pour consolider vos connaissances :
 
 Vous avez actuellement des modèles et des models, c'est un bon début pour une API avec une architecture MVC n'est-ce pas ?
 
-> La structure MVC, Modèle, Vue, Controller est une architecture basique dans le développeur back-end.
+> La structure MVC, Modèle, Vue, Controlleur est une architecture basique dans le développeur back-end.
 
 L'objectif est de créer un serveur express avec les routes nécessaires pour créer, modifier, afficher vos différentes entitées.<br>
 Vous pouvez bien évidemment utiliser les entitées actuellement définis, mais aussi en rajouter.
