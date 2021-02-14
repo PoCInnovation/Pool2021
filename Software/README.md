@@ -58,3 +58,4 @@ Une fois la formation terminée, vous pourrez consolider vos connaissances au tr
  - [Tom Chauveau](https://github.com/TomChv)
  - [Paul Monnery](https://github.com/PaulMonnery)
  - [Damien Bernard](https://github.com/Encorpluptit)
+ - [Quentin Fringhian](https://github.com/QuentinFringhian)
