@@ -10,19 +10,23 @@
 
 Pour cette demi-journée, nous allons retourner sur nos serveurs Express ! Vous pouvez repartir du code de votre jour 2 si vous souhaitez, ou initialiser un nouveau server vide, à vous de voir, vous connaissez la procédure.
 
-## Exercice 01 - Les Sessions
+Nous allons aujourd'hui voir comment identifier vos utilisateurs sur vos serveurs de manière simplifiée. Les exercices sont là pour vous faire comprendre les bases de l'authentification mais ne reflètent pas les standars de sécurité.
+
+Nous vous recommandons une nouvelle fois de passer par **Postman** pour tester vos routes, surtout pour les 3 premiers exercices
+
+## Exercice 01 - Les Cookies
 
 ### Présentation
 
-Une session est une manière assez simple de gérer l'authentification de vos utilisateurs. Vous allez stocker du côté du server les informations des utilisateurs qui sont connectés. Le server s'occupe d'envoyer un cookie au client qui lui permettra d'identifier toutes ses requêtes. Si les informations du cookie coïncident avec ce qui est stocké dans la session, alors l'utilisateur est considéré comme connecté.
+Les cookies sont une manière de stocker des information au niveau de votre navigateur. Ces informations peuvent être par la suite utilisée pour identifier votre navigateur auprès du seveur. Il s'agit souvent d'id chiffrés et/ou signés que le serveur va vérifier afin de déterminer quel utilisateur lui fait une requête. Ces informations authentification sont envoyées dans le header de vos requêtes.
 
 ### Le concret
 
 Pour mettre tout ça en place, vous devez:
 
-- Ajouter un package pour gérer les sessions avec express:
+- Ajouter un package pour gérer les cookies avec express:
 ```
-npm i express-session @types/express-session
+npm i cookie-parser @types/cookie-parser
 ```
 
 - Créez un objet `user` qui nous servira de base de donnée simplifiée, stockée en ram
@@ -34,30 +38,34 @@ interface User {
 
 let users: User[] = []
 ```
-> Si vous souhaitez utiliser une vraie base de données comme vu dans les jours précédents, libre à vous de le faire !
 
-- Créez une route **POST** `/signin-session`
+- Créez une route **POST** `/cookies/register`
   - Prend un body contenant l'`email` et le `password` de l'utilisateur
   - Enregistre l'utilisateur dans l'objet `users`
-  - Renvoie un cookie contenant le body signé reçu
+  - Renvoie un cookie *httpOnly* contenant l'email reçu *signé*
   - Si aucun message n'est donné
     - Définir le statut 400
     - Renvoyer `Bad Request`
 
-- Créez une route **POST** `/signup-session`
+- Créez une route **POST** `/cookies/login`
   - Prend un body contenant l'`email` et le `password` de l'utilisateur
-  - Si les les identifiants matchent, renvoie un cookie contenant le body signé reçu
+  - Si les les identifiants matchent avec ceux contenus dans `users`, renvoie un cookie *httpOnly* contenant l'email reçu *signé*
   - Si aucun message n'est donné ou que les identifiants ne matchent pas
     - Définir le statut 400
     - Renvoyer `Bad Request`
 
-- Créez une route **GET** `/me-session`
+- Créez une route **GET** `/cookies/me`
   - Si le header contient un cookie
     - Renvoie les informations de l'utilisateur authentifié s'il existe en db
     - Renvoie le status 401 et le message `Unauthorized` dans le cas contraire
   - Si aucun cookie n'est donné
     - Définir le statut 403
     - Renvoyer `Forbidden`
+
+> les cookies signés se trouvent dans le champ `signedCookies` de la requête
+
+#### Ressources :
+- [Envoyer des cookies avec Express](https://expressjs.com/fr/api.html#res.cookie)
 
 ## Exercice 02 - Les JWT, ou JSON Web Token
 
@@ -83,30 +91,34 @@ Passons à présent au concret ! Créons un flow d'authentification basé sur le
 npm i jsonwebtoken @types/jsonwebtoken
 ```
 
-- Créez une route **POST** `/signin-jwt`
+- Créez une route **POST** `/jwt/register`
   - Prend un body contenant l'`email` et le `password` de l'utilisateur
   - Enregistre l'utilisateur dans l'objet `users`
-  - Renvoie un token contenant le body signé reçu
+  - Renvoie un token contenant l'email reçu *signé*
   - Si aucun message n'est donné
     - Définir le statut 400
     - Renvoyer `Bad Request`
 
-- Créez une fonction qui reçoit un token et compare dans la base de donnée si les mots de passe matchent, en renvoyant un bool
-
-- Créez une route **POST** `/signup-jwt`
+- Créez une route **POST** `/jwt/login`
   - Prend un body contenant l'`email` et le `password` de l'utilisateur
-  - Si les les identifiants matchent, renvoie un token contenant le body signé reçu
+  - Si les les identifiants matchent, renvoie un token contenant l'email reçu *signé*
   - Si aucun message n'est donné ou que les identifiants ne matchent pas
     - Définir le statut 400
     - Renvoyer `Bad Request`
 
-- Créez une route **GET** `/me-jwt`
+- Créez une route **GET** `/jwt/me`
   - Si le header contient un token
     - Renvoie les informations de l'utilisateur authentifié s'il existe en db
     - Renvoie le status 401 et le message `Unauthorized` dans le cas contraire
   - Si aucun token n'est donné
     - Définir le statut 403
     - Renvoyer `Forbidden`
+
+> les JWT doivent se mettre dans le champ `authorization` des header sous la forme `Bearer VOTRE_JWT`
+
+#### Ressources :
+- [Le site de référence pour les JSON Web Token](https://jwt.io/introduction/)
+- [Décoder de JWT en ligne](https://jwt.io/#debugger-io)
 
 ## Exercice 03 - Hash de mots de passe
 
@@ -118,8 +130,10 @@ Pour cela, nous allons utiliser la librairie de hash [Bcrypt](https://en.wikiped
 npm i bcrypt @types/bcrypt
 ```
 
-Mettez à jour vos routes afin de hash le mot de passe lors de la création d'un utilisateur, puis utilisez les fonctions de bcrypt pour comparer le mot de passe reçu lors du signup et voir s'ils matchent bien.
-> Créez des fonctions utilitaires génériques réutilisables peu importe le type d'authentification utilisé.
+Mettez à jour vos routes afin de hash le mot de passe lors de la création d'un utilisateur, puis utilisez les fonctions de bcrypt pour comparer le mot de passe reçu lors du login et voir s'ils matchent bien.
+
+#### Ressources :
+- [Page wikipedia de Bcrypt](https://en.wikipedia.org/wiki/Bcrypt)
 
 ## Exercice 04 - Oauth 2 et Google
 
@@ -127,20 +141,20 @@ Mettez à jour vos routes afin de hash le mot de passe lors de la création d'un
 
 OAuth 2.0 est un framework d’autorisation permettant à une application tierce d’accéder à un service web. Vous l'avez obligatoirement déjà vu grâce aux fameux boutons "Se connecter avec Google", "se connecter avec Facebook", etc. Concrètement, vous allez utiliser des sites/services externes pour identifier vos utilisateurs.
 
-Le fonctionnement est assez simple:
+Le fonctionnement complexe mais vous vous y habituerez:
 - Vous créez une application OAuth sur le site que vous souhaitez utiliser (google, facebook, twitter, github, microsoft etc.)
 - vous définissez une URL de redirection qui vous ramène vers votre site une fois les étapes de connexion faites
 - Depuis votre server, vous récupérez dans cette url de redirection un token
-- Ce tokens vous permettront par la suite de récupérer les informations de l'utilisateur
+- Ce tokens vous permettront par la suite de récupérer les informations de l'utilisateur (id, email, nom et prénom... la quantité d'information désirées est paramétrable)
 
-Ces identifiants sont liés à l'application: un id qui représente votre compte Facebook ne sera pas le même sur votre app et sur celle de votre voisin.
+Ces informations sont liés à l'application: un id qui représente votre compte Google ne sera pas le même sur votre app et sur celle de votre voisin.
 
 ### Le concret
 
 Nous allons passer par google pour cet exercice et nous nous aiderons de [passport](https://github.com/jaredhanson/passport) pour simplifier les démarches:
 
 - Créez une application avec google sur la [console developpeurs](https://console.developers.google.com/)
-  - vous aurez besoin de bien paramétrer la callback url que vous ferez dans les étapes suivantes
+    - vous aurez besoin de bien paramétrer la callback url que vous ferez dans les étapes suivantes
 
 - Ajoutez passport aux dépendances:
 ```
@@ -159,15 +173,16 @@ let userOAuth: UserOAuth[] = []
 
 - Mettez en place la `GoogleStrategy` de passport à l'aide de l'id de votre application, son code secret et la callback URL, ainsi que la fonction qui sera appelée une fois que google redirigera l'utilisateur sur votre api.
 
-- Créez les différents routes qui vous permettront d'utiliser la stratégie fraîchement créée
+- Vous aurez besoin de créer 2 routes (référez vous au lien de documentation indiqué un peu plus bas).
+  - Une route qui va vous rediriger vers le service d'oauth de google
+  - Une route sur laquelle google va vous rediriger une fois l'authentification validée (il s'agit de la *callback url*). Les informations renvoyées par google seront accessibles dans cette route grâce à passport.
+  - Une fois que vous avez récupéré l'id de l'utilisateur connecté, sauvegardez le dans la db et renvoyez soit un JWT, soit un cookie, comme vous préférez, contenant cet id
 
-- Une fois que vous avez récupéré l'id de l'utilisateur connecté, sauvegardez le dans la db et renvoyez un JWT comme dans l'exercice 2 contenant cet id
-
-- Créez une route **GET** `/me-oauth`
-  - Si le header contient un token
+- Créez une route **GET** `/oauth/me`
+  - Si le header contient un token/cookie
     - Renvoie le `displayName` de l'utilisateur authentifié s'il existe en db
     - Renvoie le status 401 et le message `Unauthorized` dans le cas contraire
-  - Si aucun token n'est donné
+  - Si aucun token/cookie n'est donné
     - Définir le statut 403
     - Renvoyer `Forbidden`
 
@@ -175,6 +190,11 @@ let userOAuth: UserOAuth[] = []
 
 
 > Pour plus d'infos sur le fonctionnement de passport avec google, [voilà comment l'utiliser](http://www.passportjs.org/packages/passport-google-oauth20/)
+
+#### Ressources :
+- [Passport](https://github.com/jaredhanson/passport)
+- [Créer une application Oauth2 Google](https://console.developers.google.com)
+- [Utiliser Passport avec Google](http://www.passportjs.org/packages/passport-google-oauth20)
 
 ## Bonus
 

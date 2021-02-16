@@ -21,9 +21,9 @@ Vous devrez également créer un fichier `tsconfig.json` à la racine du dossier
   "compilerOptions": {
     "target": "es2020",
     "module": "commonjs",
-    "sourceMap": true, 
-    "outDir": "./dist",  
-    "strict": true,  
+    "sourceMap": true,
+    "outDir": "./dist",
+    "strict": true,
     "allowUnreachableCode": false,
 
     "baseUrl": "./src",
@@ -83,7 +83,7 @@ npm install body-parser cookie-parser @types/cookie-parser
 ```
 
 Votre application express devra par la suite utiliser (`use()`) sur ces 2 parsers pour les appliquer à l'ensemble du serveur.
-  
+
 À présent, il ne vous reste plus qu'à créer ces différentes routes :
 
 - Créer une route **GET** `/repeat-my-query`
@@ -127,10 +127,10 @@ Votre application express devra par la suite utiliser (`use()`) sur ces 2 parser
 
 ## Exercice 03 - Toujours penser au scaling
 
-Les variables d'environnement sont des variables utilisées par votre système d'exploitation dans de nombreux domaines. Elles sont visibles en tapant `env` dans votre terminal. 
+Les variables d'environnement sont des variables utilisées par votre système d'exploitation dans de nombreux domaines. Elles sont visibles en tapant `env` dans votre terminal.
 
 Ces variables sont utilisées lors que vous déployez une application en production pour sécuriser des mots de passes et identifiants privés. Il est donc essentiel de savoir comment les utiliser dans votre code.
- 
+
 Pour cela, nous allons utiliser le package [env-var](https://github.com/evanshortiss/env-var) qui permet de charger automatiquement des variables d'environnement depuis un fichier :
 
 ```sh
@@ -213,7 +213,7 @@ Une fois vos requêtes créées, vous devriez pouvoir lancer une test-suite sur 
 ## Exercice 06 - Qui utilise du texte brut ?
 
 Formatter les données renvoyées est obligatoire pour faciliter l'utilisation de votre API !<br>
-Vous pouvez renvoyer des informations sous diverses formes. La plus commune étant un tableau d'objet. 
+Vous pouvez renvoyer des informations sous diverses formes. La plus commune étant un tableau d'objet.
 
 - Créez une route **GET** `/repeat-all-my-queries` :
   - Renvoie un tableau d'objets de la forme suivante :
@@ -262,7 +262,7 @@ Formatter les données c'est bien. Travailler avec, c'est mieux !
     ```
 
 **Rendu :** `src/server.ts`.
- 
+
 #### Ressources :
 - [Méthode applicable sur une string](https://www.tutorialspoint.com/typescript/typescript_strings.htm)
 
@@ -334,7 +334,7 @@ route.get('/my-route', myMiddleware, (req: Request, res: Response) => {...});
 
 Le but de cet exercice est donc de créer un middleware générique.
 
-Pour cela : 
+Pour cela :
 - Écrivez une fonction `validateMiddleware` qui prend en paramètre un `schema` et une `location` et qui renvoie un middleware.
 - Ce middleware doit:
    - Selon la localisation, analyser la donnée de la requête :
@@ -378,7 +378,7 @@ Il s'agirait d'organiser ces routes dans différents fichiers et de les importer
     - `repeat.ts`
     - `palindromes.ts`
   - Déplacer vos routes dans les fichiers correspondant
-- Trouver un moyen de les utiliser dans votre `server.ts`. 
+- Trouver un moyen de les utiliser dans votre `server.ts`.
 
 > Protip : `Express.Router()` sera très utile.
 
@@ -399,7 +399,7 @@ La solution à ce problème réside dans un **logger**. C'est une chose primordi
 Nous allons pour cela utiliser le logger [winston](https://github.com/winstonjs/winston). Il a la particularité d'être facilement configurable tout en restant simple d'utilisation.
 
 ```sh
-npm install winston 
+npm install winston
 ```
 
 ### Winston ! Debout
@@ -414,7 +414,7 @@ Dans le fichier `src/serverLogger.ts`, exportez un logger winston avec les propr
 > Winston fonctionne avec un système de transport, vous pouvez donc en ajouter plusieurs en même temps. Un système de _severity_ est également intégré afin de classer les logs selon leur importance. Une good practice consiste à sauvegarder les logs d'erreur dans un fichier `/var/log/error.log` afin de simplifier les recherches de problèmes.
 
 > Pour plus de clarté, vous pouvez énumérer la `severity` dans une `Enum`. C'est une pratique commune en Typescript.
-  
+
 Vérifier que tout fonctionne en remplaçant le `console.log` présent dans le fichier `server.ts` par un log de niveau `info`.
 
 ### Winston ! En rang !
@@ -442,11 +442,11 @@ Appliquez le middleware à votre API et vérifiez que tout fonctionne en envoyan
 
 Si vous êtes toujours en quête d'exercices, voici trois exercices intermédiaires :
 
-### 404, Trouvé 
+### 404, Trouvé
 
 Actuellement, lorsque vous envoyez une requête à votre serveur sur une route non définie, celle-ci vous renvoie une erreur `404 Not found`.
 
-Créez un middleware capable de gérer des requêtes sur des routes inexistantes et d'envoyer le message suivant : 
+Créez un middleware capable de gérer des requêtes sur des routes inexistantes et d'envoyer le message suivant :
 
 ```json
 {
@@ -482,9 +482,9 @@ Vous devez pour cela écrire :
  - Une `class` qui étend l'objet `Error`
  - Des `class` propres à chaque erreur
  - Un middleware qui va gérer toutes les erreurs throw.
- 
+
  > Proposer votre démarche à un encadrant avant de coder afin de vérifier sa faisabilité.
- 
+
 ### Testing time, partie 2
 
 Postman a beau être performant, il est important de tester votre serveur avec un framework adapté lorsque votre API intègre une vraie logique.
@@ -492,7 +492,7 @@ Postman a beau être performant, il est important de tester votre serveur avec u
 Vous allez donc tester votre serveur avec `Jest`. Reprenez le jour 1 pour trouver les étapes d'installation.<br>
 La démarche à suivre pour écrire vos tests est simple :
   - Wrapper le client `axios` avec un objet `Requester` pour envoyer des requêtes
-  - Créer un fichier `tests/server.tests.ts` dans lequel vous allez tester chaque route (et leur cas d'erreur)  
+  - Créer un fichier `tests/server.tests.ts` dans lequel vous allez tester chaque route (et leur cas d'erreur)
 
 ## Ressources complémentaires
 
