@@ -14,7 +14,7 @@ Créer une nouvelle application avec `go mod init SofwareGoDay3`.
 
 #### Ressources
 
-- [Premier exercice du day01](../Day01/README.md#exercice-1--les-cosmonautes-sont-dabord-des-humains-)
+- [Premier exercice du day01](../day01/Go.md#exercice-1--les-cosmonautes-sont-dabord-des-humains-)
 
 ## Exercice 01 - Poser les bases.
 
