@@ -1,155 +1,153 @@
-# Piscine Software - Jour 3 - Partie 2
+# PoC Software 2021 - Go - Day3, part2
 
 ✔ Comprendre et utiliser une ORM.
 
 ✔ Consolider les concepts des classes.
 
-## Exercice 00 - Setup
+# Sommaire
 
----
-Vous avez l'habitude, créer un dossier `day03` (toujours dans le même repo).
-Créer une nouvelle application avec `go mod init SofwareGoDay3`.
+- [0 - Setup](#0---setup)
+- [1 - Poser les bases](#1---poser-les-bases)
+- [2 - Mise en DB](#2---mise-en-db)
+  - [1. Configuration](#1-configuration)
+  - [2. Connexion](#2-connexion)
+- [3 - Le CRUD avec un ORM](#3---le-crud-avec-un-orm)
+  - [1. C comme Create](#1-c-comme-create)
+  - [2. R comme Read](#2-r-comme-read)
+  - [3. U comme Update](#3-u-comme-update)
+  - [4. D comme Delete](#4-d-comme-delete)
+- [4 - Contacter les développeurs](#4---contacter-les-développeurs)
+  - [1. Définir le model](#1-définir-le-model)
+  - [2. Lier les tables](#2-lier-les-tables)
+  - [3. Créez le contrôleur](#3-créez-le-contrôleur)
+- [5 - Des développeurs compétents](#5---des-développeurs-compétents)
+- [6 - Des développeurs actifs](#6---des-développeurs-actifs)
+- [Bonus](#bonus)
 
-> Aidez-vous des jours précédents si nécessaire.
+# 0 - Setup
 
-#### Ressources
-
-- [Premier exercice du day01](../day01/Go.md#exercice-1--les-cosmonautes-sont-dabord-des-humains-)
-
-## Exercice 01 - Poser les bases.
-
----
-
-Nous allons créer une base de données postgres grâce à [GORM](https://gorm.io/).
-
-> Gorm possède un certain nombre de désavantages par rapport à d'autres ORM comme une documentation peu fournie et certaines bugs inexpliqués, ce qui fait que ce n'est pas forcément le meilleur ORM lors d'un projet conséquent nécessitant des interactions complexes.
->
-> Cependant, sa facilité de prise en main le rend le plus intéressant pour les objectifs du jour.
->
-> Si vous êtes déjà à l'aise avec les bases de données, vous pouvez faire cette journée avec [Ent](https://entgo.io/)
-
-### Setup
-
-Installer Gorm et ses dépendances.
-```shell
-go get -u gorm.io/gorm
-```
+- À la racine du répo, créez un dossier Day3.
+- Initialisez un module SoftwareGoDay3.
 
 
-### Contexte
+# 1 - Poser les bases
 
-L'objectif du jour est de créer et interagir avec une base de données contenant :
-- Des développeurs travaillant sur des projets
-- La fiche de contact de chaque développeur
-- Des projets affectés à une équipe de développeurs
+L'objectif du jour est de créer et interagir avec une base de données contenant:
+- Des développeurs travaillant sur des projets.
+- La fiche de contact de chaque développeur.
+- Des projets affectés à une équipe de développeurs.
 
 Ne vous inquiétez pas, tout va se faire étape par étape.
 
-### Let's code
+Pour cela, nous allons utiliser PostgreSQL via [GORM](https://gorm.io/) (`go get -u gorm.io/gorm`).
+GORM se base sur des [models](https://gorm.io/docs/models.html).
+Vous retrouverez donc les mêmes spécificités (structure embedded, méthodes...).
 
-Il est temps de créer votre première table.
-
-Comme dit précédemment, Gorm se base sur des [models](https://gorm.io/docs/models.html). Vous retrouverez donc les mêmes spécificités (structure embedded, méthodes...).
-
-#### Modéliser
-
-Créer maintenant un package models, c'est ici que nous allons déclarer nos entités.
-
-Dans un fichier `Developer.go`, créez une structure `Developer` avec les propriétés suivantes :
-- `id` : la clé unique de notre table
-- `name` : le nom du développeur
-- `age` : l'âge du développeur
-- `school` : l'école d'origine
-- `experience` : le nombre d'années d'expérience
-
-> En base de données relationnelle, chaque table contient un identifiant unique, de façon à pouvoir distinguer chaque élément de cette table même si leurs données sont les mêmes.
+> Nous utilisons GORM car il est plus facile à prendre en main cependant sa documentation est peu fournie
+> et il a quelques bugs inexpliqué ce n'est donc pas un très bon choix pour un projet conséquent avec des
+> intéractions DB complexes.
 >
-> Gorm permet, grace à [son modèle de base](https://gorm.io/docs/models.html#gorm-Model), de nous fournir un certain nombre de champs avec lesquels le modèle peut travailler plus facilement.
+> Si vous êtes déjà à l'aise avec les bases de données, vous pouvez utiliser [Ent](https://entgo.io/) à la place.
+
+- Créer un package `models`, nous y déclarerons nos entités.
+- Créer un fichier `Developer.go` & une structure `Developer` dont les champs sont les suivants:
+  - `ID` (clef unique de notre table), un `Name`, `Age`, `School` & `Experience`.
+
+> Dans une DB relationnelle, chaque table contient un identifiant unique, de façon à pouvoir distinguer
+> chaque élément de cette table même si leurs données sont les mêmes.
 >
+> GORM, dans [son model de base](https://gorm.io/docs/models.html#gorm-Model), fournit un certain nombre
+> de champs avec lesquels le modèle peut travailler plus facilement.
+
 > Il est aussi commun par sécurité de générer un `uuid` plutôt qu'un simple index.
 
 > Par convention, un fichier définissant un model portera le nom de celle-ci.
 
-### **RESSOURCES**
+### **Ressources**
 - [gorm.Model](https://gorm.io/docs/models.html#gorm-Model)
 
-## Exercice 02 - Mise en db
 
----
+# 2 - Mise en DB
 
-Vous avez modélisé votre première table, il faut maintenant l'indexer en db. Vous avez appris à créer des données à la main, l'ORM vas se charger de cela automatiquement lorsque vous créez une connexion à votre base de données.
-L'exercice va donc se faire en deux étapes : setup votre base de données puis vous y connecter.
+Vous avez modélisé votre première table, il faut maintenant l'indexer en db. Vous avez appris à créer des bases de données
+à la main, l'ORM vas se charger de cela automatiquement lorsque vous créez une connexion à votre base de données.
+L'exercice va donc se faire en deux étapes:
+- Setup votre base de données.
+- Vous y connecter.
 
-### Configuration
+## 1. Configuration
 
-Nous allons utiliser une base de données [Postgres](https://www.postgresql.org/). Il s'agit de l'une des plus connues et des plus simples à mettre en place.
-Pour créer une nouvelle base de données, il vous suffit de lancer l'image [Docker](https://www.docker.com/) de celle-ci.
+Nous allons utiliser une base de données [Postgres](https://www.postgresql.org/). Il s'agit de l'une des plus connues
+et des plus simples à mettre en place. Pour créer une nouvelle base de données, il vous suffit de lancer
+l'image [Docker](https://www.docker.com/) de celle-ci.
 
-> Docker est un système de containerisation très utilisé. Contentez-vous d'exécuter les commandes que nous vous fournissons, vous verrez plus de détails demain.
+> Docker est un système de containerisation très utilisé.
+> Contentez-vous d'exécuter les commandes que nous vous fournissons, vous verrez plus de détails demain.
 
-Créer un fichier `.env` dans lequel vous allez mettre les variables d'environnement relatives à votre db :
+Créer un fichier `.env` dans lequel vous allez mettre les variables d'environnement relatives à votre db:
 
 [comment]: <> (- `DB_DRIVER` : le type de database utilisé &#40;ici : `postgres` mais peut être Mysql, Sqlite, ...&#41;)
-- `DB_USER` : le nom d'utilisateur de votre db.
-- `DB_PASS` : le mot de votre utilisateur pour votre db.
-- `DB_HOST` : l'host pour se connecter (ici : `localhost`)
-- `DB_PORT` : le port d'écoute de votre db
-- `DB_NAME` : le nom de la base de données.
-- `DB_URL` : l'url de connexion, elle groupe toutes les informations ci-dessus (valeur : `postgresql://$DB_USER:$DB_PASS@$DB_HOST:$DB_PORT/$DB_NAME`)
-- `ENTITIES_FOLDER`: le dossier contenant vos tables (ici : `models`)
+- `DB_USER` le nom d'utilisateur de votre db.
+- `DB_PASS` le mot de votre utilisateur pour votre db.
+- `DB_HOST` l'host pour se connecter (ici : `localhost`)
+- `DB_PORT` le port d'écoute de votre db
+- `DB_NAME` le nom de la base de données.
+- `DB_URL` l'url de connexion, elle groupe toutes les informations ci-dessus (valeur : `postgresql://$DB_USER:$DB_PASS@$DB_HOST:$DB_PORT/$DB_NAME`)
+- `ENTITIES_FOLDER` le dossier contenant vos tables (ici : `models`)
 
-> Il est possible de créer plusieurs db dans une seule base postgres, c'est pour cela qu'un nom est donné à chaque db.
+> Il est possible de créer plusieurs db dans une seule base postgres, c'est pour cela qu'un nom est donné
+> à chaque db.
 >
-> :warning: N'oubliez pas de charger vos variables avec `loadenv`.
+> :warning: N'oubliez pas de charger vos variables.
 
 
-> L'objet db vous permettra de créer la db si elle n'existe pas. De plus, `database` correspond au type de la db donc `postgres`.
+> L'objet DB vous permettra de créer la DB si elle n'existe pas. De plus, `database` correspond au type de la DB donc `postgres`.
 
-### Connexion
+## 2. Connexion
 
-À présent, dans le fichier `Database.go`, faites une structure `Database` avec les champs :
-- `Db`    -> pointeur pour une Database Gorm (type : `*gorm.database`)
-- Une ou plusieurs variables nécessaires pour garder la configuration de votre database.
+- Créer un package `database`, nous y gérerons notre connexion et nos appels à notre DB.
+- Créer un fichier `Database.go` & une struct `Database` avec les champs suivants:
+  - `DB`, un pointeur va une db GORM.
+  - Les variables nécessaire à la configuration de votre db.
 
 > Il vous faudra garder aussi les informations sur la DB contenue dans votre fichier `.env`, récupérées depuis l'environnement.
 
-
-> Gorm étant capable de gérer plusieurs types de Database différentes (Postgres, MySql, ...) et que ces database peuvent travailler un nombre de variables de config différentes, il serait intéressant de n'avoir qu'un seul champ contenant toutes les informations.
+> Gorm étant capable de gérer plusieurs types de Database différentes (Postgres, MySql, ...) et que ces
+> database peuvent travailler un nombre de variables de config différentes, il serait intéressant de n'avoir
+> qu'un seul champ contenant toutes les informations.
 >
 > Quel serait le type qui n'a pas encore été abordé dans cette piscine qui serait le plus adapté ?
 >
-> De la même manière, il serait intéressant de se base sur une variable d'environnement `DB_DRIVER` pour pouvoir changer de Database facilement, notamment pour pouvoir run vos tests unitaires (avec sqlite3).
+> De la même manière, il serait intéressant de se base sur une variable d'environnement `DB_DRIVER` pour pouvoir
+> changer de Database facilement, notamment pour pouvoir run vos tests unitaires (avec sqlite3).
 
-Ensuite faites une méthode `Init()` sur la structure `Database`.
+- Créer une méthode `Init()` sur la structure `Database`.
+  - Elle crée la DB grâce à [GORM](https://gorm.io/docs/connecting_to_the_database.html) et initialise la connection.
+  - Elle synchronisee les `models` pour créer les tables dans votre db.
 
-Cette méthode doit :
-- Créer la base de données grâce à [Gorm](https://gorm.io/docs/connecting_to_the_database.html) et initialiser la connection.
-- Synchroniser les `models` pour créer les tables dans votre db.
-
-Appeler cette méthode dans votre main.
-- Si l'opération réussie, écrivez : `Database <nom de la db> is ready`.
-- Si l'opération échoue, écrivez : `Failed to initialize database: <raison de l'échec>`.
+- Appeler cette méthode dans votre main.
+  - Si l'opération réussie, écrivez : `Database <nom de la db> is ready`.
+  - Si l'opération échoue, écrivez : `Failed to initialize database: <raison de l'échec>`.
 
 TODO: Faire le docker-compose ??
 
 > Vous pouvez également vous connecter à votre base de données grâce à Datagrip et voir votre table nouvellement créée.
 
-[comment]: <> (**Rendu :** `src/appConfig.ts`, `src/appDatabase.ts` et `src/index.ts`)
-
-#### Ressources
+### **Ressources**
 - [Docker X PostgreSQL](https://hub.docker.com/_/postgres)
 - [Env](https://github.com/joho/godotenv)
 - [La connection aux db avec Gorm](https://gorm.io/docs/connecting_to_the_database.html)
 - [PostgreSQL](https://www.postgresql.org/)
 
-## Exercice 03 - Le CRUD avec un ORM
+
+# 3 - Le CRUD avec un ORM
 
 Il faut maintenant développer les fonctions pour lire, ajouter, modifier et supprimer un `Developer`. Autrement dit, le CRUD de celui-ci.
 Vous allez créer un package `controllers` dans lequel vous allez stocker toutes les fonctions interagissant avec la base de données.
 
 Écrivez les fonctions ci-dessous dans le fichier `Developer.go`.
 
-### C comme Create
+## 1. C comme Create
 
 Créez une fonction `CreateDeveloper` qui prend en paramètres les attributs du futur développeur :
 - `name`
@@ -161,7 +159,7 @@ La fonction doit créer un nouveau `Developer` et retourner le développeur une 
 
 > Il serait utile de faire une méthode Create() sur le model `developer` pour indexer le developer en Db.
 
-### R comme Read
+## 2. R comme Read
 
 Créez une fonction `GetDevelopers` qui renvoie tous les développeurs présents dans la base de données.
 
@@ -169,7 +167,7 @@ Créez une fonction `GetDeveloper` qui prend en paramètre un `id` et renvoie un
 
 > Il serait utile de faire une méthode GetByID() sur le model `developer` pour chercher le developer en Db.
 
-### U comme update
+## 3. U comme Update
 
 Créez une fonction `updateDeveloper` qui prend en paramètres :
 - `id` : l'identifiant du développeur à modifier
@@ -177,10 +175,9 @@ Créez une fonction `updateDeveloper` qui prend en paramètres :
 
 Elle doit modifier les attributs du développeur, sauvegarder le résultat en db puis le renvoyer.
 
-
 > Il serait utile de faire une méthode Update() sur le model `developer` pour update le developer en Db.
 
-### D comme Delete
+## 4. D comme Delete
 
 Créez une fonction `deleteDeveloper` qui prend en paramètre un `id` et supprime le développeur sélectionné.
 
@@ -190,7 +187,7 @@ Créez une fonction `deleteDeveloper` qui prend en paramètre un `id` et supprim
 > Dans le même esprit que l'exercice 2, un des principes fondamentaux que vous devez garder à l'esprit en tant que développeur, c'est que les outils/packages qui vont servir vos besoins pendant 6 mois ne pourront plus convenir un jour.
 > Si vous êtes en entreprise ou sur un grand projet, vous devrez alors réécrire des milliers de lignes de codes et/ou changer énormément l'architecture de votre programme.
 >
-> Ce n'est pas une bonne pratique. Il faut pouvoir `abstraire` le comportement de vos dépendances et ainsi pouvoir changer de package facilement.
+> Ce n'est pas une bonne pratique. Il faut pouvoir `encapsuler` le comportement de vos dépendances et ainsi pouvoir changer de package facilement.
 >
 > Par example Gorm vous fourni le type gorm.DB qui permet de gérer n'importe qu'elle base de données supportée par Gorm. Si vous devez changer de Postgres à Sqlite (par exemple pour faire des tests unitaires), la seule chose qui changera, c'est la fonction utilisée pour initialiser la connexion à votre Database.
 >
@@ -202,12 +199,12 @@ Créez une fonction `deleteDeveloper` qui prend en paramètre un `id` et supprim
 
 > N'oubliez pas de tester vos fonctions.
 
-#### **Ressources**
+### **Ressources**
 - [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete)
 - [CRUD with Gorm](https://gorm.io/docs/create.html)
 
 
-## Exercice 04 - Contacter les développeurs
+# 4 - Contacter les développeurs
 
 Si vous vous souvenez bien de l'exercice 1, la base de données finale doit contenir 3 tables : `Developer`, `Contact` et `Projects`.
 Il est temps de créer la table `Contact`.
@@ -219,7 +216,7 @@ En base de données relationnelle, il existe 3 types de relations :
 
 Vous l'avez compris, vous vous apprêtez à créer une relation du type `One to One`.
 
-### Définir le modèle
+## 1. Définir le model
 
 Dans le fichier `models/Contact.go`, créer une structure `Contact` à la manière de l'exercice 02 avec les attributs suivant :
 - `id` : l'identifiant de la table
@@ -230,26 +227,26 @@ Dans le fichier `models/Contact.go`, créer une structure `Contact` à la maniè
 
 Vous ajouterez bien sûr les méthodes adaptées.
 
-### Lier les tables
+## 2. Lier les tables
 
 Il faut maintenant définir la relation entre ces tables.<br>
 Dans le fichier `models/Developer.go`:, ajoutez un attribut *optionnel* `contact` du type `Contact` à votre classe.
 
 :warning: Si un développeur est supprimé, sa fiche de contact doit l'être également, on appelle cela une `cascade`.
 
-### Créez le contrôleur
+## 3. Créez le contrôleur
 
 Dans le fichier `controllers/Contact.go` :
 - Créez une fonction `addContact` qui prend en paramètres :
-    - `id` : l'identifiant du développeur à lier
-    - `email`, `phone`, `github`, `linkedin`, vous avez compris le concept
+  - `id` : l'identifiant du développeur à lier
+  - `email`, `phone`, `github`, `linkedin`, vous avez compris le concept
 
 La fonction doit renvoyer une erreur si le développeur n'existe pas.<br>
 Sinon, elle doit créer un contact, l'affecter au développeur et renvoyer le résultat sauvegardé en db.
 
 - Créez une fonction `updateContact` qui prend en paramètres :
-    - `id` : l'identifiant du développeur à modifier
-    - `infos` : les nouvelles propriétés, encore une fois sous la forme que vous préférez.
+  - `id` : l'identifiant du développeur à modifier
+  - `infos` : les nouvelles propriétés, encore une fois sous la forme que vous préférez.
 
 La fonction doit renvoyer une erreur si le développeur n'existe pas.<br>
 Sinon elle doit modifier le contact et renvoyer le résultat sauvegardé.
@@ -261,14 +258,12 @@ Sinon elle doit modifier le contact et renvoyer le résultat sauvegardé.
 Renvoyez une erreur si le développeur n'existe pas. Sinon, renvoyez le résultat sauvegardé.
 
 > N'oubliez pas de tester vos fonctions.
->
-> TODO: add comments on DB helper functions and parallelism in tests
 
-#### **Ressources**
+### **Ressources**
 - [One to One Gorm](https://gorm.io/docs/has_one.html)
 - [Association](https://gorm.io/docs/associations.html#Delete-with-Select)
 
-## Exercice 05 - Des développeurs compétents
+# 5 - Des développeurs compétents
 
 Vous pouvez contacter vos développeurs, mais il serait peut-être appréciable d'avoir un peu plus d'informations sur eux avant ?<br>
 Un étendu de leurs compétences par exemple ?
@@ -284,17 +279,17 @@ Liez la table `Developer` à votre nouvelle table en `One to Many` et n'oubliez 
 
 Créez un fichier `Competence` dans votre dossier `controllers` dans lequel vous allez écrire les trois fonctions habituelles pour intéragir avec vos tables :
 - `addCompetence` qui prend en paramètres :
-    - `id` : Identifiant du développeur
-    - `name`: Nom de la compétence
-    - `level`: Le niveau de la compétence
+  - `id` : Identifiant du développeur
+  - `name`: Nom de la compétence
+  - `level`: Le niveau de la compétence
 
 La fonction doit renvoyer une erreur si le développeur n'existe pas ou si le niveau de la compétence est invalide.<br>
 Sinon, elle doit renvoyer le développeur modifié avec la nouvelle compétence.
 
 - `updateCompetence` qui attend les paramètres :
-    - `devId` : Identifiant du développeur
-    - `competenceId`: Identifiant de la compétence
-    - `infos` : L'objet `Competence` avec les nouvelles propriétés.
+  - `devId` : Identifiant du développeur
+  - `competenceId`: Identifiant de la compétence
+  - `infos` : L'objet `Competence` avec les nouvelles propriétés.
 
 La fonction doit bien sûr renvoyer une erreur si le développeur ou la compétence n'existe pas.<br>
 Sinon, renvoyer la compétence mise à jour.
@@ -302,17 +297,17 @@ Sinon, renvoyer la compétence mise à jour.
 > La fonction doit respecter les mêmes contraintes que la fonction `updateDeveloper`.
 
 - `deleteCompetence` qui prend en paramètres :
-    - `devId` : Identifiant du développeur
-    - `competenceId` : Identifiant de la compétence
+  - `devId` : Identifiant du développeur
+  - `competenceId` : Identifiant de la compétence
 
 Renvoyer une erreur si l'un des deux identifient est inconnu, sinon renvoyer le développeur mis à jour.
 
 > N'oubliez pas de modifier les `controllers` de `Developer` pour ajouter les compétences.
 
-#### Ressources
+### Ressources
 - [One to Many](https://gorm.io/docs/has_many.html)
 
-## Exercice 06 - Des développeurs actifs
+# 6 - Des développeurs actifs
 
 Il est temps de passer à l'étape finale : les projets.
 L'exercice est volontairement moins guidé, vous avez appris tout le nécessaire sur le fonctionnement de Gorm pour vous documenter seul et réaliser l'exercice.
@@ -331,30 +326,30 @@ Vous allez créer une relation `Many to Many` entre les développeurs et les pro
 Vous devrez ensuite écrire 6 controllers :
 - `getProjects` qui renvoie tous les projets avec les développeurs associés.
 - `createProject` qui prend en paramètres :
-    - `name` : Nom du projet
-    - `deadline` : Date limite du projet
-    - `type` : Type du projet
+  - `name` : Nom du projet
+  - `deadline` : Date limite du projet
+  - `type` : Type du projet
 
 Renvoyer le projet nouvellement créé.
 
 > :warning: Attention à bien gérer les erreurs potentielles, une date *impossible* par exemple ?
 
 - `updateProject` qui prend en paramètres :
-    - `id` : Identifiant du projet
-    - `infos` : Les infos à modifier
+  - `id` : Identifiant du projet
+  - `infos` : Les infos à modifier
 
 Renvoie le projet mise à jour
 
 - `deleteProject` qui prend en paramètre l'id du projet à supprimer
 - `addDevToProject` qui prend en paramètres :
-    - `projectId` : Identifiant du projet
-    - `devId` : Identifiant du développeur
+  - `projectId` : Identifiant du projet
+  - `devId` : Identifiant du développeur
 
 Ajouter le projet au développeur donné
 
 - `deleteDevFromProject` qui prend en paramètres :
-    - `projectId` : Identifiant du projet
-    - `devId` : Identifiant du développeur
+  - `projectId` : Identifiant du projet
+  - `devId` : Identifiant du développeur
 
 Retirer le projet au développeur donné
 
@@ -362,10 +357,10 @@ Retirer le projet au développeur donné
 
 > Les tests sont toujours de rigueur :wink:
 
-#### Ressources
+### Ressources
 - [Many to Many](https://gorm.io/docs/many_to_many.html)
 
-## Bonus
+# Bonus
 
 Voici un _petit_ bonus pratique et utile pour consolider vos connaissances :
 
@@ -385,7 +380,4 @@ Si vous souhaitez en apprendre plus sur les bases de données, voici quelques li
 - [Ent, un meilleur ORM](https://entgo.io/)
 - [Les bases de données graph](https://medium.com/wiidii/pourquoi-sint%C3%A9resser-aux-bases-de-donn%C3%A9es-orient%C3%A9es-graphe-e650f0395951)
 - [DGraph](https://dgraph.io/)
-- [Prisma X Graphql](https://blog.geographer.fr/prisma-graphql-api)
 - [MongoDB](https://www.mongodb.com/fr)
-
-> PoC - 2021
