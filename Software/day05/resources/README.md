@@ -10,6 +10,8 @@ Launch docker-compose
 docker-compose up -d --build
 ```
 
+> :warning: Si vous n'avez pas `direnv allow`, faites la commande `source .envrc` pour charger l'environnement
+
 ## Entities
 
 ### User
