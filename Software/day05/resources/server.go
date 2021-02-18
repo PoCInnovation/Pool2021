@@ -13,6 +13,7 @@ import (
 	"go-message/middlewares"
 	"go-message/routes"
 	"log"
+	"time"
 )
 
 func getDbConfig() string {
@@ -38,6 +39,7 @@ func getRedisConfig() (redis.Store, error) {
 }
 
 func main() {
+	time.Sleep(time.Second * 1)
 	r := gin.Default()
 
 	store, err := getRedisConfig()
@@ -46,7 +48,10 @@ func main() {
 	}
 
 	r.Use(sessions.Sessions("mySession", store))
-	r.Use(cors.Default())
+	corsConfig := cors.DefaultConfig()
+	corsConfig.AllowCredentials = true
+	corsConfig.AllowOrigins = []string{"http://localhost:3000", "http://127.0.0.1:3000"}
+	r.Use(cors.New(corsConfig))
 
 	client, err := ent.Open("postgres", getDbConfig())
 	if err != nil {
@@ -71,8 +76,8 @@ func main() {
 		room := v1.Group("/room")
 		{
 			room.Use(middlewares.Authentication(context.Background(), client))
-			room.GET("/", routes.GetRoom(context.Background(), client))
-			room.POST("/", routes.CreateRoom(context.Background(), client))
+			room.GET("", routes.GetRoom(context.Background(), client))
+			room.POST("", routes.CreateRoom(context.Background(), client))
 			room.POST("/join", routes.Join(context.Background(), client))
 			room.GET("/message", routes.GetRoomMessage(context.Background(), client))
 			room.POST("/message", routes.PostRoomMessage(context.Background(), client))
