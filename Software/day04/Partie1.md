@@ -100,9 +100,9 @@ L'objectif est de créer une image docker issue de l'API que vous avez faite au 
 Copiez-collez vos sources dans le dossier `exo1` puis ajouter un fichier `Dockerfile`
 
 Votre dockerfile doit :
- - Être basé sur la dernière image `alpine` de node.
+ - Être basé sur la dernière image `alpine` de votre langage.
  - Exposer le port 8080
- - Installer les dépendances npm
+ - Installer les dépendances si nécessaire
  - Set la variable d'env `HELLO_MESSAGE` à `docker`
  - Build l'application
  - Au lancement de l'image, l'API doit se lancer directement
