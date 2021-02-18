@@ -1,0 +1,45 @@
+version: "3.3"
+
+services:
+  go-message:
+    build: .
+    environment:
+      - DB_NAME
+      - DB_PASS
+      - DB_USER
+      - DB_PORT
+      - DB_HOST=database
+      - REDIS_NAME
+      - REDIS_HOST=redis
+      - REDIS_PORT
+      - REDIS_PASS
+      - REDIS_SECRET
+      - API_PORT
+    ports:
+      - "${API_PORT}:${API_PORT}"
+    networks:
+      - backend
+
+  redis:
+    image: bitnami/redis:latest
+    environment:
+      - REDIS_PASSWORD=${REDIS_PASS}
+    networks:
+      - backend
+
+  database:
+    image: postgres:alpine
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASS}
+      - POSTGRES_DB=${DB_NAME}
+    networks:
+      - backend
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+networks:
+  backend:
+
+volumes:
+  db-data:

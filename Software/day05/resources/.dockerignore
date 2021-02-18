@@ -1,0 +1,8 @@
+# Script
+launch-db.sh
+launch-redis.sh
+
+# Misc
+README.md
+LICENCE
+.gitignore

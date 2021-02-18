@@ -8,7 +8,7 @@
 
 ## Exercice 00 - Setup
 
-L'objectif de cette journée est de créer une application de message avec un système de salon en **React**.
+L'objectif de cette journée est de créer une application de message avec un système de salon en [React](https://fr.reactjs.org/).
 
 Vous allez d'abord initialiser votre WebApp React avec les commandes suivantes :
 
@@ -30,7 +30,7 @@ Vous allez maintenant retirer toutes les parties inutiles de l'application.
 Supprimez tous les fichiers dans `src` sauf `index.css` et `index.tsx`. Supprimez tout le contenu de `index.css` et changez le contenu de `index.tsx` par:
 
 ```tsx
-import React from "react";
+import React from "Software/day05/Subject";
 import ReactDOM from "react-dom";
 import "./index.css";
 
@@ -75,7 +75,7 @@ ReactDOM.render(
   <React.StrictMode>
     <Message
       messageId={1}
-      imgProfileUrl="https://actualitte.com/uploads/images/pepepe-ea6b553c-07c9-4a0f-86c0-1fa9501019ca.jpg"
+      imgProfileUrl="https://i.ibb.co/Npv3bk7/image-2021-02-18-164910.png"
       senderName="Pepe"
       messageText="Life sucks, is banana a bread, gonna kill a ship later"
     />
@@ -117,11 +117,15 @@ Vous pouvez néanmoins prendre de l'avance et préparer votre composant. Par exe
 
 - [L'intérêt des mocks](https://www.fierdecoder.fr/2015/11/mock-ou-pas-mock/)
 
-## Exercice 03 - La connection à la base de données
+## Exercice 03 - La connection à l'API
 
-Vous allez maintenant connecter votre WebApp à une base de données afin de récupérer différents messages. Pour cela, utilisez-le package `axios`.
+Vous allez maintenant communiquer avec une [API](./resources) afin de récupérer différents messages. Pour cela, utilisez-le package `axios`.
 
-Créez un nouveau composant appelé `Home` vide. Il va permettre à l'utilisateur de se connecter puis créer / rejoindre des salons. Créer aussi un composant `Login` vide pour permettre aussi à l'utilisateur de se conecter.
+> :bulb: L'API se trouve dans le dossier ressources, lisez la [documentation](./resources/README.md) pour apprendre à l'utiliser.
+>
+> N'hésitez pas à tester l'API avec Postman afin de comprendre son comportement. 
+
+Créez un nouveau composant appelé `Home` vide. Il va permettre à l'utilisateur de se connecter puis créer / rejoindre des salons. Créer aussi un composant `Login` vide pour permettre aussi à l'utilisateur de se connecter.
 
 ### L'arborescence
 
@@ -148,33 +152,19 @@ Pensé à aussi rajouter un chemin vers le component `Home` !
 
 Il faut maintenant setup le système de connection dans votre `Login`.
 
-Créez un `form` de connection prenant un nom de compte et un mot de passe, ils devront etre envoyés à la base de données avec les propriétés suivantes (et ce grace à axios):
+Créez un `form` de connection prenant un nom de compte et un mot de passe, ils devront être envoyés à l'API afin de connecter votre utilisateur.
 
-```
-method: "post",
-url: "xxx/login",
-headers: { "Content-Type": "application/json" },
-withCredentials: true,
-data: JSON.stringify(data)
-```
+> Lisez la documentation de l'API pour trouver la route et les informations à envoyer.
 
-Si la base de données renvoie une erreur, il faudra demander à l'utilisateur de reéssayer en éffaçant ces précédentes entrées, dans le cas d'un succès il faudra rediriger l'utilisateur vers le chemin affichant le composant `Home`. (utilisez history et history.push de `react-router-dom`)
+Si l'API renvoie une erreur, il faudra demander à l'utilisateur de réessayer en effaçant ces précédentes entrées, dans le cas d'un succès il faudra rediriger l'utilisateur vers le chemin affichant le composant `Home`. (utilisez history et history.push de `react-router-dom`)
 
 Aussi, créez un bouton qui permettrait la création de nouveau compte. Il faudrait pouvoir facilement passer du mode connection au mode création de compte (et vis-versa) avec de plus un indicateur visuel pour savoir dans quel mode on est.
 
-Il faudra faire en sorte que quand on passe d'un mode à un autre, le `form` ne change pas; seul change la fonction appelée pour interagir avec la base de données. (Il faudra néanmoins rajouter une case au form pour saisir l'url de la photo de profil)
+Il faudra faire en sorte que quand on passe d'un mode à un autre, le `form` ne change pas, seule la fonction appelée change pour interagir avec l'API. (Il faudra néanmoins rajouter une case au form pour saisir l'url de la photo de profil)
 
-Voici comment créer un nouveau compte:
+> Lisez la documentation de l'API pour trouver la route et les informations à envoyer.
 
-```
-method: "post",
-url: `xxx/createAccount`,
-headers: { "Content-Type": "application/json" },
-withCredentials: true,
-data: JSON.stringify({ username, password, profilePicture })
-```
-
-Pensez à toujours vérifier la réussite ou non de la conection avec la base de données, dans le cas de la création de compte, un message d'erreur pourrait être apprécié.
+Pensez à toujours vérifier la réussite ou non de la connection avec l'API, dans le cas de la création de compte, un message d'erreur pourrait être apprécié.
 
 ### Le home
 
@@ -185,26 +175,14 @@ Vous allez donc créer deux éléments :
 - `joinRoom`
 - `createRoom`
 
-`joinRoom` est un `form` prenant l'ID du salon que l'utilisateur voudra rejoindre, une fois le `form` rempli, la requette suivante devra être fait à la base de données afin de savoir si ce salon existe:
+`joinRoom` est un `form` prenant l'ID du salon que l'utilisateur voudra rejoindre, une fois le `form` rempli, une requête sur l'API à la route `<host>/api/room/join` devra être faites afin de savoir si ce salon existe.
 
-```
-method: "post",
-url: `xxx/joinRoom?roomId=${roomId}`,
-headers: { "Content-Type": "application/json" },
-withCredentials: true
-```
+Si l'API renvoie une erreur, il faudra l'afficher, dans le cas où celle-ci existe bien, il faudra renvoyer l'utilisateur sur un nouveau chemin qu'il faudra créer : `/chatRoom/${roomId}`, un chemin contenant le composant `ChatRoom`.
+Il faudra ensuite récupérer `roomId` dans le composant `ChatRoom`. (Regardez `useParams`)
 
-Si la base de données renvoie une erreur, il faudra l'afficher, dans le cas où celle-ci existe bien, il faudra renvoyer l'utilisateur sur un nouveau chemin qu'il faudra créer: `/chatRoom/${roomId}`, un chemin contenant le composant `ChatRoom`,
-il faudra ensuite récupérer `roomId` dans le composant `ChatRoom`. (Regardez `useParams`)
+`createRoom` est semblable à `joinRoom`, à l'exception que ce n'est pas un `form`, ce sera simplement un bouton qui feras un appel à l'API pour créer une room.
 
-`createRoom` est semblable à `joinRoom`, à l'exception que ce n'est pas un `form`, ce sera simplement un bouton qui fera l'appel suivant à la base de données:
-
-```
-method: "post",
-url: `xxx/room`,
-headers: { "Content-Type": "application/json" },
-withCredentials: true
-```
+> Lisez la documentation de l'API pour trouver la route et les informations à envoyer.
 
 Celui-ci renverra l'ID d'un nouveau salon, il faudra rediriger l'utilisateur sur ce salon.
 
@@ -225,14 +203,9 @@ En React, il existe une superbe fonctionnalité appelée `useEffect hook`.
 
 > :bulb: Les `hooks` sont des morceaux de codes servant à mettre à jour un composant selon des paramètres (la modification d'une variable par exemple). Si le composant n'a pas de dépendance, il sera mis à jour lorsque le composant sera rendu.
 
-Votre `hook` va permettre de récupérer les messages, les indexer dans le tableau puis les afficher. Pour récupérer les donnéess des messages, faite la requette suivante:
+Votre `hook` va permettre de récupérer les messages, les indexer dans le tableau puis les afficher. Pour récupérer les données des messages, faite un appel à l'API.
 
-```
-method: "get",
-url: `xxx/roomMessage?roomID=${roomId}`,
-headers: { "Content-Type": "application/json" },
-withCredentials: true
-```
+> Lisez la documentation de l'API pour trouver la route et les informations à envoyer.
 
 #### Ressources
 
@@ -242,15 +215,9 @@ withCredentials: true
 
 Pour envoyer un message, vous devez simplement créer un formulaire à l'intérieur du composant `ChatRoom`.
 
-Ce nouveau sous-composant va envoyer une requête au backend avec le message lorsque l'utilisateur va valider son formulaire.
+Ce nouveau sous-composant va envoyer une requête au backend avec le message lorsque l'utilisateur va valider son formulaire. Vous devrez bien sure envoyer une requête à l'API pour créer le message.
 
-```
-method: "post",
-url: `xxx/roomMessage?roomID=${roomId}`,
-headers: { "Content-Type": "application/json" },
-withCredentials: true,
-data: JSON.stringify({ messageText })
-```
+> Lisez la documentation de l'API pour trouver la route et les informations à envoyer.
 
 :warning: Vous allez tout de même être face à un problème ! Même si le message est enregistré sur le serveur, il ne sera pas affiché côté front.
 
@@ -262,16 +229,16 @@ Trouvez un moyen de mettre à jour votre salon grâce à des `hooks` quand vous 
 
 ## Exercice 06 - Récupérer les messages en temps réel
 
-Actuellement on peut rafraichir la liste des messages que l'on recoit quand on envoit des messages, mais il n'est pas possible de mettre à jour notre liste de messages sans envoyer de méssages, on doit trouver une solution à cela !
+Actuellement on peut rafraichir la liste des messages que l'on reçoit quand on envoie des messages, mais il n'est pas possible de mettre à jour notre liste de messages sans envoyer de messages, on doit trouver une solution à cela !
 
-Normalment pour mettre à jour notre liste de messages on devrait utiliser les websocket.
+Normalement pour mettre à jour notre liste de messages on devrait utiliser les websocket.
 
-Comme cela est plutôt long à mettre en place, nous allons plutot faire autrement.
+Comme cela est plutôt long à mettre en place, nous allons plutôt faire autrement.
 
 Créez un bouton "refresh", qui, au click, rafraichit notre liste de messages, et ce même si on n'a pas envoyé de nouveau message !
 
-:bulb: Vous pouvez même passer à la vitesse supérieure et rafraichir votre page toute les X secondes avec un autre boutton !
-Vous aurez pour cela besoin d'utiliser une fonctionalité de TypeScript: `interval`.
+:bulb: Vous pouvez même passer à la vitesse supérieure et rafraichir votre page toute les X secondes avec un autre bouton !
+Vous aurez pour cela besoin d'utiliser une fonctionnalité de TypeScript: `interval`.
 
 #### Ressources
 
@@ -279,33 +246,21 @@ Vous aurez pour cela besoin d'utiliser une fonctionalité de TypeScript: `interv
 
 ## Exercice 07 - interagissez avec vos messages
 
-Dans votre composant `Message`, ajouter à chaque message un bouttons permetant de supprimer les messages.
+Dans votre composant `Message`, ajouter à chaque message un bouton permettant de supprimer les messages.
 
-Pour supprimer les messages, au click du bouton, faire la requette suivant a la base de données:
+Pour supprimer les messages, au click du bouton, faites une requête à l'API:
 
-```
-method: "delete",
-url: `xxx/roomMessage?roomID=${roomId}&messageID=${messageId}`,
-headers: { "Content-Type": "application/json" },
-withCredentials: true,
-data: JSON.stringify({ messageId })
-```
+> Lisez la documentation de l'API pour trouver la route et les informations à envoyer.
 
-Vous pouvez aussi créé un bouton "modifier" qui permeterait à l'utilisateur de modifier son message en remplissant un `form` (pour le nouveau message)
+Vous pouvez aussi créé un bouton "modifier" qui permettrait à l'utilisateur de modifier son message en remplissant un `form` (pour le nouveau message)
 
-```
-method: "put",
-url: `xxx/roomMessage?roomID=${roomId}&messageID=${messageId}`,
-headers: { "Content-Type": "application/json" },
-withCredentials: true,
-data: JSON.stringify({ messageText })
-```
+> Lisez la documentation de l'API pour trouver la route et les informations à envoyer.
 
-Il faudra bien faire attention au retour de la base de données, en effet, celle-ci renvera une erreur si vous n'êtes pas le propriétaire du message que vous essayez de modifier, il faudra alors afficher cette erreur.
+Il faudra bien faire attention au retour de l'API, en effet, celle-ci renverra une erreur si vous n'êtes pas le propriétaire du message que vous essayez de modifier, il faudra alors afficher cette erreur.
 
 ## Bonus
 
-Si tous est fonctionnel, vous pourriez rajouter quelque features:
+Si tout est fonctionnel, vous pourriez rajouter quelques fonctionnalités :
 
 - Rajouter des animations
 - Faire une version mobile de votre app
