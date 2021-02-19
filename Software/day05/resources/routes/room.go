@@ -17,7 +17,7 @@ func CreateRoom(ctx context.Context, client *ent.Client) gin.HandlerFunc {
 			c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 			return
 		}
-		c.JSON(http.StatusOK, gin.H{"room": newRoom})
+		c.JSON(http.StatusCreated, gin.H{"room": newRoom})
 	}
 	return gin.HandlerFunc(fn)
 }

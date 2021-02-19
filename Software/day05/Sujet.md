@@ -109,7 +109,7 @@ L'objectif est d'afficher les messages spécifiques à un salon.
 
 La `ChatRoom` n'a pas besoin de props.
 
-Pour le moment, ce composant ne va pas faire grand chose, il vous sera très utile sur les futurs exercices !
+Pour le moment, ce composant ne va pas faire grand-chose, il vous sera très utile sur les futurs exercices !
 
 Vous pouvez néanmoins prendre de l'avance et préparer votre composant. Par exemple, écrivez quelques faux messages et essayer de les afficher proprement dans le salon. Ajoutez du css pour faire un fond, mettre des espaces entre les messages, ect.
 
@@ -124,6 +124,8 @@ Vous allez maintenant communiquer avec une [API](./resources) afin de récupére
 > :bulb: L'API se trouve dans le dossier ressources, lisez la [documentation](./resources/README.md) pour apprendre à l'utiliser.
 >
 > N'hésitez pas à tester l'API avec Postman afin de comprendre son comportement.
+
+**Attention ! Quand vous envoyer une requête à l'API, assurez-vous d'avoir bien mis en host `127.0.0.1` dans l'url de votre requête, si vous passez par `localhost`, votre navigateur ne pourra pas set les cookies.**
 
 Créez un nouveau composant appelé `Home` vide. Il va permettre à l'utilisateur de se connecter puis créer / rejoindre des salons. Créer aussi un composant `Login` vide pour permettre aussi à l'utilisateur de se connecter.
 

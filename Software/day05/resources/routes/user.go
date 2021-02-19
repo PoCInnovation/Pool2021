@@ -2,6 +2,7 @@ package routes
 
 import (
 	"context"
+	"fmt"
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
@@ -16,12 +17,14 @@ func Register(ctx context.Context, client *ent.Client) gin.HandlerFunc {
 		var data models.User
 
 		if err := c.ShouldBindJSON(&data); err != nil {
+			fmt.Println(err)
 			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 			return
 		}
 
 		newUser, err := models.CreateUser(ctx, client, data)
 		if err != nil {
+			fmt.Println(err)
 			c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 			return
 		}
@@ -36,19 +39,24 @@ func Login(ctx context.Context, client *ent.Client) gin.HandlerFunc {
 		var data models.Credential
 
 		if err := c.ShouldBindJSON(&data); err != nil {
+			fmt.Println(err)
 			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 			return
 		}
 
 		user, err := models.GetUser(ctx, client, data)
 		if err != nil {
-			c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+			c.JSON(http.StatusNotFound, gin.H{"error": err.Error()})
 			return
 		}
-
-		session := sessions.Default(c)
-		session.Set("Id", user.ID.String())
-		_ = session.Save()
+		c.SetCookie("cookie", user.ID.String(), 3600, "/", "127.0.0.1", false, true)
+		//	session := sessions.Default(c)
+	//	session.Set("Id", user.ID.String())
+	//	err = session.Save()
+	//	if err != nil {
+	//		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+	//		return
+	//	}
 
 		c.String(http.StatusOK, "User sign in successfully")
 	}

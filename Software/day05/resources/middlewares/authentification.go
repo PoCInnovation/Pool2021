@@ -3,7 +3,6 @@ package middlewares
 import (
 	"context"
 	"fmt"
-	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
 	"go-message/ent"
@@ -12,16 +11,12 @@ import (
 
 func Authentication(ctx context.Context, client *ent.Client) gin.HandlerFunc {
 	return func(c *gin.Context) {
-		session := sessions.Default(c)
-		sessionId := session.Get("Id")
-
-		if sessionId == nil {
-			c.String(http.StatusUnauthorized, "Unauthorized")
-			c.Abort()
-			return
+		cookie, err := c.Cookie("cookie")
+		if err != nil {
+			fmt.Println("Auth", err)
 		}
 
-		id, err := uuid.Parse(fmt.Sprintf("%v", sessionId))
+		id, err := uuid.Parse(fmt.Sprintf("%v", cookie))
 		if err != nil {
 			c.String(http.StatusUnauthorized, "Invalid uuid")
 			c.Abort()
@@ -35,5 +30,6 @@ func Authentication(ctx context.Context, client *ent.Client) gin.HandlerFunc {
 			return
 		}
 		c.Request = c.Request.WithContext(context.WithValue(c.Request.Context(), "userID", user.ID))
+		c.Next()
 	}
 }
