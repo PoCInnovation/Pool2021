@@ -30,7 +30,7 @@ Vous allez maintenant retirer toutes les parties inutiles de l'application.
 Supprimez tous les fichiers dans `src` sauf `index.css` et `index.tsx`. Supprimez tout le contenu de `index.css` et changez le contenu de `index.tsx` par:
 
 ```tsx
-import React from "Software/day05/Subject";
+import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 
@@ -123,7 +123,7 @@ Vous allez maintenant communiquer avec une [API](./resources) afin de récupére
 
 > :bulb: L'API se trouve dans le dossier ressources, lisez la [documentation](./resources/README.md) pour apprendre à l'utiliser.
 >
-> N'hésitez pas à tester l'API avec Postman afin de comprendre son comportement. 
+> N'hésitez pas à tester l'API avec Postman afin de comprendre son comportement.
 
 Créez un nouveau composant appelé `Home` vide. Il va permettre à l'utilisateur de se connecter puis créer / rejoindre des salons. Créer aussi un composant `Login` vide pour permettre aussi à l'utilisateur de se connecter.
 
