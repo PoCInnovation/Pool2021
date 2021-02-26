@@ -41,7 +41,7 @@ L'avancée du cloud, des infrastructures distribués a explosé ses dernières a
 L'après-midi sera consacré à la mise en place d'authentification. Vous allez voir les Json Web Token, les passeports et l'utilisation des sessions.
 
  - [Docker](https://github.com/PoCInnovation/Pool2021/blob/master/Software/day04/Partie1.md)
- - [Go]()
+ - [Go](https://github.com/PoCInnovation/Pool2021/tree/master/Software/Partie2-Go.md)
  - [Typescript](https://github.com/PoCInnovation/Pool2021/blob/master/Software/day04/Partie2-Typescript.md)
 
 ## :fireworks: Day 5 - Frontend avec React
@@ -50,7 +50,7 @@ Pendant 4 jours, vous avez travaillé sur la partie `back-end` du software, vous
 
 Vous allez apprendre les bases des web components grâce au framework react et les bonnes pratiques du développement front.
 
-- [React]()
+- [React](https://github.com/PoCInnovation/Pool2021/tree/master/Software/day05)
 
 Une fois la formation terminée, vous pourrez consolider vos connaissances au travers d'un projet libre à faire en équipe de 3 ou plus.
 
