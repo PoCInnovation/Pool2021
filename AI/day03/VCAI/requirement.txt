@@ -1,0 +1,6 @@
+scipy>=1.18.5
+PIL>=7.2.0
+torch>=1.7
+h5py>=2.10.0
+numpy>=1.18.5
+matplotlib>=3.3.1
