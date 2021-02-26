@@ -17,7 +17,7 @@ Après avoir revu les bases du deep learning en uttilisant Pytorch vous manipule
 Durant cette journée vous découvrirez les bases du RL en commançant par la value function suivit du Q-learning et terminant par un Deep Q-Learning. 
 
 ## Day 5 - Advanced Reinforcement Learning
-VOus avez découvert la veille la notion du deep reinforcement learning, aujourd'hui vous allez approfondire cette notion jusqu'à faire un AC.
+Vous avez découvert la veille la notion du deep reinforcement learning, aujourd'hui vous allez approfondire cette notion jusqu'à faire un AC.
 
 ## Authors:
 - [Slohan Sainte-Croix](https://github.com/L-Antique)
