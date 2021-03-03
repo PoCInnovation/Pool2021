@@ -78,7 +78,7 @@ Cr√©er un nouveau circuit qui va alimenter un moteur quand le bouton sera press√
 
 Les moteurs fonctionne mieux avec une alimentation 12v.
 
-![pickaxe](https://github.com/PoCInnovation/Pool2021/blob/master/.github/assets/hardware_continued.png)
+![pickaxe](https://github.com/PoCInnovation/Pool2021/blob/master/.github/assets/hardware_pickaxe.png)
 
 ## Getting an upgrade
 
