@@ -4,7 +4,7 @@
 Vous allez commencer cette piscine avec les "basics" de l'hardware.
 Appréhendez les circuits électriques, intéragir avec des microcontrollers.  
 
-## [Day 2 - COM](./day03)  
+## [Day 2 - COM](./day02)  
 Les bases étant maîtrisées, il est temps de voir plus en détail les communications !  
 
 ## [Day 3 - CAO](./day03)
