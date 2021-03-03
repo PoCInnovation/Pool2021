@@ -78,7 +78,7 @@ Créer un nouveau circuit qui va alimenter un moteur quand le bouton sera press�
 
 Les moteurs fonctionne mieux avec une alimentation 12v.
 
-![PoC%20HPool%20D01%20-%20BAS%2062e02436143549e78b205c6fe830f6c8/Untitled.png](PoC%20HPool%20D01%20-%20BAS%2062e02436143549e78b205c6fe830f6c8/Untitled.png)
+![pickaxe](https://github.com/PoCInnovation/Pool2021/blob/master/.github/assets/hardware_continued.png)
 
 ## Getting an upgrade
 
@@ -110,7 +110,7 @@ Reprendre les exercices précédents et ajouter plus de contenu et d’interacti
 
 Vous avez appris tout au long de cette journée les bases de l'hardware, en réfléchissant un peu vous seriez presque capables de le construire votre robot... Il vous manquerait juste...
 
-![PoC%20HPool%20D01%20-%20BAS%2062e02436143549e78b205c6fe830f6c8/Untitled%201.png](PoC%20HPool%20D01%20-%20BAS%2062e02436143549e78b205c6fe830f6c8/Untitled%201.png)
+![continued](https://github.com/PoCInnovation/Pool2021/blob/master/.github/assets/hardware_continued.png)
 
 ## YOUTUBE
 
