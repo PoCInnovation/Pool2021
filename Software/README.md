@@ -10,6 +10,8 @@ La formation se déroule en 5 jours, chacun portera sur un thème du software et
 
 Des intervenants extérieurs viendront aussi apporter leur expériences du domaine et expliquer les grands axes du développment software dans une entreprise.
 
+> :bulb: Si vous souhaitez obtenir les corrections des sujets, contactez les différents [rédacteurs](https://github.com/PoCInnovation/Pool2021/tree/master/Software#authors).
+
 ## :closed_book: Day 1 - Bases du langage
 
 Vous aurez le choix entre le Go ou le Typescript, ce sont deux langages très prisés des développeurs du moment. Vous aurez plus de détails sur les spécificités de chacun lors de la piscine et bien sûr, vous en découvrirez plus au fil des jours.
