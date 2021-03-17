@@ -3,7 +3,7 @@
 
 The purpose of this pool is to introduce you to cybersecurity through an introduction to the different categories that make up cybersecurity as well as the practice of CTF.
 
-> :bulb: Si vous souhaitez obtenir les corrections des sujets, contactez les différents [rédacteurs](https://github.com/PoCInnovation/Pool2021/tree/master/Security#authors).
+> :bulb: If you want the correction, send a message to [authors](https://github.com/PoCInnovation/Pool2021/tree/master/Security#authors).
 
 The different categories we offer are: 
 - [Blockchain](https://github.com/PoCInnovation/Pool2021/tree/master/Security/Blockchain)
