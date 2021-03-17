@@ -10,3 +10,8 @@ Les bases étant maîtrisées, il est temps de voir plus en détail les communic
 ## [Day 3 - CAO](./day03)
 Personne ne veut voir les câbles, les circuits, les composants d'un circuit !
 C'est pour cela que vous allez apprendre la modélisation 3D.  
+
+## Authors
+- [Theo Zapata](https://github.com/Thezap)
+- [Naoufel Berrada](https://github.com/nowlow)
+- [Cyril de Lajudie](https://github.com/Axoloot)
