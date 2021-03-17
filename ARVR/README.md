@@ -2,6 +2,8 @@
 
 Les objectifs de cette piscine sont de vous apprendre les bases du développement de la réalité virtuelle et augmentée, ainsi que le fonctionnement des outils relatifs à sa conception.
 
+> :bulb: Si vous souhaitez obtenir les corrections des sujets, contactez les différents [rédacteurs](https://github.com/PoCInnovation/Pool2021/tree/master/ARVR#authors).
+
 Cette piscine s'organise autour de 5 jours de projet à réaliser. 
 ## [Day 1 - Le moteur Unity](./day01)
 Tout au long de cette journée, vous allez découvrir les bases nécessaires au développement sur Unity.
