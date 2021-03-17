@@ -1,5 +1,7 @@
 # :wave: Bienvenue à la piscine hardware 2021 de PoC !  
 
+> :bulb: Si vous souhaitez obtenir les corrections des sujets, contactez les différents [rédacteurs](https://github.com/PoCInnovation/Pool2021/tree/master/Hardware#authors).
+
 ## [Day 1 - BAS](./day01)
 Vous allez commencer cette piscine avec les "basics" de l'hardware.
 Appréhendez les circuits électriques, intéragir avec des microcontrollers.  
