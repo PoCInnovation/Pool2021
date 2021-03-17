@@ -4,6 +4,8 @@ Durant cette semaine vous découvrirez differentes notions de l'Intelligence Art
 
 À l'issue de cette piscine vous aurez toutes les compétences nécessaires pour démarrer votre propre projets d'IA.
 
+> :bulb: Si vous souhaitez obtenir les corrections des sujets, contactez les différents [rédacteurs](https://github.com/PoCInnovation/Pool2021/tree/master/AI#authors).
+
 ## [Day 1 - Neuron From Scratch](./day01)
 Lors de cette journée, vous verrez comment fonctionne un neurone en IA, comment on effectue des predictions et comment est ce qu'on l'entraine.
 
