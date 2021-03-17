@@ -10,4 +10,12 @@ The different categories we offer are:
 - [Reverse](https://github.com/PoCInnovation/Pool2021/tree/master/Security/Reverse)
 - [Steganography](https://github.com/PoCInnovation/Pool2021/tree/master/Security/Steganography)
 - [Web](https://github.com/PoCInnovation/Pool2021/tree/master/Security/Web)
--  [Forensic](https://github.com/PoCInnovation/Pool2021/tree/master/Security/Forensic-Network)
+- [Forensic](https://github.com/PoCInnovation/Pool2021/tree/master/Security/Forensic-Network)
+
+## Authors
+- [Alexandre Gouasmi](https://github.com/etarc0s)
+- [Loïc Titren](https://github.com/loicttn)
+- [Killian Clette](https://github.com/Skerilyo)
+- [Edouard Sengeissen](https://github.com/edouard-sn)
+- [Lorenzo Rosmarino](https://github.com/orgs/PoCInnovation/people/Drysque)
+- [Luca Georges-François](https://github.com/PtitLuca)
