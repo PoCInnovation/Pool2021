@@ -29,7 +29,7 @@ Après avoir revu les bases du deep learning en uttilisant Pytorch vous manipule
 Talk:
 - Les convolutions en IA - [Slohan Sainte-Croix](https://www.linkedin.com/in/slohan-sainte-croix-37789b177/)
 - Le machine learning en cybersécurité - [Maxime Labonne](https://www.linkedin.com/in/maxime-labonne/)
-- Les Reseau Neuronal Necurrent (RNN) - [Valentin De Matos](https://www.linkedin.com/in/valentin-de-matos/)
+- Les Réseaux de Neurones Recurrents (RNN) - [Valentin De Matos](https://www.linkedin.com/in/valentin-de-matos/)
 - Les Generative Adversarial Network (GAN) - [Matthis Cusin](https://www.linkedin.com/in/matthis-cusin-670632160/)
 
 ## [Day 4 - Reinforcement Learning](./day04)
