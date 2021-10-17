@@ -79,7 +79,7 @@ Find the flag !
 ## 6 - Robbery
 This is an x64 ELF polymorphic binary.
 
-Find the real instruction at offset `401ad1`.
+Find the real instruction at address `0x4013cd`.
 
 Flag format: `PoC{ins}`
 
